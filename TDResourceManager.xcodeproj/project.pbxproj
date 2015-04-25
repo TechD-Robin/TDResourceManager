@@ -10,6 +10,10 @@
 		2AC9DD591AEBB1950012B4FA /* TDResourceManager.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2AC9DD581AEBB1950012B4FA /* TDResourceManager.h */; };
 		2AC9DD5B1AEBB1950012B4FA /* TDResourceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AC9DD5A1AEBB1950012B4FA /* TDResourceManager.m */; };
 		2AC9DD611AEBB1950012B4FA /* libTDResourceManager.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AC9DD551AEBB1950012B4FA /* libTDResourceManager.a */; };
+		2AC9DD781AEBB2710012B4FA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AC9DD771AEBB2710012B4FA /* main.m */; };
+		2AC9DD7B1AEBB2710012B4FA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AC9DD7A1AEBB2710012B4FA /* AppDelegate.m */; };
+		2AC9DD7E1AEBB2710012B4FA /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AC9DD7D1AEBB2710012B4FA /* ViewController.m */; };
+		2AC9DD921AEBB2710012B4FA /* DemoResourceManagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AC9DD911AEBB2710012B4FA /* DemoResourceManagerTests.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -19,6 +23,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = 2AC9DD541AEBB1950012B4FA;
 			remoteInfo = TDResourceManager;
+		};
+		2AC9DD8C1AEBB2710012B4FA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2AC9DD4D1AEBB1950012B4FA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2AC9DD721AEBB2710012B4FA;
+			remoteInfo = DemoResourceManager;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -41,6 +52,16 @@
 		2AC9DD5A1AEBB1950012B4FA /* TDResourceManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TDResourceManager.m; sourceTree = "<group>"; };
 		2AC9DD601AEBB1950012B4FA /* TDResourceManagerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TDResourceManagerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2AC9DD661AEBB1950012B4FA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2AC9DD731AEBB2710012B4FA /* DemoResourceManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DemoResourceManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		2AC9DD761AEBB2710012B4FA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2AC9DD771AEBB2710012B4FA /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		2AC9DD791AEBB2710012B4FA /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		2AC9DD7A1AEBB2710012B4FA /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		2AC9DD7C1AEBB2710012B4FA /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		2AC9DD7D1AEBB2710012B4FA /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		2AC9DD8B1AEBB2710012B4FA /* DemoResourceManagerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DemoResourceManagerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		2AC9DD901AEBB2710012B4FA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2AC9DD911AEBB2710012B4FA /* DemoResourceManagerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DemoResourceManagerTests.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +80,20 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		2AC9DD701AEBB2710012B4FA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2AC9DD881AEBB2710012B4FA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -67,6 +102,8 @@
 			children = (
 				2AC9DD571AEBB1950012B4FA /* TDResourceManager */,
 				2AC9DD641AEBB1950012B4FA /* TDResourceManagerTests */,
+				2AC9DD741AEBB2710012B4FA /* DemoResourceManager */,
+				2AC9DD8E1AEBB2710012B4FA /* DemoResourceManagerTests */,
 				2AC9DD561AEBB1950012B4FA /* Products */,
 			);
 			sourceTree = "<group>";
@@ -76,6 +113,8 @@
 			children = (
 				2AC9DD551AEBB1950012B4FA /* libTDResourceManager.a */,
 				2AC9DD601AEBB1950012B4FA /* TDResourceManagerTests.xctest */,
+				2AC9DD731AEBB2710012B4FA /* DemoResourceManager.app */,
+				2AC9DD8B1AEBB2710012B4FA /* DemoResourceManagerTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -101,6 +140,44 @@
 			isa = PBXGroup;
 			children = (
 				2AC9DD661AEBB1950012B4FA /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		2AC9DD741AEBB2710012B4FA /* DemoResourceManager */ = {
+			isa = PBXGroup;
+			children = (
+				2AC9DD791AEBB2710012B4FA /* AppDelegate.h */,
+				2AC9DD7A1AEBB2710012B4FA /* AppDelegate.m */,
+				2AC9DD7C1AEBB2710012B4FA /* ViewController.h */,
+				2AC9DD7D1AEBB2710012B4FA /* ViewController.m */,
+				2AC9DD751AEBB2710012B4FA /* Supporting Files */,
+			);
+			path = DemoResourceManager;
+			sourceTree = "<group>";
+		};
+		2AC9DD751AEBB2710012B4FA /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				2AC9DD761AEBB2710012B4FA /* Info.plist */,
+				2AC9DD771AEBB2710012B4FA /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		2AC9DD8E1AEBB2710012B4FA /* DemoResourceManagerTests */ = {
+			isa = PBXGroup;
+			children = (
+				2AC9DD911AEBB2710012B4FA /* DemoResourceManagerTests.m */,
+				2AC9DD8F1AEBB2710012B4FA /* Supporting Files */,
+			);
+			path = DemoResourceManagerTests;
+			sourceTree = "<group>";
+		};
+		2AC9DD8F1AEBB2710012B4FA /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				2AC9DD901AEBB2710012B4FA /* Info.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -143,6 +220,41 @@
 			productReference = 2AC9DD601AEBB1950012B4FA /* TDResourceManagerTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		2AC9DD721AEBB2710012B4FA /* DemoResourceManager */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2AC9DD931AEBB2710012B4FA /* Build configuration list for PBXNativeTarget "DemoResourceManager" */;
+			buildPhases = (
+				2AC9DD6F1AEBB2710012B4FA /* Sources */,
+				2AC9DD701AEBB2710012B4FA /* Frameworks */,
+				2AC9DD711AEBB2710012B4FA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DemoResourceManager;
+			productName = DemoResourceManager;
+			productReference = 2AC9DD731AEBB2710012B4FA /* DemoResourceManager.app */;
+			productType = "com.apple.product-type.application";
+		};
+		2AC9DD8A1AEBB2710012B4FA /* DemoResourceManagerTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2AC9DD961AEBB2710012B4FA /* Build configuration list for PBXNativeTarget "DemoResourceManagerTests" */;
+			buildPhases = (
+				2AC9DD871AEBB2710012B4FA /* Sources */,
+				2AC9DD881AEBB2710012B4FA /* Frameworks */,
+				2AC9DD891AEBB2710012B4FA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2AC9DD8D1AEBB2710012B4FA /* PBXTargetDependency */,
+			);
+			name = DemoResourceManagerTests;
+			productName = DemoResourceManagerTests;
+			productReference = 2AC9DD8B1AEBB2710012B4FA /* DemoResourceManagerTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -158,6 +270,13 @@
 					2AC9DD5F1AEBB1950012B4FA = {
 						CreatedOnToolsVersion = 6.3.1;
 					};
+					2AC9DD721AEBB2710012B4FA = {
+						CreatedOnToolsVersion = 6.3.1;
+					};
+					2AC9DD8A1AEBB2710012B4FA = {
+						CreatedOnToolsVersion = 6.3.1;
+						TestTargetID = 2AC9DD721AEBB2710012B4FA;
+					};
 				};
 			};
 			buildConfigurationList = 2AC9DD501AEBB1950012B4FA /* Build configuration list for PBXProject "TDResourceManager" */;
@@ -166,6 +285,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
 			);
 			mainGroup = 2AC9DD4C1AEBB1950012B4FA;
 			productRefGroup = 2AC9DD561AEBB1950012B4FA /* Products */;
@@ -174,12 +294,28 @@
 			targets = (
 				2AC9DD541AEBB1950012B4FA /* TDResourceManager */,
 				2AC9DD5F1AEBB1950012B4FA /* TDResourceManagerTests */,
+				2AC9DD721AEBB2710012B4FA /* DemoResourceManager */,
+				2AC9DD8A1AEBB2710012B4FA /* DemoResourceManagerTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		2AC9DD5E1AEBB1950012B4FA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2AC9DD711AEBB2710012B4FA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2AC9DD891AEBB2710012B4FA /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -204,6 +340,24 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		2AC9DD6F1AEBB2710012B4FA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2AC9DD7E1AEBB2710012B4FA /* ViewController.m in Sources */,
+				2AC9DD7B1AEBB2710012B4FA /* AppDelegate.m in Sources */,
+				2AC9DD781AEBB2710012B4FA /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2AC9DD871AEBB2710012B4FA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2AC9DD921AEBB2710012B4FA /* DemoResourceManagerTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -211,6 +365,11 @@
 			isa = PBXTargetDependency;
 			target = 2AC9DD541AEBB1950012B4FA /* TDResourceManager */;
 			targetProxy = 2AC9DD621AEBB1950012B4FA /* PBXContainerItemProxy */;
+		};
+		2AC9DD8D1AEBB2710012B4FA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2AC9DD721AEBB2710012B4FA /* DemoResourceManager */;
+			targetProxy = 2AC9DD8C1AEBB2710012B4FA /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -250,7 +409,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -286,7 +445,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -343,6 +502,70 @@
 			};
 			name = Release;
 		};
+		2AC9DD941AEBB2710012B4FA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = DemoResourceManager/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		2AC9DD951AEBB2710012B4FA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				INFOPLIST_FILE = DemoResourceManager/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		2AC9DD971AEBB2710012B4FA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = DemoResourceManagerTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DemoResourceManager.app/DemoResourceManager";
+			};
+			name = Debug;
+		};
+		2AC9DD981AEBB2710012B4FA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = DemoResourceManagerTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DemoResourceManager.app/DemoResourceManager";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -368,6 +591,22 @@
 			buildConfigurations = (
 				2AC9DD6D1AEBB1950012B4FA /* Debug */,
 				2AC9DD6E1AEBB1950012B4FA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		2AC9DD931AEBB2710012B4FA /* Build configuration list for PBXNativeTarget "DemoResourceManager" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2AC9DD941AEBB2710012B4FA /* Debug */,
+				2AC9DD951AEBB2710012B4FA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		2AC9DD961AEBB2710012B4FA /* Build configuration list for PBXNativeTarget "DemoResourceManagerTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2AC9DD971AEBB2710012B4FA /* Debug */,
+				2AC9DD981AEBB2710012B4FA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 		};
