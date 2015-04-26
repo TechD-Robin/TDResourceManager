@@ -7,6 +7,25 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2A187CE81AECF24000B457FD /* NSBundle+TechD.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A187CCF1AECF23F00B457FD /* NSBundle+TechD.m */; };
+		2A187CE91AECF24000B457FD /* NSBundle+TechD.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A187CCF1AECF23F00B457FD /* NSBundle+TechD.m */; };
+		2A187CEA1AECF24000B457FD /* NSDate+TechD.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A187CD11AECF23F00B457FD /* NSDate+TechD.m */; };
+		2A187CEB1AECF24000B457FD /* NSDate+TechD.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A187CD11AECF23F00B457FD /* NSDate+TechD.m */; };
+		2A187CEC1AECF24000B457FD /* NSJSONSerialization+TechD.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A187CD31AECF23F00B457FD /* NSJSONSerialization+TechD.m */; };
+		2A187CED1AECF24000B457FD /* NSJSONSerialization+TechD.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A187CD31AECF23F00B457FD /* NSJSONSerialization+TechD.m */; };
+		2A187CEE1AECF24000B457FD /* NSString+TechD.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A187CD51AECF23F00B457FD /* NSString+TechD.m */; };
+		2A187CEF1AECF24000B457FD /* NSString+TechD.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A187CD51AECF23F00B457FD /* NSString+TechD.m */; };
+		2A187CF41AECF24000B457FD /* ioapi.c in Sources */ = {isa = PBXBuildFile; fileRef = 2A187CDD1AECF23F00B457FD /* ioapi.c */; };
+		2A187CF51AECF24000B457FD /* ioapi.c in Sources */ = {isa = PBXBuildFile; fileRef = 2A187CDD1AECF23F00B457FD /* ioapi.c */; };
+		2A187CF61AECF24000B457FD /* mztools.c in Sources */ = {isa = PBXBuildFile; fileRef = 2A187CDF1AECF23F00B457FD /* mztools.c */; };
+		2A187CF71AECF24000B457FD /* mztools.c in Sources */ = {isa = PBXBuildFile; fileRef = 2A187CDF1AECF23F00B457FD /* mztools.c */; };
+		2A187CF81AECF24000B457FD /* unzip.c in Sources */ = {isa = PBXBuildFile; fileRef = 2A187CE11AECF23F00B457FD /* unzip.c */; };
+		2A187CF91AECF24000B457FD /* unzip.c in Sources */ = {isa = PBXBuildFile; fileRef = 2A187CE11AECF23F00B457FD /* unzip.c */; };
+		2A187CFA1AECF24000B457FD /* zip.c in Sources */ = {isa = PBXBuildFile; fileRef = 2A187CE31AECF23F00B457FD /* zip.c */; };
+		2A187CFB1AECF24000B457FD /* zip.c in Sources */ = {isa = PBXBuildFile; fileRef = 2A187CE31AECF23F00B457FD /* zip.c */; };
+		2A187CFE1AECF24000B457FD /* ZipArchive.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A187CE71AECF23F00B457FD /* ZipArchive.m */; };
+		2A187CFF1AECF24000B457FD /* ZipArchive.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A187CE71AECF23F00B457FD /* ZipArchive.m */; };
+		2A187D011AECF29900B457FD /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A187D001AECF29900B457FD /* libz.dylib */; };
 		2AC9DD591AEBB1950012B4FA /* TDResourceManager.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2AC9DD581AEBB1950012B4FA /* TDResourceManager.h */; };
 		2AC9DD5B1AEBB1950012B4FA /* TDResourceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AC9DD5A1AEBB1950012B4FA /* TDResourceManager.m */; };
 		2AC9DD611AEBB1950012B4FA /* libTDResourceManager.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AC9DD551AEBB1950012B4FA /* libTDResourceManager.a */; };
@@ -47,6 +66,32 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		2A187CCD1AECF23F00B457FD /* Foundation+TechD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Foundation+TechD.h"; sourceTree = "<group>"; };
+		2A187CCE1AECF23F00B457FD /* NSBundle+TechD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSBundle+TechD.h"; sourceTree = "<group>"; };
+		2A187CCF1AECF23F00B457FD /* NSBundle+TechD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSBundle+TechD.m"; sourceTree = "<group>"; };
+		2A187CD01AECF23F00B457FD /* NSDate+TechD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+TechD.h"; sourceTree = "<group>"; };
+		2A187CD11AECF23F00B457FD /* NSDate+TechD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+TechD.m"; sourceTree = "<group>"; };
+		2A187CD21AECF23F00B457FD /* NSJSONSerialization+TechD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSJSONSerialization+TechD.h"; sourceTree = "<group>"; };
+		2A187CD31AECF23F00B457FD /* NSJSONSerialization+TechD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSJSONSerialization+TechD.m"; sourceTree = "<group>"; };
+		2A187CD41AECF23F00B457FD /* NSString+TechD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+TechD.h"; sourceTree = "<group>"; };
+		2A187CD51AECF23F00B457FD /* NSString+TechD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+TechD.m"; sourceTree = "<group>"; };
+		2A187CD61AECF23F00B457FD /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		2A187CD71AECF23F00B457FD /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		2A187CD91AECF23F00B457FD /* ARCMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARCMacros.h; sourceTree = "<group>"; };
+		2A187CDA1AECF23F00B457FD /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		2A187CDC1AECF23F00B457FD /* crypt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = crypt.h; sourceTree = "<group>"; };
+		2A187CDD1AECF23F00B457FD /* ioapi.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ioapi.c; sourceTree = "<group>"; };
+		2A187CDE1AECF23F00B457FD /* ioapi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ioapi.h; sourceTree = "<group>"; };
+		2A187CDF1AECF23F00B457FD /* mztools.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = mztools.c; sourceTree = "<group>"; };
+		2A187CE01AECF23F00B457FD /* mztools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mztools.h; sourceTree = "<group>"; };
+		2A187CE11AECF23F00B457FD /* unzip.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = unzip.c; sourceTree = "<group>"; };
+		2A187CE21AECF23F00B457FD /* unzip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = unzip.h; sourceTree = "<group>"; };
+		2A187CE31AECF23F00B457FD /* zip.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = zip.c; sourceTree = "<group>"; };
+		2A187CE41AECF23F00B457FD /* zip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = zip.h; sourceTree = "<group>"; };
+		2A187CE51AECF23F00B457FD /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		2A187CE61AECF23F00B457FD /* ZipArchive.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZipArchive.h; sourceTree = "<group>"; };
+		2A187CE71AECF23F00B457FD /* ZipArchive.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZipArchive.m; sourceTree = "<group>"; };
+		2A187D001AECF29900B457FD /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		2AC9DD551AEBB1950012B4FA /* libTDResourceManager.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libTDResourceManager.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		2AC9DD581AEBB1950012B4FA /* TDResourceManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TDResourceManager.h; sourceTree = "<group>"; };
 		2AC9DD5A1AEBB1950012B4FA /* TDResourceManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TDResourceManager.m; sourceTree = "<group>"; };
@@ -84,6 +129,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2A187D011AECF29900B457FD /* libz.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -97,6 +143,73 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2A187CCA1AECF1E600B457FD /* Libraries */ = {
+			isa = PBXGroup;
+			children = (
+				2A187CCB1AECF23F00B457FD /* Foundation+TechD */,
+				2A187CD81AECF23F00B457FD /* ZipArchive */,
+			);
+			name = Libraries;
+			sourceTree = "<group>";
+		};
+		2A187CCB1AECF23F00B457FD /* Foundation+TechD */ = {
+			isa = PBXGroup;
+			children = (
+				2A187CCC1AECF23F00B457FD /* Foundation+TechD */,
+				2A187CD61AECF23F00B457FD /* LICENSE */,
+				2A187CD71AECF23F00B457FD /* README.md */,
+			);
+			name = "Foundation+TechD";
+			path = "Libraries/Foundation+TechD";
+			sourceTree = "<group>";
+		};
+		2A187CCC1AECF23F00B457FD /* Foundation+TechD */ = {
+			isa = PBXGroup;
+			children = (
+				2A187CCD1AECF23F00B457FD /* Foundation+TechD.h */,
+				2A187CD01AECF23F00B457FD /* NSDate+TechD.h */,
+				2A187CD11AECF23F00B457FD /* NSDate+TechD.m */,
+				2A187CCE1AECF23F00B457FD /* NSBundle+TechD.h */,
+				2A187CCF1AECF23F00B457FD /* NSBundle+TechD.m */,
+				2A187CD41AECF23F00B457FD /* NSString+TechD.h */,
+				2A187CD51AECF23F00B457FD /* NSString+TechD.m */,
+				2A187CD21AECF23F00B457FD /* NSJSONSerialization+TechD.h */,
+				2A187CD31AECF23F00B457FD /* NSJSONSerialization+TechD.m */,
+			);
+			path = "Foundation+TechD";
+			sourceTree = "<group>";
+		};
+		2A187CD81AECF23F00B457FD /* ZipArchive */ = {
+			isa = PBXGroup;
+			children = (
+				2A187D001AECF29900B457FD /* libz.dylib */,
+				2A187CDB1AECF23F00B457FD /* minizip */,
+				2A187CD91AECF23F00B457FD /* ARCMacros.h */,
+				2A187CDA1AECF23F00B457FD /* LICENSE */,
+				2A187CE51AECF23F00B457FD /* README.md */,
+				2A187CE61AECF23F00B457FD /* ZipArchive.h */,
+				2A187CE71AECF23F00B457FD /* ZipArchive.m */,
+			);
+			name = ZipArchive;
+			path = Libraries/ZipArchive;
+			sourceTree = "<group>";
+		};
+		2A187CDB1AECF23F00B457FD /* minizip */ = {
+			isa = PBXGroup;
+			children = (
+				2A187CDC1AECF23F00B457FD /* crypt.h */,
+				2A187CDD1AECF23F00B457FD /* ioapi.c */,
+				2A187CDE1AECF23F00B457FD /* ioapi.h */,
+				2A187CDF1AECF23F00B457FD /* mztools.c */,
+				2A187CE01AECF23F00B457FD /* mztools.h */,
+				2A187CE11AECF23F00B457FD /* unzip.c */,
+				2A187CE21AECF23F00B457FD /* unzip.h */,
+				2A187CE31AECF23F00B457FD /* zip.c */,
+				2A187CE41AECF23F00B457FD /* zip.h */,
+			);
+			path = minizip;
+			sourceTree = "<group>";
+		};
 		2AC9DD4C1AEBB1950012B4FA = {
 			isa = PBXGroup;
 			children = (
@@ -104,6 +217,7 @@
 				2AC9DD641AEBB1950012B4FA /* TDResourceManagerTests */,
 				2AC9DD741AEBB2710012B4FA /* DemoResourceManager */,
 				2AC9DD8E1AEBB2710012B4FA /* DemoResourceManagerTests */,
+				2A187CCA1AECF1E600B457FD /* Libraries */,
 				2AC9DD561AEBB1950012B4FA /* Products */,
 			);
 			sourceTree = "<group>";
@@ -329,7 +443,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2A187CF81AECF24000B457FD /* unzip.c in Sources */,
 				2AC9DD5B1AEBB1950012B4FA /* TDResourceManager.m in Sources */,
+				2A187CFA1AECF24000B457FD /* zip.c in Sources */,
+				2A187CFE1AECF24000B457FD /* ZipArchive.m in Sources */,
+				2A187CF61AECF24000B457FD /* mztools.c in Sources */,
+				2A187CE81AECF24000B457FD /* NSBundle+TechD.m in Sources */,
+				2A187CEE1AECF24000B457FD /* NSString+TechD.m in Sources */,
+				2A187CEC1AECF24000B457FD /* NSJSONSerialization+TechD.m in Sources */,
+				2A187CEA1AECF24000B457FD /* NSDate+TechD.m in Sources */,
+				2A187CF41AECF24000B457FD /* ioapi.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -344,9 +467,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2A187CED1AECF24000B457FD /* NSJSONSerialization+TechD.m in Sources */,
+				2A187CF91AECF24000B457FD /* unzip.c in Sources */,
 				2AC9DD7E1AEBB2710012B4FA /* ViewController.m in Sources */,
+				2A187CE91AECF24000B457FD /* NSBundle+TechD.m in Sources */,
 				2AC9DD7B1AEBB2710012B4FA /* AppDelegate.m in Sources */,
+				2A187CF71AECF24000B457FD /* mztools.c in Sources */,
 				2AC9DD781AEBB2710012B4FA /* main.m in Sources */,
+				2A187CEB1AECF24000B457FD /* NSDate+TechD.m in Sources */,
+				2A187CF51AECF24000B457FD /* ioapi.c in Sources */,
+				2A187CFF1AECF24000B457FD /* ZipArchive.m in Sources */,
+				2A187CFB1AECF24000B457FD /* zip.c in Sources */,
+				2A187CEF1AECF24000B457FD /* NSString+TechD.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -585,6 +717,7 @@
 				2AC9DD6B1AEBB1950012B4FA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		2AC9DD6C1AEBB1950012B4FA /* Build configuration list for PBXNativeTarget "TDResourceManagerTests" */ = {
 			isa = XCConfigurationList;
@@ -593,6 +726,7 @@
 				2AC9DD6E1AEBB1950012B4FA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		2AC9DD931AEBB2710012B4FA /* Build configuration list for PBXNativeTarget "DemoResourceManager" */ = {
 			isa = XCConfigurationList;
@@ -601,6 +735,7 @@
 				2AC9DD951AEBB2710012B4FA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		2AC9DD961AEBB2710012B4FA /* Build configuration list for PBXNativeTarget "DemoResourceManagerTests" */ = {
 			isa = XCConfigurationList;
@@ -609,6 +744,7 @@
 				2AC9DD981AEBB2710012B4FA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
