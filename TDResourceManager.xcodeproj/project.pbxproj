@@ -26,6 +26,12 @@
 		2A187CFE1AECF24000B457FD /* ZipArchive.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A187CE71AECF23F00B457FD /* ZipArchive.m */; };
 		2A187CFF1AECF24000B457FD /* ZipArchive.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A187CE71AECF23F00B457FD /* ZipArchive.m */; };
 		2A187D011AECF29900B457FD /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A187D001AECF29900B457FD /* libz.dylib */; };
+		2A187D261AED197900B457FD /* TDJSONReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A187D1E1AED197900B457FD /* TDJSONReader.m */; };
+		2A187D271AED197900B457FD /* TDJSONReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A187D1E1AED197900B457FD /* TDJSONReader.m */; };
+		2A187D281AED197900B457FD /* TDTexturePackerXMLReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A187D201AED197900B457FD /* TDTexturePackerXMLReader.m */; };
+		2A187D291AED197900B457FD /* TDTexturePackerXMLReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A187D201AED197900B457FD /* TDTexturePackerXMLReader.m */; };
+		2A187D2A1AED197900B457FD /* TDUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A187D221AED197900B457FD /* TDUtilities.m */; };
+		2A187D2B1AED197900B457FD /* TDUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A187D221AED197900B457FD /* TDUtilities.m */; };
 		2AC9DD591AEBB1950012B4FA /* TDResourceManager.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2AC9DD581AEBB1950012B4FA /* TDResourceManager.h */; };
 		2AC9DD5B1AEBB1950012B4FA /* TDResourceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AC9DD5A1AEBB1950012B4FA /* TDResourceManager.m */; };
 		2AC9DD611AEBB1950012B4FA /* libTDResourceManager.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AC9DD551AEBB1950012B4FA /* libTDResourceManager.a */; };
@@ -92,6 +98,16 @@
 		2A187CE61AECF23F00B457FD /* ZipArchive.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZipArchive.h; sourceTree = "<group>"; };
 		2A187CE71AECF23F00B457FD /* ZipArchive.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZipArchive.m; sourceTree = "<group>"; };
 		2A187D001AECF29900B457FD /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		2A187D181AED197900B457FD /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		2A187D191AED197900B457FD /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		2A187D1B1AED197900B457FD /* ARCMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARCMacros.h; sourceTree = "<group>"; };
+		2A187D1C1AED197900B457FD /* TDFoundation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDFoundation.h; sourceTree = "<group>"; };
+		2A187D1D1AED197900B457FD /* TDJSONReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDJSONReader.h; sourceTree = "<group>"; };
+		2A187D1E1AED197900B457FD /* TDJSONReader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDJSONReader.m; sourceTree = "<group>"; };
+		2A187D1F1AED197900B457FD /* TDTexturePackerXMLReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDTexturePackerXMLReader.h; sourceTree = "<group>"; };
+		2A187D201AED197900B457FD /* TDTexturePackerXMLReader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDTexturePackerXMLReader.m; sourceTree = "<group>"; };
+		2A187D211AED197900B457FD /* TDUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDUtilities.h; sourceTree = "<group>"; };
+		2A187D221AED197900B457FD /* TDUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDUtilities.m; sourceTree = "<group>"; };
 		2AC9DD551AEBB1950012B4FA /* libTDResourceManager.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libTDResourceManager.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		2AC9DD581AEBB1950012B4FA /* TDResourceManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TDResourceManager.h; sourceTree = "<group>"; };
 		2AC9DD5A1AEBB1950012B4FA /* TDResourceManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TDResourceManager.m; sourceTree = "<group>"; };
@@ -147,6 +163,7 @@
 			isa = PBXGroup;
 			children = (
 				2A187CCB1AECF23F00B457FD /* Foundation+TechD */,
+				2A187D171AED197900B457FD /* TDFoundation */,
 				2A187CD81AECF23F00B457FD /* ZipArchive */,
 			);
 			name = Libraries;
@@ -208,6 +225,32 @@
 				2A187CE41AECF23F00B457FD /* zip.h */,
 			);
 			path = minizip;
+			sourceTree = "<group>";
+		};
+		2A187D171AED197900B457FD /* TDFoundation */ = {
+			isa = PBXGroup;
+			children = (
+				2A187D181AED197900B457FD /* LICENSE */,
+				2A187D191AED197900B457FD /* README.md */,
+				2A187D1A1AED197900B457FD /* TDFoundation */,
+			);
+			name = TDFoundation;
+			path = Libraries/TDFoundation;
+			sourceTree = "<group>";
+		};
+		2A187D1A1AED197900B457FD /* TDFoundation */ = {
+			isa = PBXGroup;
+			children = (
+				2A187D1B1AED197900B457FD /* ARCMacros.h */,
+				2A187D1C1AED197900B457FD /* TDFoundation.h */,
+				2A187D1D1AED197900B457FD /* TDJSONReader.h */,
+				2A187D1E1AED197900B457FD /* TDJSONReader.m */,
+				2A187D1F1AED197900B457FD /* TDTexturePackerXMLReader.h */,
+				2A187D201AED197900B457FD /* TDTexturePackerXMLReader.m */,
+				2A187D211AED197900B457FD /* TDUtilities.h */,
+				2A187D221AED197900B457FD /* TDUtilities.m */,
+			);
+			path = TDFoundation;
 			sourceTree = "<group>";
 		};
 		2AC9DD4C1AEBB1950012B4FA = {
@@ -444,11 +487,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				2A187CF81AECF24000B457FD /* unzip.c in Sources */,
+				2A187D281AED197900B457FD /* TDTexturePackerXMLReader.m in Sources */,
 				2AC9DD5B1AEBB1950012B4FA /* TDResourceManager.m in Sources */,
+				2A187D261AED197900B457FD /* TDJSONReader.m in Sources */,
 				2A187CFA1AECF24000B457FD /* zip.c in Sources */,
 				2A187CFE1AECF24000B457FD /* ZipArchive.m in Sources */,
 				2A187CF61AECF24000B457FD /* mztools.c in Sources */,
 				2A187CE81AECF24000B457FD /* NSBundle+TechD.m in Sources */,
+				2A187D2A1AED197900B457FD /* TDUtilities.m in Sources */,
 				2A187CEE1AECF24000B457FD /* NSString+TechD.m in Sources */,
 				2A187CEC1AECF24000B457FD /* NSJSONSerialization+TechD.m in Sources */,
 				2A187CEA1AECF24000B457FD /* NSDate+TechD.m in Sources */,
@@ -467,15 +513,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2A187D271AED197900B457FD /* TDJSONReader.m in Sources */,
 				2A187CED1AECF24000B457FD /* NSJSONSerialization+TechD.m in Sources */,
 				2A187CF91AECF24000B457FD /* unzip.c in Sources */,
 				2AC9DD7E1AEBB2710012B4FA /* ViewController.m in Sources */,
 				2A187CE91AECF24000B457FD /* NSBundle+TechD.m in Sources */,
+				2A187D291AED197900B457FD /* TDTexturePackerXMLReader.m in Sources */,
 				2AC9DD7B1AEBB2710012B4FA /* AppDelegate.m in Sources */,
 				2A187CF71AECF24000B457FD /* mztools.c in Sources */,
 				2AC9DD781AEBB2710012B4FA /* main.m in Sources */,
 				2A187CEB1AECF24000B457FD /* NSDate+TechD.m in Sources */,
 				2A187CF51AECF24000B457FD /* ioapi.c in Sources */,
+				2A187D2B1AED197900B457FD /* TDUtilities.m in Sources */,
 				2A187CFF1AECF24000B457FD /* ZipArchive.m in Sources */,
 				2A187CFB1AECF24000B457FD /* zip.c in Sources */,
 				2A187CEF1AECF24000B457FD /* NSString+TechD.m in Sources */,
