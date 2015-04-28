@@ -36,10 +36,11 @@
     TDGetPathDirectory              defaultResourceDirectory;
     
     //  asset bundle.
+    NSString                      * localizedStringTableName;
     NSString                      * assetLocalizationName;
     NSBundle                      * assetsBundle;
     
-    
+
     //  zipped.
     NSMutableDictionary           * unzipDataContainer;
     
@@ -52,7 +53,7 @@
         unsigned int                initiatedAssetsBundle:1;
         unsigned int                initiatedInZipped:1;
         
-    } stateFlag;
+    } stateFlags;
 
 }
 
@@ -124,6 +125,7 @@
     
     
     //  asset bundle.
+    localizedStringTableName        = nil;
     assetLocalizationName           = nil;
     assetsBundle                    = nil;
     
@@ -133,9 +135,9 @@
     
     
     //  flags of state.
-    stateFlag.initiatedDefault      = NO;
-    stateFlag.initiatedAssetsBundle = NO;
-    stateFlag.initiatedInZipped     = NO;
+    stateFlags.initiatedDefault     = NO;
+    stateFlags.initiatedAssetsBundle= NO;
+    stateFlags.initiatedInZipped    = NO;
     
 }
 
@@ -147,15 +149,15 @@
     {
         case TDResourceManageSourceTypeDefault:
         {
-            return (BOOL)stateFlag.initiatedDefault;
+            return (BOOL)stateFlags.initiatedDefault;
         }
         case TDResourceManageSourceTypeInAssetsBundle:
         {
-            return (BOOL)stateFlag.initiatedAssetsBundle;
+            return (BOOL)stateFlags.initiatedAssetsBundle;
         }
         case TDResourceManageSourceTypeInZipped:
         {
-            return (BOOL)stateFlag.initiatedInZipped;
+            return (BOOL)stateFlags.initiatedInZipped;
         }
         default:
             break;
@@ -330,7 +332,7 @@
     defaultResourceDirectory        = directory;
     
     //  ... set flag default to yes.
-    stateFlag.initiatedDefault      = YES;
+    stateFlags.initiatedDefault     = YES;
     return YES;
 }
 
@@ -359,7 +361,7 @@
     NSParameterAssert( nil != assetsBundle );
     
     assetLocalizationName           = localizationName;
-    stateFlag.initiatedAssetsBundle = YES;
+    stateFlags.initiatedAssetsBundle= YES;
     return YES;
 }
 
@@ -384,7 +386,7 @@
 }
 
 //  ------------------------------------------------------------------------------------------------
-- ( BOOL ) initFileZippedEnvironment:(NSString *)fullPathName with:(NSString *)password
+- ( BOOL ) initZippedFileEnvironment:(NSString *)fullPathName with:(NSString *)password
 {
     NSParameterAssert( nil != fullPathName );
     
@@ -396,7 +398,7 @@
     {
         return NO;
     }
-    stateFlag.initiatedInZipped     = YES;
+    stateFlags.initiatedInZipped    = YES;
     return YES;
 }
 
@@ -407,12 +409,63 @@
     
     manager                         = [TDResourceManager defaultManager];
     NSParameterAssert( nil != manager );
-    if ( [manager initFileZippedEnvironment: fullPathName with: password] == NO )
+    if ( [manager initZippedFileEnvironment: fullPathName with: password] == NO )
     {
         return nil;
     }
     return manager;
 }
+
+
+//  ------------------------------------------------------------------------------------------------
+//  ------------------------------------------------------------------------------------------------
+- ( BOOL ) changeDirectory:(TDGetPathDirectory)directory
+{
+    if ( YES == stateFlags.initiatedDefault )
+    {
+        stateFlags.initiatedDefault = NO;
+    }
+    return [self initDefaultEnvironment: directory];
+}
+
+//  ------------------------------------------------------------------------------------------------
+- ( BOOL ) changeAssetsBundle:(NSString *)bundleName with:(Class)aClass
+{
+    return [self changeAssetsBundle: bundleName with: aClass forLocalization: nil];
+}
+
+//  ------------------------------------------------------------------------------------------------
+- ( BOOL ) changeAssetsBundle:(NSString *)bundleName with:(Class)aClass forLocalization:(NSString *)localizationName
+{
+    if ( YES == stateFlags.initiatedAssetsBundle )
+    {
+        if ( nil != assetsBundle )
+        {
+            SAFE_ARC_RELEASE( assetsBundle )
+            assetsBundle            = nil;
+        }
+        stateFlags.initiatedAssetsBundle = NO;
+    }
+    return [self initAssetsBundleEnvironment: bundleName with: aClass forLocalization: localizationName];
+}
+
+//  ------------------------------------------------------------------------------------------------
+- ( BOOL ) changeZippedFile:(NSString *)fullPathName with:(NSString *)password
+{
+    if ( YES == stateFlags.initiatedInZipped )
+    {
+        if ( nil != unzipDataContainer )
+        {
+            [unzipDataContainer     removeAllObjects];
+            SAFE_ARC_RELEASE( unzipDataContainer );
+            unzipDataContainer      = nil;
+        }
+        stateFlags.initiatedInZipped= NO;
+    }
+    return [self initZippedFileEnvironment: fullPathName with: password];
+}
+
+
 
 //  ------------------------------------------------------------------------------------------------
 //  ------------------------------------------------------------------------------------------------
@@ -507,8 +560,8 @@
 }
 
 //  ------------------------------------------------------------------------------------------------
-- ( NSMutableDictionary * ) JSON:(NSString *)name ofType:(NSString *)ext inDirectory:(NSString *)subpath fromData:(TDResourceManageSourceType)sourceType
-     encoding:(NSStringEncoding)encode
+- ( NSMutableDictionary * ) JSON:(NSString *)name ofType:(NSString *)ext inDirectory:(NSString *)subpath encoding:(NSStringEncoding)encode
+                        fromData:(TDResourceManageSourceType)sourceType
 {
     NSParameterAssert( nil != name );
     NSParameterAssert( YES == [self _CheckInitiatedState: sourceType] );
@@ -556,6 +609,26 @@
     
 }
 
+//  ------------------------------------------------------------------------------------------------
+//  ------------------------------------------------------------------------------------------------
+- ( void ) setLocalizedStringTable:(NSString *)tableName
+{
+    NSParameterAssert( YES == stateFlags.initiatedAssetsBundle );
+    NSParameterAssert( nil != assetsBundle );
+    NSParameterAssert( nil != tableName );
+    localizedStringTableName        = tableName;
+    return;
+}
+
+//  ------------------------------------------------------------------------------------------------
+- ( NSString * ) localizedStringForKey:(NSString *)aKey
+{
+    NSParameterAssert( nil != aKey );
+    NSParameterAssert( YES == stateFlags.initiatedAssetsBundle );
+    NSParameterAssert( nil != assetsBundle );
+    NSParameterAssert( nil != localizedStringTableName );
+    return NSLocalizedStringFromTableInBundle( aKey,  localizedStringTableName, assetsBundle,  nil );
+}
 
 //  ------------------------------------------------------------------------------------------------
 //  ------------------------------------------------------------------------------------------------

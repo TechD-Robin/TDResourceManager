@@ -57,6 +57,17 @@ typedef NS_ENUM( NSInteger, TDResourceManageSourceType ) {
 
 //  ------------------------------------------------------------------------------------------------
 //  ------------------------------------------------------------------------------------------------
+- ( BOOL ) changeDirectory:(TDGetPathDirectory)directory;
+
+- ( BOOL ) changeAssetsBundle:(NSString *)bundleName with:(Class)aClass;
+
+- ( BOOL ) changeAssetsBundle:(NSString *)bundleName with:(Class)aClass forLocalization:(NSString *)localizationName;
+
+- ( BOOL ) changeZippedFile:(NSString *)fullPathName with:(NSString *)password;
+
+
+//  ------------------------------------------------------------------------------------------------
+//  ------------------------------------------------------------------------------------------------
 - ( NSData * ) data:(NSString *)name ofType:(NSString *)ext inDirectory:(NSString *)subpath;
 
 - ( NSData * ) data:(NSString *)name ofType:(NSString *)ext inDirectory:(NSString *)subpath fromData:(TDResourceManageSourceType)sourceType;
@@ -72,6 +83,14 @@ typedef NS_ENUM( NSInteger, TDResourceManageSourceType ) {
 - ( NSMutableDictionary * ) JSON:(NSString *)name ofType:(NSString *)ext inDirectory:(NSString *)subpath encoding:(NSStringEncoding)encode
      fromData:(TDResourceManageSourceType)sourceType;
 
+
+//  ------------------------------------------------------------------------------------------------
+//  ------------------------------------------------------------------------------------------------
+- ( void ) setLocalizedStringTable:(NSString *)tableName;
+
+- ( NSString * ) localizedStringForKey:(NSString *)aKey;
+
+//
 
 //  ------------------------------------------------------------------------------------------------
 
