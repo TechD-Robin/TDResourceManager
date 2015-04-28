@@ -37,17 +37,22 @@ typedef NS_ENUM( NSInteger, TDResourceManageSourceType ) {
 #pragma mark declare for create the object.
 //  ------------------------------------------------------------------------------------------------
 // Returns the default singleton instance.
-+ (instancetype) defaultManager;
++ ( instancetype ) defaultManager;
 
 //  ------------------------------------------------------------------------------------------------
-- ( BOOL ) initEnvironment:(TDGetPathDirectory)directory;
++ ( instancetype ) defaultEnvironment:(TDGetPathDirectory)directory;
 
-- ( BOOL ) initAssetBundleEnvironment:(NSString *)bundleName with:(Class)aClass;
+//  ------------------------------------------------------------------------------------------------
++ ( instancetype ) assetsBundleEnvironment:(NSString *)bundleName with:(Class)aClass;
 
-- ( BOOL ) initAssetBundleEnvironment:(NSString *)bundleName with:(Class)aClass forLocalization:(NSString *)localizationName;
+//  ------------------------------------------------------------------------------------------------
++ ( instancetype ) assetsBundleEnvironment:(NSString *)bundleName with:(Class)aClass forLocalization:(NSString *)localizationName;
 
-- ( BOOL ) initZippedEnvironment:(NSString *)filename forDirectories:(TDGetPathDirectory) directory inDirectory:(NSString *)subpath
-                    inZippedPath:(NSString *)prefix with:(NSString *)password;
+//  ------------------------------------------------------------------------------------------------
++ ( instancetype ) zippedFileEnvironment:(NSString *)fullPathName with:(NSString *)password;
+
+//- ( BOOL ) initZippedEnvironment:(NSString *)filename forDirectories:(TDGetPathDirectory) directory inDirectory:(NSString *)subpath
+//                    inZippedPath:(NSString *)prefix with:(NSString *)password;
 
 
 //  ------------------------------------------------------------------------------------------------

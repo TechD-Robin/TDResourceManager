@@ -9,9 +9,13 @@
 //  ------------------------------------------------------------------------------------------------
 
 
+#ifndef __ARCMacros_H__
+    #import "ARCMacros.h"
+#endif  //  End of __ARCMacros_H__.
 
 #import "TDResourceManager.h"
 #import "Foundation+TechD.h"
+#import "ZipArchive.h"
 
 
 //  ------------------------------------------------------------------------------------------------
@@ -33,13 +37,23 @@
     
     //  asset bundle.
     NSString                      * assetLocalizationName;
-    NSBundle                      * assetBundle;
+    NSBundle                      * assetsBundle;
     
     
     //  zipped.
     NSMutableDictionary           * unzipDataContainer;
     
     
+    /**
+     *  flags of state.
+     */
+    struct {
+        unsigned int                initiatedDefault:1;
+        unsigned int                initiatedAssetsBundle:1;
+        unsigned int                initiatedInZipped:1;
+        
+    } stateFlag;
+
 }
 
 //  ------------------------------------------------------------------------------------------------
@@ -66,6 +80,14 @@
  *  initial the attributes of class.
  */
 - ( void ) _InitAttributes;
+
+//  ------------------------------------------------------------------------------------------------
+//  ------------------------------------------------------------------------------------------------
+- ( BOOL ) _CheckInitiatedState:(TDResourceManageSourceType)sourceType;
+
+//  ------------------------------------------------------------------------------------------------
+//  ------------------------------------------------------------------------------------------------
+- ( BOOL ) _UnzipFile:(NSString *)fullPath with:(NSString *)password;
 
 
 //  ------------------------------------------------------------------------------------------------
@@ -103,12 +125,105 @@
     
     //  asset bundle.
     assetLocalizationName           = nil;
-    assetBundle                     = nil;
+    assetsBundle                    = nil;
     
     
     //  zipped.
     unzipDataContainer              = nil;
+    
+    
+    //  flags of state.
+    stateFlag.initiatedDefault      = NO;
+    stateFlag.initiatedAssetsBundle = NO;
+    stateFlag.initiatedInZipped     = NO;
+    
 }
+
+//  ------------------------------------------------------------------------------------------------
+//  ------------------------------------------------------------------------------------------------
+- ( BOOL ) _CheckInitiatedState:(TDResourceManageSourceType)sourceType
+{
+    switch ( sourceType )
+    {
+        case TDResourceManageSourceTypeDefault:
+        {
+            return (BOOL)stateFlag.initiatedDefault;
+        }
+        case TDResourceManageSourceTypeInAssetsBundle:
+        {
+            return (BOOL)stateFlag.initiatedAssetsBundle;
+        }
+        case TDResourceManageSourceTypeInZipped:
+        {
+            return (BOOL)stateFlag.initiatedInZipped;
+        }
+        default:
+            break;
+    }
+    return NO;
+}
+
+//  ------------------------------------------------------------------------------------------------
+//  ------------------------------------------------------------------------------------------------
+- ( BOOL ) _UnzipFile:(NSString *)fullPath with:(NSString *)password
+{
+    NSParameterAssert( fullPath );
+    
+    BOOL                            result;
+    ZipArchive                    * zip;
+    NSDictionary                  * unzipData;
+    
+    result                          = NO;
+    unzipData                       = nil;
+    zip                             = [[ZipArchive alloc] init];
+    NSParameterAssert( nil != zip );
+    
+    if ( nil == password )
+    {
+        result                      = [zip UnzipOpenFile: fullPath];
+    }
+    else
+    {
+        result                      = [zip UnzipOpenFile: fullPath Password: password];
+    }
+    
+    if ( result == NO )
+    {
+        NSLog( @"cannot open zip file %s.", __FUNCTION__ );
+        [zip                        UnzipCloseFile];
+        return NO;
+    }
+    
+    unzipData                       = [zip UnzipFileToMemory];
+    if ( nil == unzipData )
+    {
+        NSLog( @"cannot unzip file to memory");
+        [zip                        UnzipCloseFile];
+        return NO;
+    }
+    
+    if ( nil == unzipDataContainer )
+    {
+        unzipDataContainer          = [[NSMutableDictionary alloc] initWithDictionary: unzipData copyItems: YES];
+    }
+    else
+    {
+        [unzipDataContainer         addEntriesFromDictionary: unzipData];
+    }
+    
+    
+    [zip                            UnzipCloseFile];
+    
+    SAFE_ARC_RELEASE( unzipData );
+    unzipData                       = nil;
+    
+    
+    SAFE_ARC_RELEASE( zip );
+    zip                             = nil;
+    return YES;
+}
+
+
 
 //  ------------------------------------------------------------------------------------------------
 //  ------------------------------------------------------------------------------------------------
@@ -119,7 +234,6 @@
     NSString                      * fullPath;
     
     fullPath                        = nil;
-    currentSourceType               = sourceType;
     switch ( currentSourceType )
     {
         case TDResourceManageSourceTypeDefault:
@@ -129,7 +243,7 @@
         }
         case TDResourceManageSourceTypeInAssetsBundle:
         {
-            fullPath                = [assetBundle pathForResource: name ofType: ext inDirectory: subpath forLocalization: assetLocalizationName];
+            fullPath                = [assetsBundle pathForResource: name ofType: ext inDirectory: subpath forLocalization: assetLocalizationName];
             break;
         }
         case TDResourceManageSourceTypeInZipped:
@@ -182,7 +296,6 @@
     {
         return nil;
     }
-    NSData
     
     [self                           _InitAttributes];
     return self;
@@ -212,39 +325,94 @@
 }
 
 //  ------------------------------------------------------------------------------------------------
-- ( BOOL ) initEnvironment:(TDGetPathDirectory)directory
+- ( BOOL ) initDefaultEnvironment:(TDGetPathDirectory)directory
 {
     defaultResourceDirectory        = directory;
     
     //  ... set flag default to yes.
+    stateFlag.initiatedDefault      = YES;
     return YES;
 }
 
 //  ------------------------------------------------------------------------------------------------
-- ( BOOL ) initAssetBundleEnvironment:(NSString *)bundleName with:(Class)aClass
++ ( instancetype ) defaultEnvironment:(TDGetPathDirectory)directory
 {
-    return [self initAssetBundleEnvironment: bundleName with: aClass forLocalization: nil];
+    TDResourceManager             * manager;
+    
+    manager                         = [TDResourceManager defaultManager];
+    NSParameterAssert( nil != manager );
+    
+    if ( [manager initDefaultEnvironment: directory] == NO )
+    {
+        return nil;
+    }
+    return manager;
 }
 
 //  ------------------------------------------------------------------------------------------------
-- ( BOOL ) initAssetBundleEnvironment:(NSString *)bundleName with:(Class)aClass forLocalization:(NSString *)localizationName
+- ( BOOL ) initAssetsBundleEnvironment:(NSString *)bundleName with:(Class)aClass forLocalization:(NSString *)localizationName
 {
     NSParameterAssert( nil != bundleName );
     NSParameterAssert( nil != aClass );
     
-    assetBundle                     = [NSBundle assetBundle: bundleName with: aClass];
-    if ( nil == assetBundle )
-    {
-        return NO;
-    }
+    assetsBundle                    = [NSBundle assetBundle: bundleName with: aClass];
+    NSParameterAssert( nil != assetsBundle );
     
     assetLocalizationName           = localizationName;
-    //  ... set flag asset bundle to yes.
+    stateFlag.initiatedAssetsBundle = YES;
     return YES;
 }
 
+//  ------------------------------------------------------------------------------------------------
++ ( instancetype ) assetsBundleEnvironment:(NSString *)bundleName with:(Class)aClass
+{
+    return [[self class] assetsBundleEnvironment: bundleName with: aClass forLocalization: nil];
+}
 
+//  ------------------------------------------------------------------------------------------------
++ ( instancetype ) assetsBundleEnvironment:(NSString *)bundleName with:(Class)aClass forLocalization:(NSString *)localizationName
+{
+    TDResourceManager             * manager;
+    
+    manager                         = [TDResourceManager defaultManager];
+    NSParameterAssert( nil != manager );
+    if ( [manager initAssetsBundleEnvironment: bundleName with: aClass forLocalization: localizationName] == NO )
+    {
+        return nil;
+    }
+    return manager;
+}
 
+//  ------------------------------------------------------------------------------------------------
+- ( BOOL ) initFileZippedEnvironment:(NSString *)fullPathName with:(NSString *)password
+{
+    NSParameterAssert( nil != fullPathName );
+    
+    BOOL                            result;
+    
+    result                          = NO;
+    result                          = [self _UnzipFile: fullPathName with: password];
+    if ( NO == result )
+    {
+        return NO;
+    }
+    stateFlag.initiatedInZipped     = YES;
+    return YES;
+}
+
+//  ------------------------------------------------------------------------------------------------
++ ( instancetype ) zippedFileEnvironment:(NSString *)fullPathName with:(NSString *)password
+{
+    TDResourceManager             * manager;
+    
+    manager                         = [TDResourceManager defaultManager];
+    NSParameterAssert( nil != manager );
+    if ( [manager initFileZippedEnvironment: fullPathName with: password] == NO )
+    {
+        return nil;
+    }
+    return manager;
+}
 
 //  ------------------------------------------------------------------------------------------------
 //  ------------------------------------------------------------------------------------------------
@@ -257,6 +425,7 @@
 - ( NSData * ) data:(NSString *)name ofType:(NSString *)ext inDirectory:(NSString *)subpath fromData:(TDResourceManageSourceType)sourceType
 {
     NSParameterAssert( nil != name );
+    NSParameterAssert( YES == [self _CheckInitiatedState: sourceType] );
     
     NSData                        * data;
     NSString                      * fullPath;
@@ -295,6 +464,7 @@
 - ( UIImage * ) image:(NSString *)name ofType:(NSString *)ext inDirectory:(NSString *)subpath fromData:(TDResourceManageSourceType)sourceType
 {
     NSParameterAssert( nil != name );
+    NSParameterAssert( YES == [self _CheckInitiatedState: sourceType] );
     
     UIImage                       * image;
     NSString                      * fullPath;
@@ -341,6 +511,7 @@
      encoding:(NSStringEncoding)encode
 {
     NSParameterAssert( nil != name );
+    NSParameterAssert( YES == [self _CheckInitiatedState: sourceType] );
     
     NSMutableDictionary           * jsonContainer;
     NSError                       * error;
@@ -361,7 +532,7 @@
             jsonContainer           = [NSJSONSerialization loadJSON: fullPath encoding: encode error: &error];
             if ( nil != error )
             {
-                NSLog( @"load JSON error :%@", &error );
+                NSLog( @"load JSON error :%@", error );
                 return nil;
             }
             break;
