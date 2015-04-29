@@ -39,6 +39,20 @@
 		2AC9DD7B1AEBB2710012B4FA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AC9DD7A1AEBB2710012B4FA /* AppDelegate.m */; };
 		2AC9DD7E1AEBB2710012B4FA /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AC9DD7D1AEBB2710012B4FA /* ViewController.m */; };
 		2AC9DD921AEBB2710012B4FA /* DemoResourceManagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AC9DD911AEBB2710012B4FA /* DemoResourceManagerTests.m */; };
+		2AE19FC41AF0F3390060D44F /* Tester in Resources */ = {isa = PBXBuildFile; fileRef = 2AE19FC31AF0F3390060D44F /* Tester */; };
+		2AE19FC51AF0F3390060D44F /* Tester in Resources */ = {isa = PBXBuildFile; fileRef = 2AE19FC31AF0F3390060D44F /* Tester */; };
+		2AE19FC61AF0F3390060D44F /* Tester in Resources */ = {isa = PBXBuildFile; fileRef = 2AE19FC31AF0F3390060D44F /* Tester */; };
+		2AE19FC81AF0F3C50060D44F /* TDResourceManagerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AE19FC71AF0F3C50060D44F /* TDResourceManagerTest.m */; };
+		2AE19FC91AF0F4EC0060D44F /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A187D001AECF29900B457FD /* libz.dylib */; };
+		2AE19FCA1AF0FA6F0060D44F /* NSDate+TechD.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A187CD11AECF23F00B457FD /* NSDate+TechD.m */; };
+		2AE19FCB1AF0FA6F0060D44F /* NSBundle+TechD.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A187CCF1AECF23F00B457FD /* NSBundle+TechD.m */; };
+		2AE19FCC1AF0FA6F0060D44F /* NSString+TechD.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A187CD51AECF23F00B457FD /* NSString+TechD.m */; };
+		2AE19FCD1AF0FA6F0060D44F /* NSJSONSerialization+TechD.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A187CD31AECF23F00B457FD /* NSJSONSerialization+TechD.m */; };
+		2AE19FCE1AF131F70060D44F /* ioapi.c in Sources */ = {isa = PBXBuildFile; fileRef = 2A187CDD1AECF23F00B457FD /* ioapi.c */; };
+		2AE19FCF1AF131F70060D44F /* mztools.c in Sources */ = {isa = PBXBuildFile; fileRef = 2A187CDF1AECF23F00B457FD /* mztools.c */; };
+		2AE19FD01AF131F70060D44F /* unzip.c in Sources */ = {isa = PBXBuildFile; fileRef = 2A187CE11AECF23F00B457FD /* unzip.c */; };
+		2AE19FD11AF131F70060D44F /* zip.c in Sources */ = {isa = PBXBuildFile; fileRef = 2A187CE31AECF23F00B457FD /* zip.c */; };
+		2AE19FD21AF132180060D44F /* ZipArchive.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A187CE71AECF23F00B457FD /* ZipArchive.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -123,6 +137,8 @@
 		2AC9DD8B1AEBB2710012B4FA /* DemoResourceManagerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DemoResourceManagerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2AC9DD901AEBB2710012B4FA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2AC9DD911AEBB2710012B4FA /* DemoResourceManagerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DemoResourceManagerTests.m; sourceTree = "<group>"; };
+		2AE19FC31AF0F3390060D44F /* Tester */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Tester; path = Resources/Tester; sourceTree = "<group>"; };
+		2AE19FC71AF0F3C50060D44F /* TDResourceManagerTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDResourceManagerTest.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,6 +153,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2AE19FC91AF0F4EC0060D44F /* libz.dylib in Frameworks */,
 				2AC9DD611AEBB1950012B4FA /* libTDResourceManager.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -172,9 +189,9 @@
 		2A187CCB1AECF23F00B457FD /* Foundation+TechD */ = {
 			isa = PBXGroup;
 			children = (
-				2A187CCC1AECF23F00B457FD /* Foundation+TechD */,
 				2A187CD61AECF23F00B457FD /* LICENSE */,
 				2A187CD71AECF23F00B457FD /* README.md */,
+				2A187CCC1AECF23F00B457FD /* Foundation+TechD */,
 			);
 			name = "Foundation+TechD";
 			path = "Libraries/Foundation+TechD";
@@ -243,12 +260,12 @@
 			children = (
 				2A187D1B1AED197900B457FD /* ARCMacros.h */,
 				2A187D1C1AED197900B457FD /* TDFoundation.h */,
+				2A187D211AED197900B457FD /* TDUtilities.h */,
+				2A187D221AED197900B457FD /* TDUtilities.m */,
 				2A187D1D1AED197900B457FD /* TDJSONReader.h */,
 				2A187D1E1AED197900B457FD /* TDJSONReader.m */,
 				2A187D1F1AED197900B457FD /* TDTexturePackerXMLReader.h */,
 				2A187D201AED197900B457FD /* TDTexturePackerXMLReader.m */,
-				2A187D211AED197900B457FD /* TDUtilities.h */,
-				2A187D221AED197900B457FD /* TDUtilities.m */,
 			);
 			path = TDFoundation;
 			sourceTree = "<group>";
@@ -261,6 +278,7 @@
 				2AC9DD741AEBB2710012B4FA /* DemoResourceManager */,
 				2AC9DD8E1AEBB2710012B4FA /* DemoResourceManagerTests */,
 				2A187CCA1AECF1E600B457FD /* Libraries */,
+				2AE19FC21AF0F2770060D44F /* Resources */,
 				2AC9DD561AEBB1950012B4FA /* Products */,
 			);
 			sourceTree = "<group>";
@@ -289,6 +307,7 @@
 			isa = PBXGroup;
 			children = (
 				2AC9DD651AEBB1950012B4FA /* Supporting Files */,
+				2AE19FC71AF0F3C50060D44F /* TDResourceManagerTest.m */,
 			);
 			path = TDResourceManagerTests;
 			sourceTree = "<group>";
@@ -337,6 +356,14 @@
 				2AC9DD901AEBB2710012B4FA /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		2AE19FC21AF0F2770060D44F /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				2AE19FC31AF0F3390060D44F /* Tester */,
+			);
+			name = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -462,6 +489,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2AE19FC41AF0F3390060D44F /* Tester in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -469,6 +497,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2AE19FC51AF0F3390060D44F /* Tester in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -476,6 +505,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2AE19FC61AF0F3390060D44F /* Tester in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -506,6 +536,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2AE19FD21AF132180060D44F /* ZipArchive.m in Sources */,
+				2AE19FCE1AF131F70060D44F /* ioapi.c in Sources */,
+				2AE19FCF1AF131F70060D44F /* mztools.c in Sources */,
+				2AE19FD01AF131F70060D44F /* unzip.c in Sources */,
+				2AE19FD11AF131F70060D44F /* zip.c in Sources */,
+				2AE19FCA1AF0FA6F0060D44F /* NSDate+TechD.m in Sources */,
+				2AE19FCB1AF0FA6F0060D44F /* NSBundle+TechD.m in Sources */,
+				2AE19FCC1AF0FA6F0060D44F /* NSString+TechD.m in Sources */,
+				2AE19FCD1AF0FA6F0060D44F /* NSJSONSerialization+TechD.m in Sources */,
+				2AE19FC81AF0F3C50060D44F /* TDResourceManagerTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
