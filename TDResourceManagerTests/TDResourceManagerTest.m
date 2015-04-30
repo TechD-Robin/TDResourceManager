@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <XCTest/XCTest.h>
 #import "TDResourceManager.h"
+#import "Foundation+TechD.h"
 
 @interface TDResourceManagerTest : XCTestCase
 {
@@ -114,7 +115,7 @@
     XCTAssertNotNil( bundleResourcePath, @"the bundle's path should not b nil" );
     
     sourcePath                      = [bundleResourcePath stringByAppendingPathComponent: @"Tester"];
-    XCTAssertNotNil( sourcePath, @"the bundle's path should not b nil" );
+    XCTAssertNotNil( sourcePath, @"the bundle's path should not be nil" );
     XCTAssertTrue( [fileManager fileExistsAtPath: sourcePath], @"method's result should be true." );
     
     //  data destination.
@@ -135,53 +136,134 @@
     XCTAssertTrue( result, @"method's result should be true." );
 }
 
-//  --------------------------------
 //  ------------------------------------------------------------------------------------------------
-- ( void ) createDefault
+- ( void ) getData:(NSString *)prefixDir
 {
-    [self                           copyResourceData];
+    //  get nsdata.
+    NSString                      * subpath;
+    NSData                        * data;
+    UIImage                       * image;
+    NSMutableDictionary           * jsonData;
     
-    //  default.
-    resourceManager                  = [TDResourceManager defaultEnvironment: TDTemporaryDirectory];
-    XCTAssertNotNil( resourceManager, @"Resource manager should not be nil" );
+    subpath                         = ( ( nil == prefixDir ) ? @"Resources" : [NSString stringWithFormat: @"%@/Resources", prefixDir] );
+    XCTAssertNotNil( subpath, @"the sub path should not be nil" );
+    data                            = [resourceManager data: @"README" ofType: @"md" inDirectory: subpath];
+    XCTAssertNotNil( resourceManager, @"NSData object's data should not be nil" );
+    
+    //  get json data.
+    jsonData                        = [resourceManager JSON: @"package" ofType: @"json" inDirectory: subpath encoding: NSUTF8StringEncoding];
+    XCTAssertNotNil( jsonData, @"json object should not be nil" );
+    
+    //  get image.
+    subpath                         = ( ( nil == prefixDir ) ? @"Resources/Images" : [NSString stringWithFormat: @"%@/Resources/Images", prefixDir] );
+    XCTAssertNotNil( subpath, @"the sub path should not be nil" );
+    image                           = [resourceManager image: @"ic_file_download_black_36dp@1x" ofType: @"png" inDirectory: subpath];
+    XCTAssertNotNil( image, @"image object should not be nil" );
+}
+
+//  ------------------------------------------------------------------------------------------------
+- ( void ) getDataWith:(TDResourceManageSourceType)sourceType and:(NSString *)prefixDir
+{
+    //  get nsdata.
+    NSString                      * subpath;
+    NSData                        * data;
+    UIImage                       * image;
+    NSMutableDictionary           * jsonData;
+    
+    subpath                         = ( ( nil == prefixDir ) ? @"Resources" : [NSString stringWithFormat: @"%@/Resources", prefixDir] );
+    XCTAssertNotNil( subpath, @"the sub path should not be nil" );
+    data                            = [resourceManager data: @"LICENSE" ofType: nil inDirectory: subpath fromData: sourceType];
+    XCTAssertNotNil( data, @"data object should not be nil" );
+    
+    //  get json data.
+    jsonData                        = [resourceManager JSON: @"bower" ofType: @"json" inDirectory: subpath encoding: NSUTF8StringEncoding fromData: sourceType];
+    XCTAssertNotNil( jsonData, @"json object should not be nil" );
+    
+    //  get image.
+    subpath                         = ( ( nil == prefixDir ) ? @"Resources/Images" : [NSString stringWithFormat: @"%@/Resources/Images", prefixDir] );
+    XCTAssertNotNil( subpath, @"the sub path should not be nil" );
+    image                           = [resourceManager image: @"ic_file_download_grey600_36dp@2x" ofType: @"png" inDirectory: subpath fromData: sourceType];
+    XCTAssertNotNil( image, @"image object should not be nil" );
 }
 
 //  ------------------------------------------------------------------------------------------------
 - ( void ) testGetTypeDefaultData
 {
-    [self                           createDefault];
-    //  get nsdata .
-    NSData                        * data;
-    UIImage                       * image;
-    NSMutableDictionary           * jsonData;
+    [self                           copyResourceData];
     
-    data                            = [resourceManager data: @"README" ofType: @"md" inDirectory: @"Tester/Resources"];
-    XCTAssertNotNil( resourceManager, @"NSData object's data should not be nil" );
+    resourceManager                  = [TDResourceManager defaultEnvironment: TDTemporaryDirectory];
+    XCTAssertNotNil( resourceManager, @"Resource manager should not be nil" );
     
-    data                            = [resourceManager data: @"Readme" ofType: @"txt" inDirectory: @"Tester/Resources"
-                                                   fromData: TDResourceManageSourceTypeDefault];
-    XCTAssertNotNil( data, @"data object should not be nil" );
+    //  get data
+    [self                           getData: @"Tester" ];
+    [self                           getDataWith: TDResourceManageSourceTypeDefault and: @"Tester"];
+}
+
+//  ------------------------------------------------------------------------------------------------
+- ( void) testGetTypeAssetsBundleData
+{
+    resourceManager                 = [TDResourceManager assetsBundleEnvironment: @"Tester/JSQMATest.bundle" with: [self class] forLocalization: @"zh-Hant" ];
+    //resourceManager                 = [TDResourceManager assetsBundleEnvironment: @"Tester/JSQMATest.bundle" with: [self class]];
     
-    image                           = [resourceManager image: @"ic_file_download_black_36dp@1x" ofType: @"png" inDirectory: @"Tester/Resources/Images"];
-    XCTAssertNotNil( image, @"image object should not be nil" );
+    XCTAssertNotNil( resourceManager, @"Resource manager should not be nil" );
     
-    image                           = [resourceManager image: @"ic_file_download_grey600_36dp@2x" ofType: @"png" inDirectory: @"Tester/Resources/Images"
-                                                    fromData: TDResourceManageSourceTypeDefault];
-    XCTAssertNotNil( image, @"image object should not be nil" );
+    //  get data
+    [self                           getData: nil];
+    [self                           getDataWith: TDResourceManageSourceTypeInAssetsBundle and: nil];
+}
+
+//  ------------------------------------------------------------------------------------------------
+- ( void ) testGetTypeZippedData
+{
+    //  zipped.
+    NSString                      * fullPath;
+    NSBundle                      * bundle;
+    NSString                      * bundleResourcePath;
     
-    jsonData                        = [resourceManager JSON: @"package" ofType: @"json" inDirectory: @"Tester/Resources" encoding: NSUTF8StringEncoding];
-    XCTAssertNotNil( jsonData, @"json object should not be nil" );
+    bundle                          = [NSBundle bundleForClass: [self class]];
+    XCTAssertNotNil( bundle, @"the bundle should not b nil" );
+    bundleResourcePath              = [bundle resourcePath];
+    XCTAssertNotNil( bundleResourcePath, @"the bundle's path should not b nil" );
     
-    jsonData                        = [resourceManager JSON: @"bower" ofType: @"json" inDirectory: @"Tester/Resources" encoding: NSUTF8StringEncoding
-                                                   fromData: TDResourceManageSourceTypeDefault];
-    XCTAssertNotNil( jsonData, @"json object should not be nil" );
+    fullPath                        = [bundleResourcePath stringByAppendingPathComponent: @"Tester/Resources.zip"];
+    XCTAssertNotNil( fullPath, @"the bundle's path should not b nil" );
+    resourceManager                 = [TDResourceManager zippedFileEnvironment: fullPath with: nil];
+    
+    XCTAssertNotNil( resourceManager, @"Resource manager should not be nil" );
+    
+    //  get data
+    [self                           getData: nil];
+    [self                           getDataWith: TDResourceManageSourceTypeInZipped and: nil];
+}
+
+//  ------------------------------------------------------------------------------------------------
+- ( void ) testGetTypeZippedDataWithPassword
+{
+    //  zipped.
+    NSString                      * fullPath;
+    NSBundle                      * bundle;
+    NSString                      * bundleResourcePath;
+    
+    bundle                          = [NSBundle bundleForClass: [self class]];
+    XCTAssertNotNil( bundle, @"the bundle should not b nil" );
+    bundleResourcePath              = [bundle resourcePath];
+    XCTAssertNotNil( bundleResourcePath, @"the bundle's path should not b nil" );
+    
+    fullPath                        = [bundleResourcePath stringByAppendingPathComponent: @"Tester/ResourcesPasswd.zip"];
+    XCTAssertNotNil( fullPath, @"the bundle's path should not b nil" );
+    resourceManager                 = [TDResourceManager zippedFileEnvironment: fullPath with: @"tester"];
+    
+    XCTAssertNotNil( resourceManager, @"Resource manager should not be nil" );
+    
+    //  get data
+    [self                           getData: nil];
+    [self                           getDataWith: TDResourceManageSourceTypeInZipped and: nil];
 }
 
 
-
+//  --------------------------------
 //  ------------------------------------------------------------------------------------------------
 //  ------------------------------------------------------------------------------------------------
-
 
 @end
 

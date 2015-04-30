@@ -250,10 +250,7 @@
         }
         case TDResourceManageSourceTypeInZipped:
         {
-            if ( nil != ext )
-            {
-                fullPath            = [name stringByAppendingPathExtension: ext];
-            }
+            fullPath                = ( ( nil != ext ) ? [name stringByAppendingPathExtension: ext] : name );
             if ( nil != subpath )
             {
                 fullPath            = [subpath stringByAppendingPathComponent: fullPath];
@@ -332,6 +329,7 @@
     defaultResourceDirectory        = directory;
     
     //  ... set flag default to yes.
+    currentSourceType               = TDResourceManageSourceTypeDefault;
     stateFlags.initiatedDefault     = YES;
     return YES;
 }
@@ -360,8 +358,10 @@
     assetsBundle                    = [NSBundle assetBundle: bundleName with: aClass];
     NSParameterAssert( nil != assetsBundle );
     
+    currentSourceType               = TDResourceManageSourceTypeInAssetsBundle;
     assetLocalizationName           = localizationName;
     stateFlags.initiatedAssetsBundle= YES;
+    
     return YES;
 }
 
@@ -398,6 +398,7 @@
     {
         return NO;
     }
+    currentSourceType               = TDResourceManageSourceTypeInZipped;
     stateFlags.initiatedInZipped    = YES;
     return YES;
 }
