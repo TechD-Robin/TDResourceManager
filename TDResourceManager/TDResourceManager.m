@@ -93,7 +93,7 @@
 
 //  ------------------------------------------------------------------------------------------------
 //  ------------------------------------------------------------------------------------------------
-- ( NSString * ) _GetResourcePath:(NSString *)name ofType:(NSString *)ext inDirectory:(NSString *)subpath;
+- ( NSString * ) _GetResourcePath:(NSString *)name ofType:(NSString *)ext inDirectory:(NSString *)subpath withCheck:(BOOL)checkFileExist;
 
 //  ------------------------------------------------------------------------------------------------
 
@@ -229,7 +229,7 @@
 
 //  ------------------------------------------------------------------------------------------------
 //  ------------------------------------------------------------------------------------------------
-- ( NSString * ) _GetResourcePath:(NSString *)name ofType:(NSString *)ext inDirectory:(NSString *)subpath
+- ( NSString * ) _GetResourcePath:(NSString *)name ofType:(NSString *)ext inDirectory:(NSString *)subpath withCheck:(BOOL)checkFileExist
 {
     NSParameterAssert( nil != name );
     
@@ -240,12 +240,24 @@
     {
         case TDResourceManageSourceTypeDefault:
         {
-            fullPath                = TDGetPathForDirectories( defaultResourceDirectory, name, ext, subpath, YES );
+            fullPath                = TDGetPathForDirectories( defaultResourceDirectory, name, ext, subpath, checkFileExist );
             break;
         }
         case TDResourceManageSourceTypeInAssetsBundle:
         {
-            fullPath                = [assetsBundle pathForResource: name ofType: ext inDirectory: subpath forLocalization: assetLocalizationName];
+//.            fullPath                = [assetsBundle pathForResource: name ofType: ext inDirectory: subpath forLocalization: assetLocalizationName];
+
+            NSParameterAssert( nil != assetsBundle );
+            if ( nil != subpath )
+            {
+                name                    = [subpath stringByAppendingPathComponent: name];
+            }
+            fullPath                    = [[assetsBundle bundlePath] stringByAppendingPathComponent: name];
+            
+            if ( nil != ext )
+            {
+                fullPath                = [fullPath stringByAppendingPathExtension: ext];
+            }
             break;
         }
         case TDResourceManageSourceTypeInZipped:
@@ -486,7 +498,7 @@
     
     data                            = nil;
     currentSourceType               = sourceType;
-    fullPath                        = [self _GetResourcePath: name ofType: ext inDirectory: subpath];
+    fullPath                        = [self _GetResourcePath: name ofType: ext inDirectory: subpath withCheck: YES];
     NSParameterAssert( nil != fullPath );
     
     switch ( sourceType )
@@ -525,7 +537,7 @@
     
     image                           = nil;
     currentSourceType               = sourceType;
-    fullPath                        = [self _GetResourcePath: name ofType: ext inDirectory: subpath];
+    fullPath                        = [self _GetResourcePath: name ofType: ext inDirectory: subpath withCheck: NO];
     NSParameterAssert( nil != fullPath );
     
     switch ( sourceType )
@@ -533,17 +545,39 @@
         case TDResourceManageSourceTypeDefault:
         case TDResourceManageSourceTypeInAssetsBundle:
         {
-            image                   = [UIImage imageWithContentsOfFile: fullPath];
+//            image                   = [UIImage imageWithContentsOfFile: fullPath];
+            image                   = [UIImage imageNamed: fullPath];
             break;
         }
         case TDResourceManageSourceTypeInZipped:
         {
             NSData                * data;
+//            NSString              * assetScale;
             
             data                    = [unzipDataContainer objectForKey: fullPath];
             if ( nil == data )
             {
-                return nil;
+//                if ( nil == ext )
+//                {
+//                    return nil;
+//                }
+                
+                if ( nil == ext )
+                {
+                    ext             = @"png";
+                }
+                
+                name                = [name stringByAppendingFormat: @"@%dx", (int)[[UIScreen mainScreen] scale]];
+                fullPath            = [self _GetResourcePath: name ofType: ext inDirectory: subpath withCheck: NO];
+                NSParameterAssert( nil != fullPath );
+                
+                data                    = [unzipDataContainer objectForKey: fullPath];
+                if ( nil == data )
+                {
+                    return nil;
+                }
+                
+//                return nil;
             }
             image                   = [UIImage imageWithData: data];
             break;
@@ -574,7 +608,7 @@
     error                           = nil;
     jsonContainer                   = nil;
     currentSourceType               = sourceType;
-    fullPath                        = [self _GetResourcePath: name ofType: ext inDirectory: subpath];
+    fullPath                        = [self _GetResourcePath: name ofType: ext inDirectory: subpath withCheck: YES];
     NSParameterAssert( nil != fullPath );
     
     switch ( sourceType )

@@ -159,6 +159,22 @@
     XCTAssertNotNil( subpath, @"the sub path should not be nil" );
     image                           = [resourceManager image: @"ic_file_download_black_36dp@1x" ofType: @"png" inDirectory: subpath];
     XCTAssertNotNil( image, @"image object should not be nil" );
+    
+    
+    image                           = [resourceManager image: @"ic_file_download_grey600_36dp@2x" ofType: @"png" inDirectory: subpath];
+    XCTAssertNotNil( image, @"image object should not be nil" );
+    
+    image                           = [resourceManager image: @"ic_file_download_grey600_36dp" ofType: @"png" inDirectory: subpath];
+    XCTAssertNotNil( image, @"image object should not be nil" );
+    
+    image                           = [resourceManager image: @"ic_file_download_grey600_36dp" ofType: nil inDirectory: subpath];
+    XCTAssertNotNil( image, @"image object should not be nil" );
+
+    
+//    image                           = [resourceManager image: @"ic_file_download_grey600_36dp@1X" ofType: nil inDirectory: subpath];
+//    XCTAssertNotNil( image, @"image object should not be nil" );
+    
+    
 }
 
 //  ------------------------------------------------------------------------------------------------
