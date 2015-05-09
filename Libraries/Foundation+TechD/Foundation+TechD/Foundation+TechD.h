@@ -15,6 +15,7 @@
     #import "NSDate+TechD.h"
     #import "NSBundle+TechD.h"
     #import "NSJSONSerialization+TechD.h"
+    #import "NSPropertyListSerialization+TechD.h"
 #endif  //  End of _FOUNDATION_TECHD_.
 
 

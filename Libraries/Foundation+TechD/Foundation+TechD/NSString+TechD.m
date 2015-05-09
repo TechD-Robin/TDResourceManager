@@ -35,6 +35,19 @@
     }
     return YES;
 }
+
+//  ------------------------------------------------------------------------------------------------
+- ( BOOL ) compareByRegularExpression:(NSString *)regularExpression
+{
+    NSParameterAssert( regularExpression );
+    
+    NSPredicate                   * predicate;
+    
+    predicate                       = [NSPredicate predicateWithFormat: @"SELF MATCHES %@", regularExpression];
+    NSParameterAssert( predicate );
+    return [predicate evaluateWithObject: self];
+}
+
 //  ------------------------------------------------------------------------------------------------
 //  ------------------------------------------------------------------------------------------------
 

@@ -32,6 +32,10 @@
 		2A187D291AED197900B457FD /* TDTexturePackerXMLReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A187D201AED197900B457FD /* TDTexturePackerXMLReader.m */; };
 		2A187D2A1AED197900B457FD /* TDUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A187D221AED197900B457FD /* TDUtilities.m */; };
 		2A187D2B1AED197900B457FD /* TDUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A187D221AED197900B457FD /* TDUtilities.m */; };
+		2A4358681AFE35F1001AEF63 /* NSPropertyListSerialization+TechD.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A4358671AFE35F1001AEF63 /* NSPropertyListSerialization+TechD.m */; };
+		2A4358691AFE35F1001AEF63 /* NSPropertyListSerialization+TechD.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A4358671AFE35F1001AEF63 /* NSPropertyListSerialization+TechD.m */; };
+		2A43586A1AFE35F1001AEF63 /* NSPropertyListSerialization+TechD.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A4358671AFE35F1001AEF63 /* NSPropertyListSerialization+TechD.m */; };
+		2A43586B1AFE35F1001AEF63 /* NSPropertyListSerialization+TechD.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A4358671AFE35F1001AEF63 /* NSPropertyListSerialization+TechD.m */; };
 		2AC9DD591AEBB1950012B4FA /* TDResourceManager.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2AC9DD581AEBB1950012B4FA /* TDResourceManager.h */; };
 		2AC9DD5B1AEBB1950012B4FA /* TDResourceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AC9DD5A1AEBB1950012B4FA /* TDResourceManager.m */; };
 		2AC9DD611AEBB1950012B4FA /* libTDResourceManager.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AC9DD551AEBB1950012B4FA /* libTDResourceManager.a */; };
@@ -122,6 +126,8 @@
 		2A187D201AED197900B457FD /* TDTexturePackerXMLReader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDTexturePackerXMLReader.m; sourceTree = "<group>"; };
 		2A187D211AED197900B457FD /* TDUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDUtilities.h; sourceTree = "<group>"; };
 		2A187D221AED197900B457FD /* TDUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDUtilities.m; sourceTree = "<group>"; };
+		2A4358661AFE35F1001AEF63 /* NSPropertyListSerialization+TechD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSPropertyListSerialization+TechD.h"; sourceTree = "<group>"; };
+		2A4358671AFE35F1001AEF63 /* NSPropertyListSerialization+TechD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSPropertyListSerialization+TechD.m"; sourceTree = "<group>"; };
 		2AC9DD551AEBB1950012B4FA /* libTDResourceManager.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libTDResourceManager.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		2AC9DD581AEBB1950012B4FA /* TDResourceManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TDResourceManager.h; sourceTree = "<group>"; };
 		2AC9DD5A1AEBB1950012B4FA /* TDResourceManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TDResourceManager.m; sourceTree = "<group>"; };
@@ -209,6 +215,8 @@
 				2A187CD51AECF23F00B457FD /* NSString+TechD.m */,
 				2A187CD21AECF23F00B457FD /* NSJSONSerialization+TechD.h */,
 				2A187CD31AECF23F00B457FD /* NSJSONSerialization+TechD.m */,
+				2A4358661AFE35F1001AEF63 /* NSPropertyListSerialization+TechD.h */,
+				2A4358671AFE35F1001AEF63 /* NSPropertyListSerialization+TechD.m */,
 			);
 			path = "Foundation+TechD";
 			sourceTree = "<group>";
@@ -527,6 +535,7 @@
 				2A187D2A1AED197900B457FD /* TDUtilities.m in Sources */,
 				2A187CEE1AECF24000B457FD /* NSString+TechD.m in Sources */,
 				2A187CEC1AECF24000B457FD /* NSJSONSerialization+TechD.m in Sources */,
+				2A4358681AFE35F1001AEF63 /* NSPropertyListSerialization+TechD.m in Sources */,
 				2A187CEA1AECF24000B457FD /* NSDate+TechD.m in Sources */,
 				2A187CF41AECF24000B457FD /* ioapi.c in Sources */,
 			);
@@ -545,6 +554,7 @@
 				2AE19FCB1AF0FA6F0060D44F /* NSBundle+TechD.m in Sources */,
 				2AE19FCC1AF0FA6F0060D44F /* NSString+TechD.m in Sources */,
 				2AE19FCD1AF0FA6F0060D44F /* NSJSONSerialization+TechD.m in Sources */,
+				2A4358691AFE35F1001AEF63 /* NSPropertyListSerialization+TechD.m in Sources */,
 				2AE19FC81AF0F3C50060D44F /* TDResourceManagerTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -562,6 +572,7 @@
 				2AC9DD7B1AEBB2710012B4FA /* AppDelegate.m in Sources */,
 				2A187CF71AECF24000B457FD /* mztools.c in Sources */,
 				2AC9DD781AEBB2710012B4FA /* main.m in Sources */,
+				2A43586A1AFE35F1001AEF63 /* NSPropertyListSerialization+TechD.m in Sources */,
 				2A187CEB1AECF24000B457FD /* NSDate+TechD.m in Sources */,
 				2A187CF51AECF24000B457FD /* ioapi.c in Sources */,
 				2A187D2B1AED197900B457FD /* TDUtilities.m in Sources */,
@@ -576,6 +587,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2AC9DD921AEBB2710012B4FA /* DemoResourceManagerTests.m in Sources */,
+				2A43586B1AFE35F1001AEF63 /* NSPropertyListSerialization+TechD.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
