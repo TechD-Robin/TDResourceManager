@@ -545,29 +545,25 @@
         case TDResourceManageSourceTypeDefault:
         case TDResourceManageSourceTypeInAssetsBundle:
         {
-//            image                   = [UIImage imageWithContentsOfFile: fullPath];
             image                   = [UIImage imageNamed: fullPath];
             break;
         }
         case TDResourceManageSourceTypeInZipped:
         {
             NSData                * data;
-//            NSString              * assetScale;
             
             data                    = [unzipDataContainer objectForKey: fullPath];
             if ( nil == data )
             {
-//                if ( nil == ext )
-//                {
-//                    return nil;
-//                }
-                
                 if ( nil == ext )
                 {
                     ext             = @"png";
                 }
                 
-                name                = [name stringByAppendingFormat: @"@%dx", (int)[[UIScreen mainScreen] scale]];
+                if ( TDCheckFilenameWithAssetScale( name ) == NO )
+                {
+                    name            = TDGetFilenameWithAssetScale( name, (int)[[UIScreen mainScreen] scale] );
+                }
                 fullPath            = [self _GetResourcePath: name ofType: ext inDirectory: subpath withCheck: NO];
                 NSParameterAssert( nil != fullPath );
                 
@@ -576,8 +572,6 @@
                 {
                     return nil;
                 }
-                
-//                return nil;
             }
             image                   = [UIImage imageWithData: data];
             break;

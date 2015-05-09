@@ -171,8 +171,8 @@
     XCTAssertNotNil( image, @"image object should not be nil" );
 
     
-//    image                           = [resourceManager image: @"ic_file_download_grey600_36dp@1X" ofType: nil inDirectory: subpath];
-//    XCTAssertNotNil( image, @"image object should not be nil" );
+    image                           = [resourceManager image: @"ic_file_download_grey600_36dp@1x" ofType: nil inDirectory: subpath];
+    XCTAssertNotNil( image, @"image object should not be nil" );
     
     
 }
@@ -261,7 +261,7 @@
     NSString                      * bundleResourcePath;
     
     bundle                          = [NSBundle bundleForClass: [self class]];
-    XCTAssertNotNil( bundle, @"the bundle should not b nil" );
+    XCTAssertNotNil( bundle, @"the bundle should not be nil" );
     bundleResourcePath              = [bundle resourcePath];
     XCTAssertNotNil( bundleResourcePath, @"the bundle's path should not b nil" );
     
@@ -274,6 +274,42 @@
     //  get data
     [self                           getData: nil];
     [self                           getDataWith: TDResourceManageSourceTypeInZipped and: nil];
+}
+
+
+//  ------------------------------------------------------------------------------------------------
+- ( void ) testRegularExpression
+{
+    BOOL                            result;
+    NSString                      * regularExpress;
+    NSString                      * testString;
+    NSPredicate                   * predicate;
+    
+    result                          = NO;
+    regularExpress                  = @"([^*|:\"<>?]|[ ]|\\w)+@[1-9][0-9]*[xX]$";
+    predicate                       = [NSPredicate predicateWithFormat: @"SELF MATCHES %@", regularExpress];
+
+    testString                      = @"@2x";
+    result                          = [testString compareByRegularExpression: regularExpress];
+    NSLog( @"comapre result : %d", result );
+
+    testString                      = @"a@2x";
+    result                          = [testString compareByRegularExpression: regularExpress];
+    NSLog( @"comapre result : %d", result );
+    
+    testString                      = @"abc@2x";
+    result                          = [testString compareByRegularExpression: regularExpress];
+    NSLog( @"comapre result : %d", result );
+    
+    testString                      = @"@abc@2x";
+    result                          = [testString compareByRegularExpression: regularExpress];
+    NSLog( @"comapre result : %d", result );
+
+    testString                      = @"@abc@2x ";
+    result                          = [testString compareByRegularExpression: regularExpress];
+    NSLog( @"comapre result : %d", result );
+
+    
 }
 
 

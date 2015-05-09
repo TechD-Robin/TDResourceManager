@@ -8,7 +8,7 @@
 //  ------------------------------------------------------------------------------------------------
 //  ------------------------------------------------------------------------------------------------
 
-
+#import <regex.h>
 #import "NSString+TechD.h"
 
 //  ------------------------------------------------------------------------------------------------
@@ -39,13 +39,54 @@
 //  ------------------------------------------------------------------------------------------------
 - ( BOOL ) compareByRegularExpression:(NSString *)regularExpression
 {
+//    NSParameterAssert( regularExpression );
+//    
+//    NSPredicate                   * predicate;
+//    
+//    predicate                       = [NSPredicate predicateWithFormat: @"SELF MATCHES %@", regularExpression];
+//    NSParameterAssert( predicate );
+//    return [predicate evaluateWithObject: self];
+    
     NSParameterAssert( regularExpression );
     
-    NSPredicate                   * predicate;
+    regex_t                         regular;
+    int                             result;
+    regmatch_t                      matches[1];
+
+    char                            errorMsg[BUFSIZ];
+
+    memset( &matches, 0, sizeof(matches) );
+    memset( &errorMsg, 0, sizeof( errorMsg ) );
+    result                          = regcomp( &regular, [regularExpression cStringUsingEncoding: NSASCIIStringEncoding], REG_EXTENDED );
+    if ( 0 != result )
+    {
+        regerror( result, &regular, errorMsg, sizeof( errorMsg ) );
+        regfree( &regular );
+        return NO;
+    }
     
-    predicate                       = [NSPredicate predicateWithFormat: @"SELF MATCHES %@", regularExpression];
-    NSParameterAssert( predicate );
-    return [predicate evaluateWithObject: self];
+    result                          = regexec( &regular, [self cStringUsingEncoding: NSASCIIStringEncoding], 1, matches, 0 );
+    if ( REG_NOMATCH == result )
+    {
+        regerror( result, &regular, errorMsg, sizeof( errorMsg ) );
+        regfree( &regular );
+        return NO;
+    }
+    
+    //  must all character equal for regular expression.
+    if ( 0 != matches[0].rm_so )                        //  check start character.
+    {
+        regfree( &regular );
+        return NO;
+    }
+    if ( ( [self length] ) != matches[0].rm_eo  )   //  check match length equal or not.
+    {
+        regfree( &regular );
+        return NO;
+    }
+    
+    regfree( &regular );
+    return YES;
 }
 
 //  ------------------------------------------------------------------------------------------------
@@ -55,4 +96,12 @@
 
 //  ------------------------------------------------------------------------------------------------
 //  ------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
 
