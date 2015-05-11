@@ -143,7 +143,7 @@
     NSString                      * subpath;
     NSData                        * data;
     UIImage                       * image;
-    NSMutableDictionary           * jsonData;
+    NSMutableDictionary           * container;
     
     subpath                         = ( ( nil == prefixDir ) ? @"Resources" : [NSString stringWithFormat: @"%@/Resources", prefixDir] );
     XCTAssertNotNil( subpath, @"the sub path should not be nil" );
@@ -151,8 +151,13 @@
     XCTAssertNotNil( resourceManager, @"NSData object's data should not be nil" );
     
     //  get json data.
-    jsonData                        = [resourceManager JSON: @"package" ofType: @"json" inDirectory: subpath encoding: NSUTF8StringEncoding];
-    XCTAssertNotNil( jsonData, @"json object should not be nil" );
+    container                       = [resourceManager JSON: @"package" ofType: @"json" inDirectory: subpath encoding: NSUTF8StringEncoding];
+    XCTAssertNotNil( container, @"json object should not be nil" );
+    
+    //  get plist data.
+    container                       = [resourceManager propertyList: @"LINDA's Cats" ofType: @"plist" inDirectory: subpath encoding: NSUTF8StringEncoding];
+    XCTAssertNotNil( container, @"property list object should not be nil" );
+    
     
     //  get image.
     subpath                         = ( ( nil == prefixDir ) ? @"Resources/Images" : [NSString stringWithFormat: @"%@/Resources/Images", prefixDir] );
@@ -169,7 +174,6 @@
     
     image                           = [resourceManager image: @"ic_file_download_grey600_36dp" ofType: nil inDirectory: subpath];
     XCTAssertNotNil( image, @"image object should not be nil" );
-
     
     image                           = [resourceManager image: @"ic_file_download_grey600_36dp@1x" ofType: nil inDirectory: subpath];
     XCTAssertNotNil( image, @"image object should not be nil" );
@@ -184,7 +188,7 @@
     NSString                      * subpath;
     NSData                        * data;
     UIImage                       * image;
-    NSMutableDictionary           * jsonData;
+    NSMutableDictionary           * container;
     
     subpath                         = ( ( nil == prefixDir ) ? @"Resources" : [NSString stringWithFormat: @"%@/Resources", prefixDir] );
     XCTAssertNotNil( subpath, @"the sub path should not be nil" );
@@ -192,8 +196,12 @@
     XCTAssertNotNil( data, @"data object should not be nil" );
     
     //  get json data.
-    jsonData                        = [resourceManager JSON: @"bower" ofType: @"json" inDirectory: subpath encoding: NSUTF8StringEncoding fromData: sourceType];
-    XCTAssertNotNil( jsonData, @"json object should not be nil" );
+    container                       = [resourceManager JSON: @"bower" ofType: @"json" inDirectory: subpath encoding: NSUTF8StringEncoding fromData: sourceType];
+    XCTAssertNotNil( container, @"json object should not be nil" );
+    
+    //  get plist data.
+    container                       = [resourceManager propertyList: @"LINDA's Cats" ofType: @"plist" inDirectory: subpath encoding: NSUTF8StringEncoding fromData: sourceType];
+    XCTAssertNotNil( container, @"property list object should not be nil" );
     
     //  get image.
     subpath                         = ( ( nil == prefixDir ) ? @"Resources/Images" : [NSString stringWithFormat: @"%@/Resources/Images", prefixDir] );
@@ -274,42 +282,6 @@
     //  get data
     [self                           getData: nil];
     [self                           getDataWith: TDResourceManageSourceTypeInZipped and: nil];
-}
-
-
-//  ------------------------------------------------------------------------------------------------
-- ( void ) testRegularExpression
-{
-    BOOL                            result;
-    NSString                      * regularExpress;
-    NSString                      * testString;
-    NSPredicate                   * predicate;
-    
-    result                          = NO;
-    regularExpress                  = @"[^*|:\"<>?]+@[1-9][0-9]*[xX]$";
-    predicate                       = [NSPredicate predicateWithFormat: @"SELF MATCHES %@", regularExpress];
-
-    testString                      = @"@2x";
-    result                          = [testString compareByRegularExpression: regularExpress];
-    NSLog( @"comapre result : %d", result );
-
-    testString                      = @"a@2x";
-    result                          = [testString compareByRegularExpression: regularExpress];
-    NSLog( @"comapre result : %d", result );
-    
-    testString                      = @"abc@2x";
-    result                          = [testString compareByRegularExpression: regularExpress];
-    NSLog( @"comapre result : %d", result );
-    
-    testString                      = @"@abc@2x";
-    result                          = [testString compareByRegularExpression: regularExpress];
-    NSLog( @"comapre result : %d", result );
-
-    testString                      = @"@abc@2x ";
-    result                          = [testString compareByRegularExpression: regularExpress];
-    NSLog( @"comapre result : %d", result );
-
-    
 }
 
 

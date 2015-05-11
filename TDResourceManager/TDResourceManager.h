@@ -83,6 +83,13 @@ typedef NS_ENUM( NSInteger, TDResourceManageSourceType ) {
 - ( NSMutableDictionary * ) JSON:(NSString *)name ofType:(NSString *)ext inDirectory:(NSString *)subpath encoding:(NSStringEncoding)encode
      fromData:(TDResourceManageSourceType)sourceType;
 
+- ( NSMutableDictionary * ) propertyList:(NSString *)name ofType:(NSString *)ext inDirectory:(NSString *)subpath encoding:(NSStringEncoding)encode;
+
+- ( NSMutableDictionary * ) propertyList:(NSString *)name ofType:(NSString *)ext inDirectory:(NSString *)subpath encoding:(NSStringEncoding)encode
+                        fromData:(TDResourceManageSourceType)sourceType;
+
+
+
 
 //  ------------------------------------------------------------------------------------------------
 //  ------------------------------------------------------------------------------------------------

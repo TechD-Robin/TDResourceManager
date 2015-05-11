@@ -628,14 +628,81 @@
             {
                 return nil;
             }
+            
+            error                   = nil;
             jsonContainer           = [NSJSONSerialization JSONObjectWithData: data options: NSJSONReadingMutableContainers error: &error];
+            if ( nil != error )
+            {
+                NSLog( @"create JSON object form data has error :%@", error );
+                return nil;
+            }
             break;
         }
         default:
             break;
     }
     return jsonContainer;
+}
+
+//  ------------------------------------------------------------------------------------------------
+- ( NSMutableDictionary * ) propertyList:(NSString *)name ofType:(NSString *)ext inDirectory:(NSString *)subpath encoding:(NSStringEncoding)encode
+{
+    return [self propertyList: name ofType: ext inDirectory: subpath encoding: encode fromData: currentSourceType];
+}
+
+//  ------------------------------------------------------------------------------------------------
+- ( NSMutableDictionary * ) propertyList:(NSString *)name ofType:(NSString *)ext inDirectory:(NSString *)subpath encoding:(NSStringEncoding)encode
+                                fromData:(TDResourceManageSourceType)sourceType
+{
+    NSParameterAssert( nil != name );
+    NSParameterAssert( YES == [self _CheckInitiatedState: sourceType] );
     
+    NSMutableDictionary           * plistContainer;
+    NSError                       * error;
+    NSString                      * fullPath;
+    
+    error                           = nil;
+    plistContainer                  = nil;
+    currentSourceType               = sourceType;
+    fullPath                        = [self _GetResourcePath: name ofType: ext inDirectory: subpath withCheck: YES];
+    NSParameterAssert( nil != fullPath );
+
+    switch ( sourceType )
+    {
+        case TDResourceManageSourceTypeDefault:
+        case TDResourceManageSourceTypeInAssetsBundle:
+        {
+            plistContainer          = [NSPropertyListSerialization loadPropertyList: fullPath encoding: encode error: &error];
+            if ( nil != error )
+            {
+                NSLog( @"load Property list error :%@", error );
+                return nil;
+            }
+            break;
+        }
+        case TDResourceManageSourceTypeInZipped:
+        {
+            NSData                * data;
+            NSPropertyListFormat    format;
+            
+            data                    = [unzipDataContainer objectForKey: fullPath];
+            if ( nil == data )
+            {
+                return nil;
+            }
+            error                   = nil;
+            plistContainer          = [NSPropertyListSerialization propertyListWithData: data options: NSPropertyListMutableContainersAndLeaves format: &format error: &error];
+            if ( nil != error )
+            {
+                NSLog( @"create property list object form data has error :%@", error );
+                return nil;
+            }
+            break;
+        }
+        default:
+            break;
+    }
+    return plistContainer;
 }
 
 //  ------------------------------------------------------------------------------------------------
