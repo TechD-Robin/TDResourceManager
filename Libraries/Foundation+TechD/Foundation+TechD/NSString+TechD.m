@@ -57,7 +57,7 @@
 
     memset( &matches, 0, sizeof(matches) );
     memset( &errorMsg, 0, sizeof( errorMsg ) );
-    result                          = regcomp( &regular, [regularExpression cStringUsingEncoding: NSASCIIStringEncoding], REG_EXTENDED );
+    result                          = regcomp( &regular, [regularExpression UTF8String], REG_EXTENDED );
     if ( 0 != result )
     {
         regerror( result, &regular, errorMsg, sizeof( errorMsg ) );
@@ -65,7 +65,7 @@
         return NO;
     }
     
-    result                          = regexec( &regular, [self cStringUsingEncoding: NSASCIIStringEncoding], 1, matches, 0 );
+    result                          = regexec( &regular, [self UTF8String], 1, matches, 0 );
     if ( REG_NOMATCH == result )
     {
         regerror( result, &regular, errorMsg, sizeof( errorMsg ) );

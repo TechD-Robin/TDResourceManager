@@ -286,7 +286,7 @@
     NSPredicate                   * predicate;
     
     result                          = NO;
-    regularExpress                  = @"([^*|:\"<>?]|[ ]|\\w)+@[1-9][0-9]*[xX]$";
+    regularExpress                  = @"[^*|:\"<>?]+@[1-9][0-9]*[xX]$";
     predicate                       = [NSPredicate predicateWithFormat: @"SELF MATCHES %@", regularExpress];
 
     testString                      = @"@2x";
