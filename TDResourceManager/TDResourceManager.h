@@ -38,9 +38,13 @@ typedef NS_ENUM( NSInteger, TDResourceManageSourceType ){
     TDResourceManageSourceTypeInZipped,
 };
 
-//  ------------------------------------------------------------------------------------------------
-//  ------------------------------------------------------------------------------------------------
 
+//  ------------------------------------------------------------------------------------------------
+//  ------------------------------------------------------------------------------------------------
+/**
+ *  the Resource Manager provide the same method to get resources,
+ *  can get resources from resourcePath(normal file system), assets bundle object and zipped file.
+ */
 @interface TDResourceManager : NSObject
 
 //  ------------------------------------------------------------------------------------------------
@@ -130,6 +134,7 @@ typedef NS_ENUM( NSInteger, TDResourceManageSourceType ){
 #endif
 
 
+//  --------------------------------
 //  ------------------------------------------------------------------------------------------------
 #pragma mark declare for get resource data.
 //  ------------------------------------------------------------------------------------------------
@@ -246,17 +251,28 @@ typedef NS_ENUM( NSInteger, TDResourceManageSourceType ){
 - ( NSMutableDictionary * ) propertyList:(NSString *)name ofType:(NSString *)ext inDirectory:(NSString *)subpath encoding:(NSStringEncoding)encode
                         fromData:(TDResourceManageSourceType)sourceType;
 
-
-#ifdef TD_UNSTABLE_DEVELOPING
 //  ------------------------------------------------------------------------------------------------
+#pragma mark declare for assets bundle type.
 //  ------------------------------------------------------------------------------------------------
+/**
+ *  @brief set the table name of localized string.
+ *  set the table name of localized string.
+ *
+ *  @param tableName                table name of localized string.
+ */
 - ( void ) setLocalizedStringTable:(NSString *)tableName;
 
+//  ------------------------------------------------------------------------------------------------
+/**
+ *  @brief get the localized string for key.
+ *  get the localized string for key.
+ *
+ *  @param aKey                     a localized string's key.
+ *
+ *  @return string|nil              the localized string or nil.
+ */
 - ( NSString * ) localizedStringForKey:(NSString *)aKey;
 
-#endif
-
-//  --------------------------------
 //  ------------------------------------------------------------------------------------------------
 
 @end

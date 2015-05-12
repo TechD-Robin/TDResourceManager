@@ -30,31 +30,52 @@
 //  --------------------------------
 @interface TDResourceManager ()
 {
+    /**
+     *  the resource type of current.
+     */
     TDResourceManageSourceType      currentSourceType;
-    
-    //  default.
-    TDGetPathDirectory              defaultResourceDirectory;
-    
-    //  asset bundle.
-    NSString                      * localizedStringTableName;
-    NSString                      * assetLocalizationName;
-    NSBundle                      * assetsBundle;
-    
-
-    //  zipped.
-    NSMutableDictionary           * unzipDataContainer;
-    
     
     /**
      *  flags of state.
      */
     struct {
-        unsigned int                initiatedDefault:1;
-        unsigned int                initiatedAssetsBundle:1;
-        unsigned int                initiatedInZipped:1;
+        unsigned int                initiatedDefault:1;             //  set it when default be initiated.
+        unsigned int                initiatedAssetsBundle:1;        //  set it when assets bundle be initiated.
+        unsigned int                initiatedInZipped:1;            //  set it when zipped be initiated.
         
     } stateFlags;
+    
+    
+    //  default.
+    /**
+     *  the enumeration for directory.
+     */
+    TDGetPathDirectory              defaultResourceDirectory;
+    
+    
+    //  asset bundle.
+    /**
+     *  the table name of localized string.
+     */
+    NSString                      * localizedStringTableName;
+    
+    /**
+     *  the localization identifier.
+     */
+    NSString                      * assetLocalizationName;
+    
+    /**
+     *  the assets boundle object.
+     */
+    NSBundle                      * assetsBundle;
+    
 
+    //  zipped.
+    /**
+     *  the container of unzipped's data.
+     */
+    NSMutableDictionary           * unzipDataContainer;
+    
 }
 
 //  ------------------------------------------------------------------------------------------------

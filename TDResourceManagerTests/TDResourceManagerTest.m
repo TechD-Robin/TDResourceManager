@@ -250,6 +250,12 @@
     //  get data
     [self                           getData: nil];
     [self                           getDataWith: TDResourceManageSourceTypeInAssetsBundle and: nil];
+    
+    //  localized string.
+    [resourceManager                setLocalizedStringTable: @"JSQMessages"];
+    XCTAssertNotNil( [resourceManager localizedStringForKey: @"new_message"] );
+    XCTAssertNotEqualObjects( [resourceManager localizedStringForKey: @"new_message"], @"new_message");
+        
 }
 
 //  ------------------------------------------------------------------------------------------------
