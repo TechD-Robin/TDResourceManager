@@ -143,7 +143,7 @@
     NSString                      * subpath;
     NSData                        * data;
     UIImage                       * image;
-    NSMutableDictionary           * container;
+    id                              container;
     
     subpath                         = ( ( nil == prefixDir ) ? @"Resources" : [NSString stringWithFormat: @"%@/Resources", prefixDir] );
     XCTAssertNotNil( subpath, @"the sub path should not be nil" );
@@ -157,6 +157,22 @@
     //  get plist data.
     container                       = [resourceManager propertyList: @"LINDA's Cats" ofType: @"plist" inDirectory: subpath encoding: NSUTF8StringEncoding];
     XCTAssertNotNil( container, @"property list object should not be nil" );
+    
+    //  get xml data.
+//    container                       = [resourceManager propertyList: @"cd_catalog" ofType: @"xml" inDirectory: subpath encoding: NSUTF8StringEncoding];
+//    XCTAssertNotNil( container, @"xml object should not be nil" );
+    
+//    data                            = [resourceManager data: @"cd_catalog" ofType: @"xml" inDirectory: subpath];
+//    XCTAssertNotNil( container, @"XML object should not be nil" );
+//    
+//    NSPropertyListFormat            format;
+//    NSError                       * error;
+//    
+////    NSXMLParser
+//    
+//    error                           = nil;
+//    container                       = [NSPropertyListSerialization propertyListWithData: data options: NSPropertyListMutableContainersAndLeaves
+//                                                                                 format: &format error: &error];
     
     
     //  get image.
@@ -188,7 +204,7 @@
     NSString                      * subpath;
     NSData                        * data;
     UIImage                       * image;
-    NSMutableDictionary           * container;
+    id                              container;
     
     subpath                         = ( ( nil == prefixDir ) ? @"Resources" : [NSString stringWithFormat: @"%@/Resources", prefixDir] );
     XCTAssertNotNil( subpath, @"the sub path should not be nil" );

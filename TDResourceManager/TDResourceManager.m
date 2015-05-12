@@ -83,15 +83,17 @@
 - ( void ) _InitAttributes;
 
 //  ------------------------------------------------------------------------------------------------
+#pragma mark declare for check.
 //  ------------------------------------------------------------------------------------------------
 - ( BOOL ) _CheckInitiatedState:(TDResourceManageSourceType)sourceType;
 
 //  ------------------------------------------------------------------------------------------------
+#pragma mark declare for load procedure.
 //  ------------------------------------------------------------------------------------------------
 - ( BOOL ) _UnzipFile:(NSString *)fullPath with:(NSString *)password;
 
-
 //  ------------------------------------------------------------------------------------------------
+#pragma mark declare for get.
 //  ------------------------------------------------------------------------------------------------
 - ( NSString * ) _GetResourcePath:(NSString *)name ofType:(NSString *)ext inDirectory:(NSString *)subpath withCheck:(BOOL)checkFileExist;
 
@@ -142,6 +144,7 @@
 }
 
 //  ------------------------------------------------------------------------------------------------
+#pragma mark method for check.
 //  ------------------------------------------------------------------------------------------------
 - ( BOOL ) _CheckInitiatedState:(TDResourceManageSourceType)sourceType
 {
@@ -166,6 +169,7 @@
 }
 
 //  ------------------------------------------------------------------------------------------------
+#pragma mark method for load procedure.
 //  ------------------------------------------------------------------------------------------------
 - ( BOOL ) _UnzipFile:(NSString *)fullPath with:(NSString *)password
 {
@@ -213,21 +217,18 @@
         [unzipDataContainer         addEntriesFromDictionary: unzipData];
     }
     
-    
     [zip                            UnzipCloseFile];
     
     SAFE_ARC_RELEASE( unzipData );
     unzipData                       = nil;
-    
     
     SAFE_ARC_RELEASE( zip );
     zip                             = nil;
     return YES;
 }
 
-
-
 //  ------------------------------------------------------------------------------------------------
+#pragma mark method for get.
 //  ------------------------------------------------------------------------------------------------
 - ( NSString * ) _GetResourcePath:(NSString *)name ofType:(NSString *)ext inDirectory:(NSString *)subpath withCheck:(BOOL)checkFileExist
 {
@@ -245,18 +246,16 @@
         }
         case TDResourceManageSourceTypeInAssetsBundle:
         {
-//.            fullPath                = [assetsBundle pathForResource: name ofType: ext inDirectory: subpath forLocalization: assetLocalizationName];
-
             NSParameterAssert( nil != assetsBundle );
             if ( nil != subpath )
             {
-                name                    = [subpath stringByAppendingPathComponent: name];
+                name                = [subpath stringByAppendingPathComponent: name];
             }
-            fullPath                    = [[assetsBundle bundlePath] stringByAppendingPathComponent: name];
+            fullPath                = [[assetsBundle bundlePath] stringByAppendingPathComponent: name];
             
             if ( nil != ext )
             {
-                fullPath                = [fullPath stringByAppendingPathExtension: ext];
+                fullPath            = [fullPath stringByAppendingPathExtension: ext];
             }
             break;
         }
@@ -429,7 +428,6 @@
     return manager;
 }
 
-
 //  ------------------------------------------------------------------------------------------------
 //  ------------------------------------------------------------------------------------------------
 - ( BOOL ) changeDirectory:(TDGetPathDirectory)directory
@@ -479,8 +477,8 @@
 }
 
 
-
 //  ------------------------------------------------------------------------------------------------
+#pragma mark method for get resource data.
 //  ------------------------------------------------------------------------------------------------
 - ( NSData * ) data:(NSString *)name ofType:(NSString *)ext inDirectory:(NSString *)subpath
 {
@@ -583,24 +581,24 @@
 }
 
 //  ------------------------------------------------------------------------------------------------
-- ( NSMutableDictionary * ) JSON:(NSString *)name ofType:(NSString *)ext inDirectory:(NSString *)subpath encoding:(NSStringEncoding)encode
+- ( id ) JSON:(NSString *)name ofType:(NSString *)ext inDirectory:(NSString *)subpath encoding:(NSStringEncoding)encode
 {
     return [self JSON: name ofType: ext inDirectory: subpath encoding: encode fromData: currentSourceType];
 }
 
 //  ------------------------------------------------------------------------------------------------
-- ( NSMutableDictionary * ) JSON:(NSString *)name ofType:(NSString *)ext inDirectory:(NSString *)subpath encoding:(NSStringEncoding)encode
+- ( id ) JSON:(NSString *)name ofType:(NSString *)ext inDirectory:(NSString *)subpath encoding:(NSStringEncoding)encode
                         fromData:(TDResourceManageSourceType)sourceType
 {
     NSParameterAssert( nil != name );
     NSParameterAssert( YES == [self _CheckInitiatedState: sourceType] );
     
-    NSMutableDictionary           * jsonContainer;
+    id                              dataContainer;
     NSError                       * error;
     NSString                      * fullPath;
     
     error                           = nil;
-    jsonContainer                   = nil;
+    dataContainer                   = nil;
     currentSourceType               = sourceType;
     fullPath                        = [self _GetResourcePath: name ofType: ext inDirectory: subpath withCheck: YES];
     NSParameterAssert( nil != fullPath );
@@ -611,7 +609,7 @@
         case TDResourceManageSourceTypeInAssetsBundle:
         {
             
-            jsonContainer           = [NSJSONSerialization loadJSON: fullPath encoding: encode error: &error];
+            dataContainer           = [NSJSONSerialization loadJSON: fullPath encoding: encode error: &error];
             if ( nil != error )
             {
                 NSLog( @"load JSON error :%@", error );
@@ -630,7 +628,7 @@
             }
             
             error                   = nil;
-            jsonContainer           = [NSJSONSerialization JSONObjectWithData: data options: NSJSONReadingMutableContainers error: &error];
+            dataContainer           = [NSJSONSerialization JSONObjectWithData: data options: NSJSONReadingMutableContainers error: &error];
             if ( nil != error )
             {
                 NSLog( @"create JSON object form data has error :%@", error );
@@ -641,7 +639,7 @@
         default:
             break;
     }
-    return jsonContainer;
+    return dataContainer;
 }
 
 //  ------------------------------------------------------------------------------------------------
