@@ -13,8 +13,7 @@
 #import "TDUtilities.h"
 
 
-#define TD_UNSTABLE_DEVELOPING      DEBUG
-
+//#define TD_UNSTABLE_DEVELOPING      DEBUG
 
 //  ------------------------------------------------------------------------------------------------
 #pragma mark declare enumeration.
@@ -120,21 +119,59 @@ typedef NS_ENUM( NSInteger, TDResourceManageSourceType ){
 + ( instancetype ) zippedFileEnvironment:(NSString *)fullPathName with:(NSString *)password;
 
 
-#ifdef TD_UNSTABLE_DEVELOPING
 //  ------------------------------------------------------------------------------------------------
+#pragma mark declare for change data source.
 //  ------------------------------------------------------------------------------------------------
+//  change method notice : if change from other type then the environment of old type will not remove, else will cover by new.
+//  ------------------------------------------------------------------------------------------------
+/**
+ *  @brief change environment of resources manager to a new directory (default environment).
+ *  change environment of resources manager to a new directory (default environment).
+ *
+ *  @param directory                a new enumeration for directory.
+ *
+ *  @return YES|NO                  method success or failure.
+ */
 - ( BOOL ) changeDirectory:(TDGetPathDirectory)directory;
 
+//  ------------------------------------------------------------------------------------------------
+/**
+ *  @brief change environment of resources manager to a new assests bundle.
+ *  change environment of resources manager to a new assests bundle.
+ *
+ *  @param bundleName               a new bundle name.
+ *  @param aClass                   a class.(is view controller usually)
+ *
+ *  @return YES|NO                  method success or failure.
+ */
 - ( BOOL ) changeAssetsBundle:(NSString *)bundleName with:(Class)aClass;
 
+//  ------------------------------------------------------------------------------------------------
+/**
+ *  @brief change environment of resources manager to a new assests bundle.
+ *  change environment of resources manager to a new assests bundle.
+ *
+ *  @param bundleName               a new bundle name.
+ *  @param aClass                   a class.(is view controller usually)
+ *  @param localizationName         a locale identifier string.
+ *
+ *  @return YES|NO                  method success or failure.
+ */
 - ( BOOL ) changeAssetsBundle:(NSString *)bundleName with:(Class)aClass forLocalization:(NSString *)localizationName;
 
+//  ------------------------------------------------------------------------------------------------
+/**
+ *  @brief change environment of resources manager to a new zipped file.
+ *  change environment of resources manager to a new zipped file.
+ *
+ *  @param fullPathName             zipped file name (full path).
+ *  @param password                 password of zipped file.
+ *
+ *  @return YES|NO                  method success or failure.
+ */
 - ( BOOL ) changeZippedFile:(NSString *)fullPathName with:(NSString *)password;
 
-#endif
 
-
-//  --------------------------------
 //  ------------------------------------------------------------------------------------------------
 #pragma mark declare for get resource data.
 //  ------------------------------------------------------------------------------------------------

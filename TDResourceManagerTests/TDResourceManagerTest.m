@@ -127,13 +127,73 @@
     BOOL                            result;
     NSError                       * error;
     
-    if ( [fileManager fileExistsAtPath: destinationPath] == YES )
+    if ( [fileManager fileExistsAtPath: destinationPath] == NO )
     {
-        return;
+        result                      = [fileManager copyItemAtPath: sourcePath toPath:destinationPath error: &error];
+        XCTAssertNil( error, @"the result's error should be nil" );
+        XCTAssertTrue( result, @"method's result should be true." );
     }
-    result                          = [fileManager copyItemAtPath: sourcePath toPath:destinationPath error: &error];
-    XCTAssertNil( error, @"the result's error should be nil" );
-    XCTAssertTrue( result, @"method's result should be true." );
+    
+    //  copy data for change setting.
+    //  for default type.
+    //  data source.
+    sourcePath                      = [bundleResourcePath stringByAppendingPathComponent: @"Tester/Resources"];
+    XCTAssertNotNil( sourcePath, @"the bundle's path should not be nil" );
+    XCTAssertTrue( [fileManager fileExistsAtPath: sourcePath], @"method's result should be true." );
+    
+    //  data destination.
+    destinationPath                 = TDGetPathForDirectories( TDDocumentDirectory, @"ResourcesCopy", nil, @"Tester", NO );
+    XCTAssertNotNil( destinationPath, @"the bundle's path should not b nil" );
+    
+    result                          = NO;
+    error                           = nil;
+    if ( [fileManager fileExistsAtPath: destinationPath] == NO )
+    {
+        result                      = [fileManager copyItemAtPath: sourcePath toPath:destinationPath error: &error];
+        XCTAssertNil( error, @"the result's error should be nil" );
+        XCTAssertTrue( result, @"method's result should be true." );
+    }
+
+    
+    //  for assets bundle type.
+    //  data source.
+    sourcePath                      = [bundleResourcePath stringByAppendingPathComponent: @"Tester/JSQMATest.bundle"];
+    XCTAssertNotNil( sourcePath, @"the bundle's path should not be nil" );
+    XCTAssertTrue( [fileManager fileExistsAtPath: sourcePath], @"method's result should be true." );
+    
+    //  data destination.
+//    destinationPath                 = TDGetPathForDirectories( TDDocumentDirectory, @"JSQMACopy", @"bundle", @"Tester", NO );
+    destinationPath                 = [bundleResourcePath stringByAppendingPathComponent: @"Tester/JSQMACopy.bundle"];
+    XCTAssertNotNil( destinationPath, @"the bundle's path should not b nil" );
+    
+    result                          = NO;
+    error                           = nil;
+    if ( [fileManager fileExistsAtPath: destinationPath] == NO )
+    {
+        result                      = [fileManager copyItemAtPath: sourcePath toPath:destinationPath error: &error];
+        XCTAssertNil( error, @"the result's error should be nil" );
+        XCTAssertTrue( result, @"method's result should be true." );
+    }
+    
+    
+    //  for zipped file type.
+    //  data source.
+    sourcePath                      = [bundleResourcePath stringByAppendingPathComponent: @"Tester/Resources.zip"];
+    XCTAssertNotNil( sourcePath, @"the bundle's path should not be nil" );
+    XCTAssertTrue( [fileManager fileExistsAtPath: sourcePath], @"method's result should be true." );
+    
+    //  data destination.
+    destinationPath                 = TDGetPathForDirectories( TDDocumentDirectory, @"ResourcesCopy", @"zip", @"Tester",  NO );
+    XCTAssertNotNil( destinationPath, @"the bundle's path should not b nil" );
+    
+    result                          = NO;
+    error                           = nil;
+    if ( [fileManager fileExistsAtPath: destinationPath] == NO )
+    {
+        result                      = [fileManager copyItemAtPath: sourcePath toPath:destinationPath error: &error];
+        XCTAssertNil( error, @"the result's error should be nil" );
+        XCTAssertTrue( result, @"method's result should be true." );
+    }
 }
 
 //  ------------------------------------------------------------------------------------------------
@@ -148,7 +208,7 @@
     subpath                         = ( ( nil == prefixDir ) ? @"Resources" : [NSString stringWithFormat: @"%@/Resources", prefixDir] );
     XCTAssertNotNil( subpath, @"the sub path should not be nil" );
     data                            = [resourceManager data: @"README" ofType: @"md" inDirectory: subpath];
-    XCTAssertNotNil( resourceManager, @"NSData object's data should not be nil" );
+    XCTAssertNotNil( data, @"NSData object's data should not be nil" );
     
     //  get json data.
     container                       = [resourceManager JSON: @"package" ofType: @"json" inDirectory: subpath encoding: NSUTF8StringEncoding];
@@ -237,6 +297,15 @@
     //  get data
     [self                           getData: @"Tester" ];
     [self                           getDataWith: TDResourceManageSourceTypeDefault and: @"Tester"];
+    
+    //  change directory
+    [resourceManager                changeDirectory: TDDocumentDirectory];
+    
+    NSData                        * data;
+    
+    data                            = [resourceManager data: @"LICENSE" ofType: nil inDirectory: @"Tester/ResourcesCopy"];
+    XCTAssertNotNil( data, @"NSData object's data should not be nil" );
+    
 }
 
 //  ------------------------------------------------------------------------------------------------
@@ -255,7 +324,15 @@
     [resourceManager                setLocalizedStringTable: @"JSQMessages"];
     XCTAssertNotNil( [resourceManager localizedStringForKey: @"new_message"] );
     XCTAssertNotEqualObjects( [resourceManager localizedStringForKey: @"new_message"], @"new_message");
-        
+    
+    //  change assets bundle.
+    XCTAssertTrue( [resourceManager changeAssetsBundle: @"Tester/JSQMACopy.bundle" with: [self class]], @"method's result should be true." );
+
+    NSData                        * data;
+    
+    data                            = [resourceManager data: @"index" ofType: @"html" inDirectory: @"Resources"];
+    XCTAssertNotNil( data, @"NSData object's data should not be nil" );
+    
 }
 
 //  ------------------------------------------------------------------------------------------------
@@ -280,6 +357,16 @@
     //  get data
     [self                           getData: nil];
     [self                           getDataWith: TDResourceManageSourceTypeInZipped and: nil];
+    
+    //  change zipped file.
+    fullPath                        = TDGetPathForDirectories( TDDocumentDirectory, @"ResourcesCopy", @"zip", @"Tester",  YES );
+    XCTAssertNotNil( fullPath, @"the bundle's path should not b nil" );
+    XCTAssertTrue( [resourceManager changeZippedFile: fullPath with: nil], @"method's result should be true." );
+    
+    UIImage                        * image;
+    
+    image                           = [resourceManager image: @"ic_file_download_white_36dp" ofType: nil inDirectory: @"Resources/Images"];
+    XCTAssertNotNil( image, @"image object should not be nil" );
 }
 
 //  ------------------------------------------------------------------------------------------------

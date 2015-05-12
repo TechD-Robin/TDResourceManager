@@ -450,6 +450,7 @@
 }
 
 //  ------------------------------------------------------------------------------------------------
+#pragma mark method for change data source.
 //  ------------------------------------------------------------------------------------------------
 - ( BOOL ) changeDirectory:(TDGetPathDirectory)directory
 {
@@ -496,7 +497,6 @@
     }
     return [self initZippedFileEnvironment: fullPathName with: password];
 }
-
 
 //  ------------------------------------------------------------------------------------------------
 #pragma mark method for get resource data.
