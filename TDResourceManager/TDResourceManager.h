@@ -13,7 +13,7 @@
 #import "TDUtilities.h"
 
 
-//#define TD_UNSTABLE_DEVELOPING      DEBUG
+#define TD_UNSTABLE_DEVELOPING      DEBUG
 
 //  ------------------------------------------------------------------------------------------------
 #pragma mark declare enumeration.
@@ -94,6 +94,8 @@ typedef NS_ENUM( NSInteger, TDResourceManageSourceType ){
 + ( instancetype ) assetsBundleEnvironment:(NSString *)bundleName with:(Class)aClass;
 
 //  ------------------------------------------------------------------------------------------------
+#ifdef TD_UNSTABLE_DEVELOPING
+//  TODO: unused localizationName now.
 /**
  *  @brief create a singleton object of resource manager object of assets bundle type for localization.
  *  create a singleton object of resource manager object of assets bundle type for localization.
@@ -105,6 +107,7 @@ typedef NS_ENUM( NSInteger, TDResourceManageSourceType ){
  *  @return object|nil              manager object or nil.
  */
 + ( instancetype ) assetsBundleEnvironment:(NSString *)bundleName with:(Class)aClass forLocalization:(NSString *)localizationName;
+#endif
 
 //  ------------------------------------------------------------------------------------------------
 /**
@@ -147,6 +150,8 @@ typedef NS_ENUM( NSInteger, TDResourceManageSourceType ){
 - ( BOOL ) changeAssetsBundle:(NSString *)bundleName with:(Class)aClass;
 
 //  ------------------------------------------------------------------------------------------------
+#ifdef TD_UNSTABLE_DEVELOPING
+//  TODO: unused localizationName now.
 /**
  *  @brief change environment of resources manager to a new assests bundle.
  *  change environment of resources manager to a new assests bundle.
@@ -157,7 +162,9 @@ typedef NS_ENUM( NSInteger, TDResourceManageSourceType ){
  *
  *  @return YES|NO                  method success or failure.
  */
-- ( BOOL ) changeAssetsBundle:(NSString *)bundleName with:(Class)aClass forLocalization:(NSString *)localizationName;
+-
+( BOOL ) changeAssetsBundle:(NSString *)bundleName with:(Class)aClass forLocalization:(NSString *)localizationName;
+#endif
 
 //  ------------------------------------------------------------------------------------------------
 /**

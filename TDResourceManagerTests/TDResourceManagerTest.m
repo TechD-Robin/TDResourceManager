@@ -84,17 +84,20 @@
     XCTAssertNotNil( defaultManager, @"Resource manager should not be nil" );
 }
 
+#ifdef DEBUG
 //  ------------------------------------------------------------------------------------------------
 - ( void ) testResourceManagerInvalidInit
 {
     //  assets bundle.
     XCTAssertThrows( [TDResourceManager assetsBundleEnvironment: nil with: nil], @"Invalid init should throw" );
-    XCTAssertThrows( [TDResourceManager assetsBundleEnvironment: nil with: nil forLocalization: nil], @"Invalid init should throw" );
+    //XCTAssertThrows( [TDResourceManager assetsBundleEnvironment: nil with: nil forLocalization: nil], @"Invalid init should throw" );
+    XCTAssertThrows( [TDResourceManager assetsBundleEnvironment: nil with: nil], @"Invalid init should throw" );
     
     //  zipped.
     XCTAssertThrows( [TDResourceManager zippedFileEnvironment: nil with: nil], @"Invalid init should throw" );
 }
 
+#endif
 //  ------------------------------------------------------------------------------------------------
 //  ------------------------------------------------------------------------------------------------
 - ( void ) copyResourceData;
@@ -311,8 +314,10 @@
 //  ------------------------------------------------------------------------------------------------
 - ( void) testGetTypeAssetsBundleData
 {
-    resourceManager                 = [TDResourceManager assetsBundleEnvironment: @"Tester/JSQMATest.bundle" with: [self class] forLocalization: @"zh-Hant" ];
-    //resourceManager                 = [TDResourceManager assetsBundleEnvironment: @"Tester/JSQMATest.bundle" with: [self class]];
+    [self                           copyResourceData];
+    
+    //resourceManager                 = [TDResourceManager assetsBundleEnvironment: @"Tester/JSQMATest.bundle" with: [self class] forLocalization: @"zh-Hant" ];
+    resourceManager                 = [TDResourceManager assetsBundleEnvironment: @"Tester/JSQMATest.bundle" with: [self class]];
     
     XCTAssertNotNil( resourceManager, @"Resource manager should not be nil" );
     
