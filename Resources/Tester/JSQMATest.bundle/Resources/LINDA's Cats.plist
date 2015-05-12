@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!--
+===================================================================
+
+Sprite sheet file created for UIKit using TexturePacker
+http://www.codeandweb.com/texturepacker
+
+===================================================================
+$TexturePacker:SmartUpdate:cfea8a6f9250ee46384377c5eef4db2f:6a29a2e012dbd54468a32e870d0dec71:8529a33e50753a2e7517576235cb165c$
+-->
+<plist version="1.0">
+	<dict>
+		<key>frames</key>
+		<dict>
+
+                        <key>sticker_1_4196_xhdpi@2x</key>
+			<dict>
+				<key>x</key><real>0</real>
+				<key>y</key><real>0</real>
+				<key>w</key><real>120</real>
+				<key>h</key><real>120</real>
+				
+				
+			</dict>
+                        <key>sticker_1_4197_xhdpi@2x</key>
+			<dict>
+				<key>x</key><real>130</real>
+				<key>y</key><real>0</real>
+				<key>w</key><real>120</real>
+				<key>h</key><real>120</real>
+				
+				
+			</dict>
+                        <key>sticker_1_4198_xhdpi@2x</key>
+			<dict>
+				<key>x</key><real>260</real>
+				<key>y</key><real>0</real>
+				<key>w</key><real>120</real>
+				<key>h</key><real>120</real>
+				
+				
+			</dict>
+                        <key>sticker_1_4199_xhdpi@2x</key>
+			<dict>
+				<key>x</key><real>390</real>
+				<key>y</key><real>0</real>
+				<key>w</key><real>120</real>
+				<key>h</key><real>120</real>
+				
+				
+			</dict>
+                        <key>sticker_1_4200_xhdpi@2x</key>
+			<dict>
+				<key>x</key><real>0</real>
+				<key>y</key><real>130</real>
+				<key>w</key><real>120</real>
+				<key>h</key><real>120</real>
+				
+				
+			</dict>
+                        <key>sticker_1_4201_xhdpi@2x</key>
+			<dict>
+				<key>x</key><real>130</real>
+				<key>y</key><real>130</real>
+				<key>w</key><real>120</real>
+				<key>h</key><real>120</real>
+				
+				
+			</dict>
+                        <key>sticker_1_4202_xhdpi@2x</key>
+			<dict>
+				<key>x</key><real>260</real>
+				<key>y</key><real>130</real>
+				<key>w</key><real>120</real>
+				<key>h</key><real>120</real>
+				
+				
+			</dict>
+                        <key>sticker_1_4203_xhdpi@2x</key>
+			<dict>
+				<key>x</key><real>390</real>
+				<key>y</key><real>130</real>
+				<key>w</key><real>120</real>
+				<key>h</key><real>120</real>
+				
+				
+			</dict>
+                        <key>sticker_1_4204_xhdpi@2x</key>
+			<dict>
+				<key>x</key><real>0</real>
+				<key>y</key><real>260</real>
+				<key>w</key><real>120</real>
+				<key>h</key><real>120</real>
+				
+				
+			</dict>
+                        <key>sticker_1_4205_xhdpi@2x</key>
+			<dict>
+				<key>x</key><real>130</real>
+				<key>y</key><real>260</real>
+				<key>w</key><real>120</real>
+				<key>h</key><real>120</real>
+				
+				
+			</dict>
+                        <key>sticker_1_4206_xhdpi@2x</key>
+			<dict>
+				<key>x</key><real>260</real>
+				<key>y</key><real>260</real>
+				<key>w</key><real>120</real>
+				<key>h</key><real>120</real>
+				
+				
+			</dict>
+                        <key>sticker_1_4207_xhdpi@2x</key>
+			<dict>
+				<key>x</key><real>390</real>
+				<key>y</key><real>260</real>
+				<key>w</key><real>120</real>
+				<key>h</key><real>120</real>
+				
+				
+			</dict>
+                        <key>sticker_1_4208_xhdpi@2x</key>
+			<dict>
+				<key>x</key><real>0</real>
+				<key>y</key><real>390</real>
+				<key>w</key><real>120</real>
+				<key>h</key><real>120</real>
+				
+				
+			</dict>
+                        <key>sticker_1_4209_xhdpi@2x</key>
+			<dict>
+				<key>x</key><real>130</real>
+				<key>y</key><real>390</real>
+				<key>w</key><real>120</real>
+				<key>h</key><real>120</real>
+				
+				
+			</dict>
+                        <key>sticker_1_4210_xhdpi@2x</key>
+			<dict>
+				<key>x</key><real>260</real>
+				<key>y</key><real>390</real>
+				<key>w</key><real>120</real>
+				<key>h</key><real>120</real>
+				
+				
+			</dict>
+                        <key>sticker_1_4211_xhdpi@2x</key>
+			<dict>
+				<key>x</key><real>390</real>
+				<key>y</key><real>390</real>
+				<key>w</key><real>120</real>
+				<key>h</key><real>120</real>
+				
+				
+			</dict>
+                        <key>sticker_1_4212_xhdpi@2x</key>
+			<dict>
+				<key>x</key><real>0</real>
+				<key>y</key><real>520</real>
+				<key>w</key><real>120</real>
+				<key>h</key><real>120</real>
+				
+				
+			</dict>
+                        <key>sticker_1_4213_xhdpi@2x</key>
+			<dict>
+				<key>x</key><real>130</real>
+				<key>y</key><real>520</real>
+				<key>w</key><real>120</real>
+				<key>h</key><real>120</real>
+				
+				
+			</dict>
+                        <key>sticker_1_4214_xhdpi@2x</key>
+			<dict>
+				<key>x</key><real>260</real>
+				<key>y</key><real>520</real>
+				<key>w</key><real>120</real>
+				<key>h</key><real>120</real>
+				
+				
+			</dict>
+                        <key>sticker_1_4215_xhdpi@2x</key>
+			<dict>
+				<key>x</key><real>390</real>
+				<key>y</key><real>520</real>
+				<key>w</key><real>120</real>
+				<key>h</key><real>120</real>
+				
+				
+			</dict>
+                        <key>sticker_1_4216_xhdpi@2x</key>
+			<dict>
+				<key>x</key><real>0</real>
+				<key>y</key><real>650</real>
+				<key>w</key><real>120</real>
+				<key>h</key><real>120</real>
+				
+				
+			</dict>
+                        <key>sticker_1_4217_xhdpi@2x</key>
+			<dict>
+				<key>x</key><real>130</real>
+				<key>y</key><real>650</real>
+				<key>w</key><real>120</real>
+				<key>h</key><real>120</real>
+				
+				
+			</dict>
+                        <key>sticker_1_4218_xhdpi@2x</key>
+			<dict>
+				<key>x</key><real>260</real>
+				<key>y</key><real>650</real>
+				<key>w</key><real>120</real>
+				<key>h</key><real>120</real>
+				
+				
+			</dict>
+                        <key>sticker_1_4219_xhdpi@2x</key>
+			<dict>
+				<key>x</key><real>390</real>
+				<key>y</key><real>650</real>
+				<key>w</key><real>120</real>
+				<key>h</key><real>120</real>
+				
+				
+			</dict>
+		</dict>
+		<key>meta</key>
+		<dict>
+			<key>image</key>
+			<string>LINDA&#39;s Cats.png</string>
+			<key>width</key>
+			<integer>520</integer>
+			<key>height</key>
+			<integer>770</integer>
+		</dict>
+	</dict>
+</plist>
