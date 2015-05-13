@@ -18,14 +18,9 @@ Pod::Spec.new do |s|
 
   s.source_files = 'ARCMacros.h', 'TDResourceManager/*.{h,m,mm}'
 
-
-  #s.dependency    "AFNetworking",         "~> 2.5.2"
-  #s.dependency    "TDFoundation",         "~> 0.0.2"
-  #s.dependency    "Foundation+TechD",     "~> 0.0.1"
-
-  s.dependency    "Foundation+TechD",      "~> 0.1"
-  s.dependency    "TDFoundation",          "~> 0.1" 
-  s.dependency     "ZipArchive",           "~> 1.3.2"
+  s.dependency    "Foundation+TechD",     "~> 0.0.2"
+  s.dependency    "TDFoundation",         "~> 0.0.3" 
+  s.dependency    "fork_ZipArchive",      "~> 1.3.2"
 
 
 end
