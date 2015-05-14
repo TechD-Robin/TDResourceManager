@@ -54,14 +54,14 @@
     TDResourceManager             * defaultManager;
     
     //  default.
-    defaultManager                  = [TDResourceManager defaultEnvironment: TDResourcesDirectory];
+    defaultManager                  = [TDResourceManager defaultEnvironment: TDResourcesDirectory onSingleton: YES];
     XCTAssertNotNil( defaultManager, @"Resource manager should not be nil" );
     
     //  assets bundle.
-    defaultManager                  = [TDResourceManager assetsBundleEnvironment: @"Tester/JSQMATest.bundle" with: [self class]];
+    defaultManager                  = [TDResourceManager assetsBundleEnvironment: @"Tester/JSQMATest.bundle" with: [self class] onSingleton: YES];
     XCTAssertNotNil( defaultManager, @"Resource manager should not be nil" );
     
-    defaultManager                  = [TDResourceManager assetsBundleEnvironment: @"Tester/JSQMATest.bundle" with: [self class] forLocalization: @"zh-Hant" ];
+    defaultManager                  = [TDResourceManager assetsBundleEnvironment: @"Tester/JSQMATest.bundle" with: [self class] forLocalization: @"zh-Hant" onSingleton: YES];
     XCTAssertNotNil( defaultManager, @"Resource manager should not be nil" );
     
     //  zipped.
@@ -76,11 +76,11 @@
     
     fullPath                        = [bundleResourcePath stringByAppendingPathComponent: @"Tester/Resources.zip"];
     XCTAssertNotNil( fullPath, @"the bundle's path should not b nil" );
-    defaultManager                  = [TDResourceManager zippedFileEnvironment: fullPath with: nil];
+    defaultManager                  = [TDResourceManager zippedFileEnvironment: fullPath with: nil onSingleton: YES];
     XCTAssertNotNil( defaultManager, @"Resource manager should not be nil" );
 
     fullPath                        = [bundleResourcePath stringByAppendingPathComponent: @"Tester/ResourcesPasswd.zip"];
-    defaultManager                  = [TDResourceManager zippedFileEnvironment: fullPath with: @"tester"];
+    defaultManager                  = [TDResourceManager zippedFileEnvironment: fullPath with: @"tester" onSingleton: YES];
     XCTAssertNotNil( defaultManager, @"Resource manager should not be nil" );
 }
 
@@ -89,12 +89,18 @@
 - ( void ) testResourceManagerInvalidInit
 {
     //  assets bundle.
-    XCTAssertThrows( [TDResourceManager assetsBundleEnvironment: nil with: nil], @"Invalid init should throw" );
-    //XCTAssertThrows( [TDResourceManager assetsBundleEnvironment: nil with: nil forLocalization: nil], @"Invalid init should throw" );
-    XCTAssertThrows( [TDResourceManager assetsBundleEnvironment: nil with: nil], @"Invalid init should throw" );
+    XCTAssertThrows( [TDResourceManager assetsBundleEnvironment: nil with: nil onSingleton: YES], @"Invalid init should throw" );
+    XCTAssertThrows( [TDResourceManager assetsBundleEnvironment: nil with: nil forLocalization: nil onSingleton: YES], @"Invalid init should throw" );
+    XCTAssertThrows( [TDResourceManager assetsBundleEnvironment: nil with: nil onSingleton: YES], @"Invalid init should throw" );
+
+    XCTAssertThrows( [TDResourceManager assetsBundleEnvironment: nil with: nil onSingleton: NO], @"Invalid init should throw" );
+    XCTAssertThrows( [TDResourceManager assetsBundleEnvironment: nil with: nil forLocalization: nil onSingleton: NO], @"Invalid init should throw" );
+    XCTAssertThrows( [TDResourceManager assetsBundleEnvironment: nil with: nil onSingleton: NO], @"Invalid init should throw" );
     
     //  zipped.
-    XCTAssertThrows( [TDResourceManager zippedFileEnvironment: nil with: nil], @"Invalid init should throw" );
+    XCTAssertThrows( [TDResourceManager zippedFileEnvironment: nil with: nil onSingleton: YES], @"Invalid init should throw" );
+    
+    XCTAssertThrows( [TDResourceManager zippedFileEnvironment: nil with: nil onSingleton: NO], @"Invalid init should throw" );
 }
 
 #endif
@@ -294,8 +300,13 @@
 {
     [self                           copyResourceData];
     
-    resourceManager                  = [TDResourceManager defaultEnvironment: TDTemporaryDirectory];
+    resourceManager                  = [TDResourceManager defaultEnvironment: TDTemporaryDirectory onSingleton: NO];
     XCTAssertNotNil( resourceManager, @"Resource manager should not be nil" );
+    XCTAssertNotEqualObjects( resourceManager, [TDResourceManager defaultManager], @"both object should not be equaled" );
+    
+    resourceManager                  = [TDResourceManager defaultEnvironment: TDTemporaryDirectory onSingleton: YES];
+    XCTAssertNotNil( resourceManager, @"Resource manager should not be nil" );
+    XCTAssertEqualObjects( resourceManager, [TDResourceManager defaultManager], @"both object should be equaled" );
     
     //  get data
     [self                           getData: @"Tester" ];
@@ -316,10 +327,14 @@
 {
     [self                           copyResourceData];
     
-    //resourceManager                 = [TDResourceManager assetsBundleEnvironment: @"Tester/JSQMATest.bundle" with: [self class] forLocalization: @"zh-Hant" ];
-    resourceManager                 = [TDResourceManager assetsBundleEnvironment: @"Tester/JSQMATest.bundle" with: [self class]];
-    
+    //resourceManager                 = [TDResourceManager assetsBundleEnvironment: @"Tester/JSQMATest.bundle" with: [self class] forLocalization: @"zh-Hant" onSingleton: YES];
+    resourceManager                 = [TDResourceManager assetsBundleEnvironment: @"Tester/JSQMATest.bundle" with: [self class] onSingleton: NO];
     XCTAssertNotNil( resourceManager, @"Resource manager should not be nil" );
+    XCTAssertNotEqualObjects( resourceManager, [TDResourceManager defaultManager], @"both object should not be equaled" );
+    
+    resourceManager                 = [TDResourceManager assetsBundleEnvironment: @"Tester/JSQMATest.bundle" with: [self class] onSingleton: YES];
+    XCTAssertNotNil( resourceManager, @"Resource manager should not be nil" );
+    XCTAssertEqualObjects( resourceManager, [TDResourceManager defaultManager], @"both object should be equaled" );
     
     //  get data
     [self                           getData: nil];
@@ -355,9 +370,13 @@
     
     fullPath                        = [bundleResourcePath stringByAppendingPathComponent: @"Tester/Resources.zip"];
     XCTAssertNotNil( fullPath, @"the bundle's path should not b nil" );
-    resourceManager                 = [TDResourceManager zippedFileEnvironment: fullPath with: nil];
-    
+    resourceManager                 = [TDResourceManager zippedFileEnvironment: fullPath with: nil onSingleton: NO];
     XCTAssertNotNil( resourceManager, @"Resource manager should not be nil" );
+    XCTAssertNotEqualObjects( resourceManager, [TDResourceManager defaultManager], @"both object should not be equaled" );
+
+    resourceManager                 = [TDResourceManager zippedFileEnvironment: fullPath with: nil onSingleton: YES];
+    XCTAssertNotNil( resourceManager, @"Resource manager should not be nil" );
+    XCTAssertEqualObjects( resourceManager, [TDResourceManager defaultManager], @"both object should be equaled" );
     
     //  get data
     [self                           getData: nil];
@@ -389,7 +408,7 @@
     
     fullPath                        = [bundleResourcePath stringByAppendingPathComponent: @"Tester/ResourcesPasswd.zip"];
     XCTAssertNotNil( fullPath, @"the bundle's path should not b nil" );
-    resourceManager                 = [TDResourceManager zippedFileEnvironment: fullPath with: @"tester"];
+    resourceManager                 = [TDResourceManager zippedFileEnvironment: fullPath with: @"tester" onSingleton: YES];
     
     XCTAssertNotNil( resourceManager, @"Resource manager should not be nil" );
     

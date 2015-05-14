@@ -59,6 +59,10 @@ typedef NS_ENUM( NSInteger, TDResourceManageSourceType ){
 - (instancetype)init NS_UNAVAILABLE;
 
 //  ------------------------------------------------------------------------------------------------
+//  TODO : special release in ARC mode.
+- ( void ) Release;
+
+//  ------------------------------------------------------------------------------------------------
 // Returns the default singleton instance.
 /**
  *  @brief create a singleton object of resource manager or get the created.
@@ -72,54 +76,58 @@ typedef NS_ENUM( NSInteger, TDResourceManageSourceType ){
 
 //  ------------------------------------------------------------------------------------------------
 /**
- *  @brief create a singleton object of resource manager object of default type.
- *  create a singleton object of resource manager object of default type.
+ *  @brief create a object of resource manager object of default type.
+ *  create a object of resource manager object of default type.
  *
  *  @param directory                enumeration for directory.
+ *  @param singleton                create a singleton object or normal object.
  *
  *  @return object|nil              manager object or nil.
  */
-+ ( instancetype ) defaultEnvironment:(TDGetPathDirectory)directory;
++ ( instancetype ) defaultEnvironment:(TDGetPathDirectory)directory onSingleton:(BOOL)singleton;
 
 //  ------------------------------------------------------------------------------------------------
 /**
- *  @brief create a singleton object of resource manager object of assets bundle type.
- *  create a singleton object of resource manager object of assets bundle type.
+ *  @brief create a object of resource manager object of assets bundle type.
+ *  create a object of resource manager object of assets bundle type.
  *
  *  @param bundleName               a bundle name.
  *  @param aClass                   a class.(is view controller usually)
+ *  @param singleton                create a singleton object or normal object.
  *
  *  @return object|nil              manager object or nil.
  */
-+ ( instancetype ) assetsBundleEnvironment:(NSString *)bundleName with:(Class)aClass;
++ ( instancetype ) assetsBundleEnvironment:(NSString *)bundleName with:(Class)aClass onSingleton:(BOOL)singleton;
 
 //  ------------------------------------------------------------------------------------------------
 #ifdef TD_UNSTABLE_DEVELOPING
 //  TODO: unused localizationName now.
 /**
- *  @brief create a singleton object of resource manager object of assets bundle type for localization.
- *  create a singleton object of resource manager object of assets bundle type for localization.
+ *  @brief create a object of resource manager object of assets bundle type for localization.
+ *  create a object of resource manager object of assets bundle type for localization.
  *
  *  @param bundleName               a bundle name.
  *  @param aClass                   a class.(is view controller usually)
  *  @param localizationName         a locale identifier string.
+ *  @param singleton                create a singleton object or normal object.
  *
  *  @return object|nil              manager object or nil.
  */
-+ ( instancetype ) assetsBundleEnvironment:(NSString *)bundleName with:(Class)aClass forLocalization:(NSString *)localizationName;
++ ( instancetype ) assetsBundleEnvironment:(NSString *)bundleName with:(Class)aClass forLocalization:(NSString *)localizationName onSingleton:(BOOL)singleton;
 #endif
 
 //  ------------------------------------------------------------------------------------------------
 /**
- *  @brief create a singleton object of resource manager object of zipped file type.
- *  create a singleton object of resource manager object of zipped file type.
+ *  @brief create a object of resource manager object of zipped file type.
+ *  create a object of resource manager object of zipped file type.
  *
  *  @param fullPathName             zipped file name (full path).
  *  @param password                 password of zipped file.
+ *  @param singleton                create a singleton object or normal object.
  *
  *  @return object|nil              manager object or nil.
  */
-+ ( instancetype ) zippedFileEnvironment:(NSString *)fullPathName with:(NSString *)password;
++ ( instancetype ) zippedFileEnvironment:(NSString *)fullPathName with:(NSString *)password onSingleton:(BOOL)singleton;
 
 
 //  ------------------------------------------------------------------------------------------------
@@ -296,7 +304,7 @@ typedef NS_ENUM( NSInteger, TDResourceManageSourceType ){
                         fromData:(TDResourceManageSourceType)sourceType;
 
 //  ------------------------------------------------------------------------------------------------
-#pragma mark declare for assets bundle type.
+#pragma mark declare for get data of assets bundle type.
 //  ------------------------------------------------------------------------------------------------
 /**
  *  @brief set the table name of localized string.
@@ -316,6 +324,17 @@ typedef NS_ENUM( NSInteger, TDResourceManageSourceType ){
  *  @return string|nil              the localized string or nil.
  */
 - ( NSString * ) localizedStringForKey:(NSString *)aKey;
+
+//  ------------------------------------------------------------------------------------------------
+#pragma mark declare for get data of zipped file type.
+//  ------------------------------------------------------------------------------------------------
+/**
+ *  @brief get the container of zipped file.
+ *  get the container of zipped file.
+ *
+ *  @return container|nil           the container or nil.
+ */
+- (NSMutableDictionary *) unzipDataContainer;
 
 //  ------------------------------------------------------------------------------------------------
 

@@ -335,8 +335,46 @@
 //  ------------------------------------------------------------------------------------------------
 - ( void ) dealloc
 {
+    if ( nil != localizedStringTableName )
+    {
+        localizedStringTableName    = nil;
+    }
     
+    if ( nil != assetLocalizationName )
+    {
+        assetLocalizationName       = nil;
+    }
+    
+    if ( nil != assetsBundle )
+    {
+        assetsBundle                = nil;
+    }
+    
+    if ( nil != unzipDataContainer )
+    {
+        [unzipDataContainer         removeAllObjects];
+        SAFE_ARC_RELEASE( unzipDataContainer );
+        unzipDataContainer          = nil;
+    }
+    SAFE_ARC_SUPER_DEALLOC();
 }
+
+////  ------------------------------------------------------------------------------------------------
+//- ( void ) dealloc
+//{
+//    NSLog( @"" );
+//}
+//
+//- ( void ) Release
+//{
+////    [super                          Release];
+//    if ( nil != _defaultManager )
+//    {
+//        SAFE_ARC_RELEASE( _defaultManager );
+////        _defaultManager             = nil;
+//    }
+//}
+//
 
 //  ------------------------------------------------------------------------------------------------
 #pragma mark method for create the object.
@@ -351,7 +389,6 @@
     {
         _defaultManager             = [[self alloc] init];
     });
-    
     return _defaultManager;
 }
 
@@ -367,11 +404,11 @@
 }
 
 //  ------------------------------------------------------------------------------------------------
-+ ( instancetype ) defaultEnvironment:(TDGetPathDirectory)directory
++ ( instancetype ) defaultEnvironment:(TDGetPathDirectory)directory onSingleton:(BOOL)singleton
 {
     TDResourceManager             * manager;
     
-    manager                         = [TDResourceManager defaultManager];
+    manager                         = ( ( YES == singleton ) ? [[self class] defaultManager] : [[self  alloc] init] );
     NSParameterAssert( nil != manager );
     
     if ( [manager initDefaultEnvironment: directory] == NO )
@@ -398,17 +435,17 @@
 }
 
 //  ------------------------------------------------------------------------------------------------
-+ ( instancetype ) assetsBundleEnvironment:(NSString *)bundleName with:(Class)aClass
++ ( instancetype ) assetsBundleEnvironment:(NSString *)bundleName with:(Class)aClass onSingleton:(BOOL)singleton
 {
-    return [[self class] assetsBundleEnvironment: bundleName with: aClass forLocalization: nil];
+    return [[self class] assetsBundleEnvironment: bundleName with: aClass forLocalization: nil onSingleton: singleton];
 }
 
 //  ------------------------------------------------------------------------------------------------
-+ ( instancetype ) assetsBundleEnvironment:(NSString *)bundleName with:(Class)aClass forLocalization:(NSString *)localizationName
++ ( instancetype ) assetsBundleEnvironment:(NSString *)bundleName with:(Class)aClass forLocalization:(NSString *)localizationName onSingleton:(BOOL)singleton
 {
     TDResourceManager             * manager;
     
-    manager                         = [TDResourceManager defaultManager];
+    manager                         = ( ( YES == singleton ) ? [[self class] defaultManager] : [[self  alloc] init] );
     NSParameterAssert( nil != manager );
     if ( [manager initAssetsBundleEnvironment: bundleName with: aClass forLocalization: localizationName] == NO )
     {
@@ -436,11 +473,11 @@
 }
 
 //  ------------------------------------------------------------------------------------------------
-+ ( instancetype ) zippedFileEnvironment:(NSString *)fullPathName with:(NSString *)password
++ ( instancetype ) zippedFileEnvironment:(NSString *)fullPathName with:(NSString *)password onSingleton:(BOOL)singleton
 {
     TDResourceManager             * manager;
     
-    manager                         = [TDResourceManager defaultManager];
+    manager                         = ( ( YES == singleton ) ? [[self class] defaultManager] : [[self  alloc] init] );
     NSParameterAssert( nil != manager );
     if ( [manager initZippedFileEnvironment: fullPathName with: password] == NO )
     {
@@ -725,6 +762,7 @@
 }
 
 //  ------------------------------------------------------------------------------------------------
+#pragma mark method for get data of assets bundle type.
 //  ------------------------------------------------------------------------------------------------
 - ( void ) setLocalizedStringTable:(NSString *)tableName
 {
@@ -743,6 +781,14 @@
     NSParameterAssert( nil != assetsBundle );
     NSParameterAssert( nil != localizedStringTableName );
     return NSLocalizedStringFromTableInBundle( aKey,  localizedStringTableName, assetsBundle,  nil );
+}
+
+//  ------------------------------------------------------------------------------------------------
+#pragma mark method for get data of zipped file type.
+//  ------------------------------------------------------------------------------------------------
+- (NSMutableDictionary *) unzipDataContainer
+{
+    return unzipDataContainer;
 }
 
 //  ------------------------------------------------------------------------------------------------
