@@ -106,16 +106,44 @@
 //  ------------------------------------------------------------------------------------------------
 #pragma mark declare for check.
 //  ------------------------------------------------------------------------------------------------
+/**
+ *  @brief check the type of manager have be initiated or not.
+ *  check the type of manager  have be initiated or not.
+ *
+ *  @param sourceType               resource type.
+ *
+ *  @return YES|NO                  the type be initiated or not.
+ */
 - ( BOOL ) _CheckInitiatedState:(TDResourceManageSourceType)sourceType;
 
 //  ------------------------------------------------------------------------------------------------
 #pragma mark declare for load procedure.
 //  ------------------------------------------------------------------------------------------------
+/**
+ *  @brief procedure of unzip file.
+ *  procedure of unzip file.
+ *
+ *  @param fullPath                 zipped file name (full path).
+ *  @param password                 password of zipped file.
+ *
+ *  @return YES|NO                  method success or failure.
+ */
 - ( BOOL ) _UnzipFile:(NSString *)fullPath with:(NSString *)password;
 
 //  ------------------------------------------------------------------------------------------------
 #pragma mark declare for get.
 //  ------------------------------------------------------------------------------------------------
+/**
+ *  @brief get resource full path in resource manager.
+ *  get resource full path in resource manager.
+ *
+ *  @param name                     resource's file name.
+ *  @param ext                      file name's extension
+ *  @param subpath                  sub path.
+ *  @param checkFileExist           use this method to check file exist or not.
+ *
+ *  @return full path|nil           the file's full path or nil.
+ */
 - ( NSString * ) _GetResourcePath:(NSString *)name ofType:(NSString *)ext inDirectory:(NSString *)subpath withCheck:(BOOL)checkFileExist;
 
 //  ------------------------------------------------------------------------------------------------
