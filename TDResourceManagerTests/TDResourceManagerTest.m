@@ -415,6 +415,15 @@
     //  get data
     [self                           getData: nil];
     [self                           getDataWith: TDResourceManageSourceTypeInZipped and: nil];
+    
+    //  update zippped container.
+    BOOL                            result;
+    
+    fullPath                        = [bundleResourcePath stringByAppendingPathComponent: @"Tester/Resources.zip"];
+    XCTAssertNotNil( fullPath, @"the bundle's path should not b nil" );
+    result                          = [resourceManager updateZippedFileContainer: fullPath with: nil];
+    XCTAssertTrue( result, @"method's result should be true." );
+    
 }
 
 

@@ -60,7 +60,7 @@ typedef NS_ENUM( NSInteger, TDResourceManageSourceType ){
 
 //  ------------------------------------------------------------------------------------------------
 //  TODO : special release in ARC mode.
-- ( void ) Release;
+//.- ( void ) Release;
 
 //  ------------------------------------------------------------------------------------------------
 // Returns the default singleton instance.
@@ -177,7 +177,8 @@ typedef NS_ENUM( NSInteger, TDResourceManageSourceType ){
 //  ------------------------------------------------------------------------------------------------
 /**
  *  @brief change environment of resources manager to a new zipped file.
- *  change environment of resources manager to a new zipped file.
+ *  change environment of resources manager to a new zipped file;
+ *  this method will clean up original file contents from the object.
  *
  *  @param fullPathName             zipped file name (full path).
  *  @param password                 password of zipped file.
@@ -329,12 +330,24 @@ typedef NS_ENUM( NSInteger, TDResourceManageSourceType ){
 #pragma mark declare for get data of zipped file type.
 //  ------------------------------------------------------------------------------------------------
 /**
+ *  @brief unzipping another file then appending content of files into this object.
+ *  unzipping another file then appending content of files into this container.
+ *
+ *  @param fullPathName             zipped file name (full path).
+ *  @param password                 password of zipped file.
+ *
+ *  @return YES|NO                  method success or failure.
+ */
+- ( BOOL ) updateZippedFileContainer:(NSString *)fullPathName with:(NSString *)password;
+
+//  ------------------------------------------------------------------------------------------------
+/**
  *  @brief get the container of zipped file.
  *  get the container of zipped file.
  *
  *  @return container|nil           the container or nil.
  */
-- (NSMutableDictionary *) unzipDataContainer;
+- ( NSMutableDictionary * ) unzipDataContainer;
 
 //  ------------------------------------------------------------------------------------------------
 

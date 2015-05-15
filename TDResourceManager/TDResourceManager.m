@@ -814,7 +814,13 @@
 //  ------------------------------------------------------------------------------------------------
 #pragma mark method for get data of zipped file type.
 //  ------------------------------------------------------------------------------------------------
-- (NSMutableDictionary *) unzipDataContainer
+- ( BOOL ) updateZippedFileContainer:(NSString *)fullPathName with:(NSString *)password
+{
+    return [self _UnzipFile: fullPathName with: password];
+}
+
+//  ------------------------------------------------------------------------------------------------
+- ( NSMutableDictionary * ) unzipDataContainer
 {
     return unzipDataContainer;
 }
