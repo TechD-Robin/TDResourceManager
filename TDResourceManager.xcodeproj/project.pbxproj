@@ -32,6 +32,10 @@
 		2A187D291AED197900B457FD /* TDTexturePackerXMLReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A187D201AED197900B457FD /* TDTexturePackerXMLReader.m */; };
 		2A187D2A1AED197900B457FD /* TDUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A187D221AED197900B457FD /* TDUtilities.m */; };
 		2A187D2B1AED197900B457FD /* TDUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A187D221AED197900B457FD /* TDUtilities.m */; };
+		2A3CC9D81B0C921200EC0820 /* TDConfigureData.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A3CC9D71B0C921200EC0820 /* TDConfigureData.m */; };
+		2A3CC9D91B0C921200EC0820 /* TDConfigureData.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A3CC9D71B0C921200EC0820 /* TDConfigureData.m */; };
+		2A3CC9DA1B0C921200EC0820 /* TDConfigureData.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A3CC9D71B0C921200EC0820 /* TDConfigureData.m */; };
+		2A3CC9DC1B0CA38B00EC0820 /* TDConfigureDataTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A3CC9DB1B0CA38B00EC0820 /* TDConfigureDataTest.m */; };
 		2A4358681AFE35F1001AEF63 /* NSPropertyListSerialization+TechD.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A4358671AFE35F1001AEF63 /* NSPropertyListSerialization+TechD.m */; };
 		2A4358691AFE35F1001AEF63 /* NSPropertyListSerialization+TechD.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A4358671AFE35F1001AEF63 /* NSPropertyListSerialization+TechD.m */; };
 		2A43586A1AFE35F1001AEF63 /* NSPropertyListSerialization+TechD.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A4358671AFE35F1001AEF63 /* NSPropertyListSerialization+TechD.m */; };
@@ -126,6 +130,9 @@
 		2A187D201AED197900B457FD /* TDTexturePackerXMLReader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDTexturePackerXMLReader.m; sourceTree = "<group>"; };
 		2A187D211AED197900B457FD /* TDUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDUtilities.h; sourceTree = "<group>"; };
 		2A187D221AED197900B457FD /* TDUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDUtilities.m; sourceTree = "<group>"; };
+		2A3CC9D61B0C921200EC0820 /* TDConfigureData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDConfigureData.h; sourceTree = "<group>"; };
+		2A3CC9D71B0C921200EC0820 /* TDConfigureData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDConfigureData.m; sourceTree = "<group>"; };
+		2A3CC9DB1B0CA38B00EC0820 /* TDConfigureDataTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDConfigureDataTest.m; sourceTree = "<group>"; };
 		2A4358661AFE35F1001AEF63 /* NSPropertyListSerialization+TechD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSPropertyListSerialization+TechD.h"; sourceTree = "<group>"; };
 		2A4358671AFE35F1001AEF63 /* NSPropertyListSerialization+TechD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSPropertyListSerialization+TechD.m"; sourceTree = "<group>"; };
 		2AC9DD551AEBB1950012B4FA /* libTDResourceManager.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libTDResourceManager.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -307,6 +314,8 @@
 			children = (
 				2AC9DD581AEBB1950012B4FA /* TDResourceManager.h */,
 				2AC9DD5A1AEBB1950012B4FA /* TDResourceManager.m */,
+				2A3CC9D61B0C921200EC0820 /* TDConfigureData.h */,
+				2A3CC9D71B0C921200EC0820 /* TDConfigureData.m */,
 			);
 			path = TDResourceManager;
 			sourceTree = "<group>";
@@ -316,6 +325,7 @@
 			children = (
 				2AC9DD651AEBB1950012B4FA /* Supporting Files */,
 				2AE19FC71AF0F3C50060D44F /* TDResourceManagerTest.m */,
+				2A3CC9DB1B0CA38B00EC0820 /* TDConfigureDataTest.m */,
 			);
 			path = TDResourceManagerTests;
 			sourceTree = "<group>";
@@ -530,6 +540,7 @@
 				2A187D261AED197900B457FD /* TDJSONReader.m in Sources */,
 				2A187CFA1AECF24000B457FD /* zip.c in Sources */,
 				2A187CFE1AECF24000B457FD /* ZipArchive.m in Sources */,
+				2A3CC9D81B0C921200EC0820 /* TDConfigureData.m in Sources */,
 				2A187CF61AECF24000B457FD /* mztools.c in Sources */,
 				2A187CE81AECF24000B457FD /* NSBundle+TechD.m in Sources */,
 				2A187D2A1AED197900B457FD /* TDUtilities.m in Sources */,
@@ -545,12 +556,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2A3CC9D91B0C921200EC0820 /* TDConfigureData.m in Sources */,
 				2AE19FD21AF132180060D44F /* ZipArchive.m in Sources */,
 				2AE19FCE1AF131F70060D44F /* ioapi.c in Sources */,
 				2AE19FCF1AF131F70060D44F /* mztools.c in Sources */,
 				2AE19FD01AF131F70060D44F /* unzip.c in Sources */,
 				2AE19FD11AF131F70060D44F /* zip.c in Sources */,
 				2AE19FCA1AF0FA6F0060D44F /* NSDate+TechD.m in Sources */,
+				2A3CC9DC1B0CA38B00EC0820 /* TDConfigureDataTest.m in Sources */,
 				2AE19FCB1AF0FA6F0060D44F /* NSBundle+TechD.m in Sources */,
 				2AE19FCC1AF0FA6F0060D44F /* NSString+TechD.m in Sources */,
 				2AE19FCD1AF0FA6F0060D44F /* NSJSONSerialization+TechD.m in Sources */,
@@ -569,6 +582,7 @@
 				2AC9DD7E1AEBB2710012B4FA /* ViewController.m in Sources */,
 				2A187CE91AECF24000B457FD /* NSBundle+TechD.m in Sources */,
 				2A187D291AED197900B457FD /* TDTexturePackerXMLReader.m in Sources */,
+				2A3CC9DA1B0C921200EC0820 /* TDConfigureData.m in Sources */,
 				2AC9DD7B1AEBB2710012B4FA /* AppDelegate.m in Sources */,
 				2A187CF71AECF24000B457FD /* mztools.c in Sources */,
 				2AC9DD781AEBB2710012B4FA /* main.m in Sources */,
