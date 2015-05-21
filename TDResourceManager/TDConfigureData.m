@@ -74,14 +74,16 @@
  *  get a zipped file's full path with check the state of update.
  *
  *  @param filename                 zipped file name (without Extension part).
+ *  @param extension                extension port of filename.(sub filename)
  *  @param directory                enumeration for directory.
  *  @param subpath                  resource's sub directory name of configure
  *  @param updateFile               pointer of extensioin result of method, to express file exist is update or default.
  *
  *  @return full path|nil           the file's full path or nil.
  */
-+ ( NSString *) _GetZippedFileFullPath:(NSString *)filename forDirectories:(TDGetPathDirectory) directory inDirectory:(NSString *)subpath
-                              isUpdate:(BOOL *)updateFile;
++ ( NSString *) _GetFileFullPath:(NSString *)filename extension:(NSString *)extension
+                  forDirectories:(TDGetPathDirectory) directory inDirectory:(NSString *)subpath
+                        isUpdate:(BOOL *)updateFile;
 
 //  ------------------------------------------------------------------------------------------------
 #pragma mark declare for json data.
@@ -158,13 +160,12 @@
 }
 
 //  ------------------------------------------------------------------------------------------------
-+ ( NSString *) _GetZippedFileFullPath:(NSString *)filename forDirectories:(TDGetPathDirectory) directory inDirectory:(NSString *)subpath
-                              isUpdate:(BOOL *)updateFile
++ ( NSString *) _GetFileFullPath:(NSString *)filename extension:(NSString *)extension
+                  forDirectories:(TDGetPathDirectory) directory inDirectory:(NSString *)subpath
+                        isUpdate:(BOOL *)updateFile
 {
-    NSString                      * zipFileExtension;
     NSArray                       * fileSeparated;
     
-    zipFileExtension                = @"zip";
     fileSeparated                   = [filename componentsSeparatedByString: @"."];
     //  check file name for appended timpstamp.
     if ( ( [fileSeparated count] >= 2 ) && ( [[filename pathExtension] isNumeric] == YES ) )
@@ -173,9 +174,9 @@
         {
             *updateFile             = YES;
         }
-        zipFileExtension            = nil;
+        extension                   = nil;
     }
-    return TDGetPathForDirectories( directory, filename, zipFileExtension, subpath, YES );
+    return TDGetPathForDirectories( directory, filename, extension, subpath, YES );
 }
 
 //  ------------------------------------------------------------------------------------------------
@@ -401,7 +402,7 @@
     NSString                      * filePath;
     
     isUpdate                        = NO;
-    filePath                        = [[self class] _GetZippedFileFullPath: zippedFilename forDirectories: directory inDirectory: subpath isUpdate: &isUpdate];
+    filePath                        = [[self class] _GetFileFullPath: zippedFilename extension: @"zip" forDirectories: directory inDirectory: subpath isUpdate: &isUpdate];
     if ( nil == filePath )
     {
         NSLog( @"file %s no exist.", [filePath UTF8String] );
@@ -478,7 +479,7 @@
     NSString                      * filePath;
     
     isUpdate                        = NO;
-    filePath                        = [[self class] _GetZippedFileFullPath: zippedFilename forDirectories: directory inDirectory: subpath isUpdate: &isUpdate];
+    filePath                        = [[self class] _GetFileFullPath: zippedFilename extension: @"zip" forDirectories: directory inDirectory: subpath isUpdate: &isUpdate];
     if ( nil == filePath )
     {
         NSLog( @"file %s no exist.", [filePath UTF8String] );
