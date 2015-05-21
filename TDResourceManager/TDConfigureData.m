@@ -440,10 +440,8 @@
     
     TDConfigureData               * configureData;
     
-//    NSString                      * filename;
     NSArray                       * fileSeparated;
     
-//    filename                        = [fullPath lastPathComponent];
     fileSeparated                   = [[filename lastPathComponent] componentsSeparatedByString: @"."];
     if ( ( [fileSeparated count] >= 2 ) && ( [[filename pathExtension] isNumeric] == YES ) )
     {
@@ -494,6 +492,39 @@
     [self                           _SetPrefixDirectory: ( ( nil == prefix ) ? @"" : prefix ) ];
     
     if ( YES == isUpdate )
+    {
+        filename                    = [filename stringByDeletingPathExtension];
+    }
+    
+    if ( [self _GetConfigureJsonData: filename configure: rootKey with: updateKey] == NO )
+    {
+        NSLog( @"get configure data has warning. ");
+        return NO;
+    }
+    
+    return YES;
+}
+
+//  ------------------------------------------------------------------------------------------------
+- ( BOOL ) updateConfigureData:(NSString *)filename with:(NSString *)rootKey and:(NSString *)updateKey
+                          from:(NSString *)zippedFullPath
+                  inZippedPath:(NSString *)prefix with:(NSString *)password
+{
+    NSParameterAssert( nil != filename );
+    NSParameterAssert( nil != zippedFullPath );
+    
+    if ( [self updateZippedFileContainer: zippedFullPath with: password] == NO )
+    {
+        NSLog( @"update zipped file container failed." );
+        return NO;
+    }
+    [self                           _SetPrefixDirectory: ( ( nil == prefix ) ? @"" : prefix ) ];
+    
+    
+    NSArray                       * fileSeparated;
+    
+    fileSeparated                   = [[filename lastPathComponent] componentsSeparatedByString: @"."];
+    if ( ( [fileSeparated count] >= 2 ) && ( [[filename pathExtension] isNumeric] == YES ) )
     {
         filename                    = [filename stringByDeletingPathExtension];
     }

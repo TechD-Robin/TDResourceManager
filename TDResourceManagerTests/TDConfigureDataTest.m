@@ -139,6 +139,22 @@
     XCTAssertNotNil( [configureData configureData], @"configure Data container should not be nil" );
     NSLog( @"container : %@", [configureData configureData] );
     
+    NSString                      * fullPath;
+    NSBundle                      * bundle;
+    NSString                      * bundleResourcePath;
+    
+    bundle                          = [NSBundle bundleForClass: [self class]];
+    XCTAssertNotNil( bundle, @"the bundle should not b nil" );
+    bundleResourcePath              = [bundle resourcePath];
+    XCTAssertNotNil( bundleResourcePath, @"the bundle's path should not b nil" );
+    
+    
+    fullPath                        = [bundleResourcePath stringByAppendingPathComponent: @"Tester/Resources.zip"];
+    result                          = [configureData updateConfigureData: @"StickerLibraryTabUpdate" with: @"Tab" and: @"Name"
+                                                                    from: fullPath inZippedPath: @"Resources" with: nil];
+    XCTAssertTrue( result, @"method's result should be true." );
+    
+    
 }
 
 //  ------------------------------------------------------------------------------------------------

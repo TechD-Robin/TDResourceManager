@@ -85,7 +85,27 @@
                   inZippedPath:(NSString *)prefix with:(NSString *)password;
 
 //  ------------------------------------------------------------------------------------------------
+/**
+ *  @brief update data for the Configure Data object and configure data.
+ *  update data for the Configure Data object and configure data.
+ *
+ *  @param filename                 a filename of update's configure data.
+ *  @param rootKey                  key of root of configure file.
+ *  @param updateKey                key for update data.
+ *  @param zippedFullPath           zipped file name (full path).
+ *  @param prefix                   prefix path name in zipped file.
+ *  @param password                 password of zipped file.
+ *
+ *  @return YES|NO                  method success or failure.
+ */
+- ( BOOL ) updateConfigureData:(NSString *)filename with:(NSString *)rootKey and:(NSString *)updateKey
+                          from:(NSString *)zippedFullPath
+                  inZippedPath:(NSString *)prefix with:(NSString *)password;
+
+
+//  ------------------------------------------------------------------------------------------------
 //  --------------------------------
+
 
 
 //  ------------------------------------------------------------------------------------------------
