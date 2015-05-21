@@ -70,10 +70,10 @@
 
 //  ------------------------------------------------------------------------------------------------
 /**
- *  @brief get a zipped file's full path with check the state of update.
- *  get a zipped file's full path with check the state of update.
+ *  @brief get a file's full path with check the state of update.
+ *  get a file's full path with check the state of update.
  *
- *  @param filename                 zipped file name (without Extension part).
+ *  @param filename                 file name (without Extension part).
  *  @param extension                extension port of filename.(sub filename)
  *  @param directory                enumeration for directory.
  *  @param subpath                  resource's sub directory name of configure
