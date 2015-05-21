@@ -489,6 +489,31 @@
 
 //  ------------------------------------------------------------------------------------------------
 + ( instancetype ) loadConfigureData:(NSString *)filename with:(NSString *)rootKey encoding:(NSStringEncoding)encode
+                                from:(NSString *)assetsBundleName with:(Class)aClass
+                         inDirectory:(NSString *)subpath onSingleton:(BOOL)singleton
+{
+    NSParameterAssert( nil != filename );
+    NSParameterAssert( nil != assetsBundleName );
+    NSParameterAssert( nil != aClass );
+    
+    TDConfigureData               * configureData;
+    
+    configureData                   = [[self class] assetsBundleEnvironment: assetsBundleName with: aClass onSingleton: singleton];
+    NSParameterAssert( nil != configureData );
+    
+    [configureData                  _SetConfigureFileEncode: encode];
+    [configureData                  _SetPrefixDirectory: ( ( nil == subpath ) ? @"" : subpath ) ];
+    if ( [configureData _GetConfigureJsonData: filename configure: rootKey with: nil] == NO )
+    {
+        NSLog( @"get configure data has warning. ");
+        return configureData;
+    }
+    
+    return configureData;
+}
+
+//  ------------------------------------------------------------------------------------------------
++ ( instancetype ) loadConfigureData:(NSString *)filename with:(NSString *)rootKey encoding:(NSStringEncoding)encode
                                 from:(NSString *)zippedFilename forDirectories:(TDGetPathDirectory) directory inDirectory:(NSString *)subpath
                         inZippedPath:(NSString *)prefix with:(NSString *)password onSingleton:(BOOL)singleton
 {
@@ -551,6 +576,8 @@
 
 //  --------------------------------
 //  ------------------------------------------------------------------------------------------------
+#pragma mark method for update the object.
+//  ------------------------------------------------------------------------------------------------
 - ( BOOL ) updateConfigureData:(NSString *)filename with:(NSString *)rootKey and:(NSString *)updateKey encoding:(NSStringEncoding)encode
                           from:(TDGetPathDirectory)defaultDirectory inDirectory:(NSString *)subpath
 {
@@ -562,6 +589,32 @@
         NSLog( @"update configure data have error of change Directory." );
         return NO;
     }
+    
+    [self                           _SetConfigureFileEncode: encode];
+    [self                           _SetPrefixDirectory: ( ( nil == subpath ) ? @"" : subpath ) ];
+    if ( [self _GetConfigureJsonData: filename configure: rootKey with: updateKey] == NO )
+    {
+        NSLog( @"get configure data has warning. ");
+        return NO;
+    }
+    
+    return YES;
+}
+
+//  ------------------------------------------------------------------------------------------------
+- ( BOOL ) updateConfigureData:(NSString *)filename with:(NSString *)rootKey and:(NSString *)updateKey encoding:(NSStringEncoding)encode
+                          from:(NSString *)assetsBundleName with:(Class)aClass inDirectory:(NSString *)subpath
+{
+    NSParameterAssert( nil != filename );
+    NSParameterAssert( nil != assetsBundleName );
+    NSParameterAssert( nil != aClass );
+
+    if ( [self changeAssetsBundle: assetsBundleName with: aClass] == NO )
+    {
+        NSLog( @"update configure data have error of change Assets Bundle." );
+        return NO;
+    }
+    
     
     [self                           _SetConfigureFileEncode: encode];
     [self                           _SetPrefixDirectory: ( ( nil == subpath ) ? @"" : subpath ) ];

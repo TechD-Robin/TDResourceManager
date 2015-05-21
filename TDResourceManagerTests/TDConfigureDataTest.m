@@ -101,6 +101,28 @@
 }
 
 //  ------------------------------------------------------------------------------------------------
+- ( void ) testGetConfigureFromAssetsBundle
+{
+    [self                           copyResourceData];
+    
+    configureData                   = [TDConfigureData loadConfigureData: @"StickerLibraryTabDefault" with: @"Tab" encoding: NSUTF8StringEncoding
+                                                                    from: @"Tester/JSQMATest.bundle" with: [self class] inDirectory: @"Resources" onSingleton: NO];
+    XCTAssertNotNil( configureData, @"Resource manager should not be nil" );
+    
+    XCTAssertNotNil( [configureData configureData], @"configure Data container should not be nil" );
+    NSLog( @"container : %@", [configureData configureData] );
+    
+    BOOL                            result;
+    
+    result                          = [configureData updateConfigureData: @"StickerLibraryTabUpdate" with: @"Tab" and: @"Name" encoding: NSUTF8StringEncoding
+                                                                    from: @"Tester/JSQMATest.bundle" with: [self class] inDirectory: @"Resources"];
+    XCTAssertTrue( result, @"method's result should be true." );
+    XCTAssertNotNil( [configureData configureData], @"configure Data container should not be nil" );
+    NSLog( @"container : %@", [configureData configureData] );
+    
+}
+
+//  ------------------------------------------------------------------------------------------------
 - ( void ) testGetConfigureFromZippedFullPath
 {
     [self                           copyResourceData];
