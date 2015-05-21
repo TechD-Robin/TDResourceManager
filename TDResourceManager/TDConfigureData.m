@@ -277,7 +277,10 @@
     }
     
     //  after get the configure, remove the data from container. (for release memory.)
-    [[self                          unzipDataContainer] removeObjectForKey: key];
+    if ( [self currentEnvironment] == TDResourceManageSourceTypeInZipped )
+    {
+        [[self                      unzipDataContainer] removeObjectForKey: key];
+    }
     
     SAFE_ARC_RELEASE( json );
     json                            = nil;

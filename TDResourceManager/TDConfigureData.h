@@ -27,6 +27,9 @@
 //  ------------------------------------------------------------------------------------------------
 #pragma mark declare for create the object.
 //  ------------------------------------------------------------------------------------------------
+- (instancetype)init NS_UNAVAILABLE;
+
+//  ------------------------------------------------------------------------------------------------
 /**
  *  @brief create a Configure Data object and loaded configure data from default environment into a container.
  *  create a Configure Data object and loaded configure data from default environment into a container.
