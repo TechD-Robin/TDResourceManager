@@ -81,22 +81,22 @@
  */
 + ( BOOL ) _IsUpdateFileName:(NSString *)filename;
 
-//  ------------------------------------------------------------------------------------------------
-/**
- *  @brief get a file's full path with check the state of update.
- *  get a file's full path with check the state of update.
- *
- *  @param filename                 file name (without Extension part).
- *  @param extension                extension port of filename.(sub filename)
- *  @param directory                enumeration for directory.
- *  @param subpath                  resource's sub directory name of configure
- *  @param updateFile               pointer of extensioin result of method, to express file exist is update or default.
- *
- *  @return full path|nil           the file's full path or nil.
- */
-+ ( NSString *) _GetFileFullPath:(NSString *)filename extension:(NSString *)extension
-                  forDirectories:(TDGetPathDirectory) directory inDirectory:(NSString *)subpath
-                        isUpdate:(BOOL *)updateFile;
+////  ------------------------------------------------------------------------------------------------
+///**
+// *  @brief get a file's full path with check the state of update.
+// *  get a file's full path with check the state of update.
+// *
+// *  @param filename                 file name (without Extension part).
+// *  @param extension                extension port of filename.(sub filename)
+// *  @param directory                enumeration for directory.
+// *  @param subpath                  resource's sub directory name of configure
+// *  @param updateFile               pointer of extensioin result of method, to express file exist is update or default.
+// *
+// *  @return full path|nil           the file's full path or nil.
+// */
+//+ ( NSString *) _GetFileFullPath:(NSString *)filename extension:(NSString *)extension
+//                  forDirectories:(TDGetPathDirectory) directory inDirectory:(NSString *)subpath
+//                        isUpdate:(BOOL *)updateFile;
 
 //  ------------------------------------------------------------------------------------------------
 #pragma mark declare for json data.
@@ -193,25 +193,25 @@
     return NO;
 }
 
-//  ------------------------------------------------------------------------------------------------
-+ ( NSString *) _GetFileFullPath:(NSString *)filename extension:(NSString *)extension
-                  forDirectories:(TDGetPathDirectory) directory inDirectory:(NSString *)subpath
-                        isUpdate:(BOOL *)updateFile
-{
-    NSArray                       * fileSeparated;
-    
-    fileSeparated                   = [filename componentsSeparatedByString: @"."];
-    //  check file name for appended timpstamp.
-    if ( ( [fileSeparated count] >= 2 ) && ( [[filename pathExtension] isNumeric] == YES ) )
-    {
-        if ( NULL != updateFile )
-        {
-            *updateFile             = YES;
-        }
-        extension                   = nil;
-    }
-    return TDGetPathForDirectories( directory, filename, extension, subpath, YES );
-}
+////  ------------------------------------------------------------------------------------------------
+//+ ( NSString *) _GetFileFullPath:(NSString *)filename extension:(NSString *)extension
+//                  forDirectories:(TDGetPathDirectory) directory inDirectory:(NSString *)subpath
+//                        isUpdate:(BOOL *)updateFile
+//{
+//    NSArray                       * fileSeparated;
+//    
+//    fileSeparated                   = [filename componentsSeparatedByString: @"."];
+//    //  check file name for appended timpstamp.
+//    if ( ( [fileSeparated count] >= 2 ) && ( [[filename pathExtension] isNumeric] == YES ) )
+//    {
+//        if ( NULL != updateFile )
+//        {
+//            *updateFile             = YES;
+//        }
+//        extension                   = nil;
+//    }
+//    return TDGetPathForDirectories( directory, filename, extension, subpath, YES );
+//}
 
 //  ------------------------------------------------------------------------------------------------
 #pragma mark method for json data.
@@ -229,6 +229,11 @@
     
     json                            = nil;
     jsonParsingError                = nil;
+    if ( [[self class] _IsUpdateFileName: filename] == YES )
+    {
+        filename                    = [filename stringByDeletingPathExtension];
+    }
+    
     key                             = [NSString stringWithFormat: @"%s/%s.json", [prefixDirectory UTF8String], [filename UTF8String]];
     json                            = [self JSON: filename ofType: @"json" inDirectory: prefixDirectory encoding: NSUTF8StringEncoding];
     if ( nil == json )
@@ -435,11 +440,6 @@
     configureData                   = [[self class] defaultEnvironment: defaultDirectory onSingleton: singleton];
     NSParameterAssert( nil != configureData );
     
-    if ( [[self class] _IsUpdateFileName: filename] == YES )
-    {
-        filename                    = [filename stringByDeletingPathExtension];
-    }
-    
     [configureData                  _SetPrefixDirectory: ( ( nil == subpath ) ? @"" : subpath ) ];
     if ( [configureData _GetConfigureJsonData: filename configure: rootKey with: nil] == NO )
     {
@@ -459,11 +459,9 @@
     NSParameterAssert( nil != zippedFilename );
     
     TDConfigureData               * configureData;
-    BOOL                            isUpdate;
     NSString                      * filePath;
     
-    isUpdate                        = NO;
-    filePath                        = [[self class] _GetFileFullPath: zippedFilename extension: @"zip" forDirectories: directory inDirectory: subpath isUpdate: &isUpdate];
+    filePath                        = TDGetPathForDirectories( directory, zippedFilename, @"zip", subpath, YES );
     if ( nil == filePath )
     {
         NSLog( @"file %s no exist.", [filePath UTF8String] );
@@ -474,11 +472,6 @@
     if ( nil == configureData )
     {
         return nil;
-    }
-    
-    if ( YES == isUpdate )
-    {
-        filename                    = [filename stringByDeletingPathExtension];
     }
     
     [configureData                  _SetPrefixDirectory: ( ( nil == prefix ) ? @"" : prefix ) ];
@@ -500,14 +493,6 @@
     NSParameterAssert( nil != zippedFullPath );
     
     TDConfigureData               * configureData;
-    
-    NSArray                       * fileSeparated;
-    
-    fileSeparated                   = [[filename lastPathComponent] componentsSeparatedByString: @"."];
-    if ( ( [fileSeparated count] >= 2 ) && ( [[filename pathExtension] isNumeric] == YES ) )
-    {
-        filename                    = [filename stringByDeletingPathExtension];
-    }
     
     configureData                   = [[self class] zippedFileEnvironment: zippedFullPath with: password onSingleton: singleton];
     if ( nil == configureData )
@@ -540,12 +525,6 @@
     }
     
     [self                           _SetPrefixDirectory: ( ( nil == subpath ) ? @"" : subpath ) ];
-    
-    if ( [[self class] _IsUpdateFileName: filename] == YES )
-    {
-        filename                    = [filename stringByDeletingPathExtension];
-    }
-    
     if ( [self _GetConfigureJsonData: filename configure: rootKey with: updateKey] == NO )
     {
         NSLog( @"get configure data has warning. ");
@@ -563,11 +542,9 @@
     NSParameterAssert( nil != filename );
     NSParameterAssert( nil != zippedFilename );
 
-    BOOL                            isUpdate;
     NSString                      * filePath;
     
-    isUpdate                        = NO;
-    filePath                        = [[self class] _GetFileFullPath: zippedFilename extension: @"zip" forDirectories: directory inDirectory: subpath isUpdate: &isUpdate];
+    filePath                        = TDGetPathForDirectories( directory, zippedFilename, @"zip", subpath, YES );
     if ( nil == filePath )
     {
         NSLog( @"file %s no exist.", [filePath UTF8String] );
@@ -579,13 +556,8 @@
         NSLog( @"update zipped file container failed." );
         return NO;
     }
+    
     [self                           _SetPrefixDirectory: ( ( nil == prefix ) ? @"" : prefix ) ];
-    
-    if ( YES == isUpdate )
-    {
-        filename                    = [filename stringByDeletingPathExtension];
-    }
-    
     if ( [self _GetConfigureJsonData: filename configure: rootKey with: updateKey] == NO )
     {
         NSLog( @"get configure data has warning. ");
@@ -608,17 +580,8 @@
         NSLog( @"update zipped file container failed." );
         return NO;
     }
+    
     [self                           _SetPrefixDirectory: ( ( nil == prefix ) ? @"" : prefix ) ];
-    
-    
-    NSArray                       * fileSeparated;
-    
-    fileSeparated                   = [[filename lastPathComponent] componentsSeparatedByString: @"."];
-    if ( ( [fileSeparated count] >= 2 ) && ( [[filename pathExtension] isNumeric] == YES ) )
-    {
-        filename                    = [filename stringByDeletingPathExtension];
-    }
-    
     if ( [self _GetConfigureJsonData: filename configure: rootKey with: updateKey] == NO )
     {
         NSLog( @"get configure data has warning. ");
