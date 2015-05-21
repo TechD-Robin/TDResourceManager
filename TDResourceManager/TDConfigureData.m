@@ -69,6 +69,19 @@
 - ( void ) _InitAttributes;
 
 //  ------------------------------------------------------------------------------------------------
+#pragma mark declare for check.
+//  ------------------------------------------------------------------------------------------------
+/**
+ *  @brief check a filename is format of update file or not.
+ *  check a filename is format of update file or not.
+ *
+ *  @param filename                 a filename for check.
+ *
+ *  @return YES|NO                  is update format or not.
+ */
++ ( BOOL ) _IsUpdateFileName:(NSString *)filename;
+
+//  ------------------------------------------------------------------------------------------------
 /**
  *  @brief get a file's full path with check the state of update.
  *  get a file's full path with check the state of update.
@@ -157,6 +170,27 @@
 
     configureData                   = nil;
     
+}
+
+//  ------------------------------------------------------------------------------------------------
+#pragma mark method for check.
+//  ------------------------------------------------------------------------------------------------
++ ( BOOL ) _IsUpdateFileName:(NSString *)filename
+{
+    if ( nil == filename )
+    {
+        return NO;
+    }
+    
+    NSArray                       * fileSeparated;
+    
+    fileSeparated                   = [filename componentsSeparatedByString: @"."];
+    //  check file name for appended timpstamp.
+    if ( ( [fileSeparated count] >= 2 ) && ( [[filename pathExtension] isNumeric] == YES ) )
+    {
+        return YES;
+    }
+    return NO;
 }
 
 //  ------------------------------------------------------------------------------------------------
@@ -391,6 +425,33 @@
 
 //  ------------------------------------------------------------------------------------------------
 + ( instancetype ) loadConfigureData:(NSString *)filename with:(NSString *)rootKey
+                                from:(TDGetPathDirectory)defaultDirectory inDirectory:(NSString *)subpath onSingleton:(BOOL)singleton
+{
+    NSParameterAssert( nil != filename );
+    
+    TDConfigureData               * configureData;
+    
+    
+    configureData                   = [[self class] defaultEnvironment: defaultDirectory onSingleton: singleton];
+    NSParameterAssert( nil != configureData );
+    
+    if ( [[self class] _IsUpdateFileName: filename] == YES )
+    {
+        filename                    = [filename stringByDeletingPathExtension];
+    }
+    
+    [configureData                  _SetPrefixDirectory: ( ( nil == subpath ) ? @"" : subpath ) ];
+    if ( [configureData _GetConfigureJsonData: filename configure: rootKey with: nil] == NO )
+    {
+        NSLog( @"get configure data has warning. ");
+        return configureData;
+    }
+    
+    return configureData;
+}
+
+//  ------------------------------------------------------------------------------------------------
++ ( instancetype ) loadConfigureData:(NSString *)filename with:(NSString *)rootKey
                                 from:(NSString *)zippedFilename forDirectories:(TDGetPathDirectory) directory inDirectory:(NSString *)subpath
                         inZippedPath:(NSString *)prefix with:(NSString *)password onSingleton:(BOOL)singleton
 {
@@ -465,6 +526,35 @@
 }
 
 //  --------------------------------
+//  ------------------------------------------------------------------------------------------------
+- ( BOOL ) updateConfigureData:(NSString *)filename with:(NSString *)rootKey and:(NSString *)updateKey
+                          from:(TDGetPathDirectory)defaultDirectory inDirectory:(NSString *)subpath
+{
+    NSParameterAssert( nil != filename );
+    
+    
+    if ( [self changeDirectory: defaultDirectory] == NO )
+    {
+        NSLog( @"update configure data have error of change Directory." );
+        return NO;
+    }
+    
+    [self                           _SetPrefixDirectory: ( ( nil == subpath ) ? @"" : subpath ) ];
+    
+    if ( [[self class] _IsUpdateFileName: filename] == YES )
+    {
+        filename                    = [filename stringByDeletingPathExtension];
+    }
+    
+    if ( [self _GetConfigureJsonData: filename configure: rootKey with: updateKey] == NO )
+    {
+        NSLog( @"get configure data has warning. ");
+        return NO;
+    }
+    
+    return YES;
+}
+
 //  ------------------------------------------------------------------------------------------------
 - ( BOOL ) updateConfigureData:(NSString *)filename with:(NSString *)rootKey and:(NSString *)updateKey
                           from:(NSString *)zippedFilename forDirectories:(TDGetPathDirectory) directory inDirectory:(NSString *)subpath

@@ -28,8 +28,24 @@
 #pragma mark declare for create the object.
 //  ------------------------------------------------------------------------------------------------
 /**
- *  @brief create a Configure Data object and loaded configure data into a container.
- *  create a Configure Data object and loaded configure data into a container.
+ *  @brief create a Configure Data object and loaded configure data from default environment into a container.
+ *  create a Configure Data object and loaded configure data from default environment into a container.
+ *
+ *  @param filename                 a filename of configure data.
+ *  @param rootKey                  key of root of configure file.
+ *  @param defaultDirectory         enumeration for directory.
+ *  @param subpath                  sub path in directory.
+ *  @param singleton                create a singleton object or normal object.
+ *
+ *  @return object|nil              data(with resource manager) object or nil.
+ */
++ ( instancetype ) loadConfigureData:(NSString *)filename with:(NSString *)rootKey
+                                from:(TDGetPathDirectory)defaultDirectory inDirectory:(NSString *)subpath onSingleton:(BOOL)singleton;
+
+//  ------------------------------------------------------------------------------------------------
+/**
+ *  @brief create a Configure Data object and loaded configure data from zipped file into a container.
+ *  create a Configure Data object and loaded configure data from zipped file into a container.
  *
  *  @param filename                 a filename of configure data.
  *  @param rootKey                  key of root of configure file.
@@ -43,13 +59,13 @@
  *  @return object|nil              data(with resource manager) object or nil.
  */
 + ( instancetype ) loadConfigureData:(NSString *)filename with:(NSString *)rootKey
-                                from:(NSString *)zippedFilename forDirectories:(TDGetPathDirectory) directory inDirectory:(NSString *)subpath
+                                from:(NSString *)zippedFilename forDirectories:(TDGetPathDirectory)directory inDirectory:(NSString *)subpath
                         inZippedPath:(NSString *)prefix with:(NSString *)password onSingleton:(BOOL)singleton;
 
 //  ------------------------------------------------------------------------------------------------
 /**
- *  @brief create a Configure Data object and loaded configure data into a container.
- *  create a Configure Data object and loaded configure data into a container.
+ *  @brief create a Configure Data object and loaded configure data from zipped file into a container.
+ *  create a Configure Data object and loaded configure data from zipped file into a container.
  *
  *  @param filename                 a filename of configure data.
  *  @param rootKey                  key of root of configure file.
@@ -63,6 +79,23 @@
 + ( instancetype ) loadConfigureData:(NSString *)filename with:(NSString *)rootKey
                                 from:(NSString *)zippedFullPath
                         inZippedPath:(NSString *)prefix with:(NSString *)password onSingleton:(BOOL)singleton;
+
+
+//  ------------------------------------------------------------------------------------------------
+/**
+ *  @brief change environment and update configure data.
+ *  change environment and update configure data.
+ *
+ *  @param filename                 a filename of configure data.
+ *  @param rootKey                  key of root of configure file.
+ *  @param updateKey                key for update data.
+ *  @param defaultDirectory         enumeration for directory.
+ *  @param subpath                  sub path in directory.
+ *
+ *  @return YES|NO                  method success or failure.
+ */
+- ( BOOL ) updateConfigureData:(NSString *)filename with:(NSString *)rootKey and:(NSString *)updateKey
+                          from:(TDGetPathDirectory)defaultDirectory inDirectory:(NSString *)subpath;
 
 //  ------------------------------------------------------------------------------------------------
 /**
