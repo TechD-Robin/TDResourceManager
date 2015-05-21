@@ -13,6 +13,10 @@
 
 //  ------------------------------------------------------------------------------------------------
 //  ------------------------------------------------------------------------------------------------
+/**
+ *  a data object it's inherit from Resource Manager.
+ *  extension function for loaded configure data into a container.
+ */
 @interface TDConfigureData : TDResourceManager
 
 //  ------------------------------------------------------------------------------------------------
@@ -23,25 +27,76 @@
 //  ------------------------------------------------------------------------------------------------
 #pragma mark declare for create the object.
 //  ------------------------------------------------------------------------------------------------
+/**
+ *  @brief create a Configure Data object and loaded configure data into a container.
+ *  create a Configure Data object and loaded configure data into a container.
+ *
+ *  @param filename                 a filename of configure data.
+ *  @param rootKey                  key of root of configure file.
+ *  @param zippedFilename           zipped file name (without Extension part).
+ *  @param directory                enumeration for directory.
+ *  @param subpath                  resource's sub directory name of configure
+ *  @param prefix                   prefix path name in zipped file.
+ *  @param password                 password of zipped file.
+ *  @param singleton                create a singleton object or normal object.
+ *
+ *  @return object|nil              data(with resource manager) object or nil.
+ */
 + ( instancetype ) loadConfigureData:(NSString *)filename with:(NSString *)rootKey
                                 from:(NSString *)zippedFilename forDirectories:(TDGetPathDirectory) directory inDirectory:(NSString *)subpath
                         inZippedPath:(NSString *)prefix with:(NSString *)password onSingleton:(BOOL)singleton;
 
-
 //  ------------------------------------------------------------------------------------------------
+/**
+ *  @brief create a Configure Data object and loaded configure data into a container.
+ *  create a Configure Data object and loaded configure data into a container.
+ *
+ *  @param filename                 a filename of configure data.
+ *  @param rootKey                  key of root of configure file.
+ *  @param zippedFullPath           zipped file name (full path).
+ *  @param prefix                   prefix path name in zipped file.
+ *  @param password                 password of zipped file.
+ *  @param singleton                create a singleton object or normal object.
+ *
+ *  @return object|nil              data(with resource manager) object or nil.
+ */
 + ( instancetype ) loadConfigureData:(NSString *)filename with:(NSString *)rootKey
                                 from:(NSString *)zippedFullPath
                         inZippedPath:(NSString *)prefix with:(NSString *)password onSingleton:(BOOL)singleton;
 
 //  ------------------------------------------------------------------------------------------------
+/**
+ *  @brief update data for the Configure Data object and configure data.
+ *  update data for the Configure Data object and configure data.
+ *
+ *  @param filename                 a filename of update's configure data.
+ *  @param rootKey                  key of root of configure file.
+ *  @param updateKey                key for update data.
+ *  @param zippedFilename           zipped file name (without Extension part).
+ *  @param directory                enumeration for directory.
+ *  @param subpath                  resource's sub directory name of configure
+ *  @param prefix                   prefix path name in zipped file.
+ *  @param password                 password of zipped file.
+ *
+ *  @return YES|NO                  method success or failure.
+ */
 - ( BOOL ) updateConfigureData:(NSString *)filename with:(NSString *)rootKey and:(NSString *)updateKey
                           from:(NSString *)zippedFilename forDirectories:(TDGetPathDirectory) directory inDirectory:(NSString *)subpath
                   inZippedPath:(NSString *)prefix with:(NSString *)password;
+
+//  ------------------------------------------------------------------------------------------------
+//  --------------------------------
 
 
 //  ------------------------------------------------------------------------------------------------
 #pragma mark declare for get data container.
 //  ------------------------------------------------------------------------------------------------
+/**
+ *  @brief get the container of configure data.
+ *  the container of configure data.
+ *
+ *  @return container|nil           the container or nil.
+ */
 - ( NSMutableArray *) configureData;
 
 //  ------------------------------------------------------------------------------------------------
