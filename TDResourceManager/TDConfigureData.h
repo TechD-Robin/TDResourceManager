@@ -39,7 +39,7 @@
  *
  *  @return object|nil              data(with resource manager) object or nil.
  */
-+ ( instancetype ) loadConfigureData:(NSString *)filename with:(NSString *)rootKey
++ ( instancetype ) loadConfigureData:(NSString *)filename with:(NSString *)rootKey encoding:(NSStringEncoding)encode
                                 from:(TDGetPathDirectory)defaultDirectory inDirectory:(NSString *)subpath onSingleton:(BOOL)singleton;
 
 //  ------------------------------------------------------------------------------------------------
@@ -58,7 +58,7 @@
  *
  *  @return object|nil              data(with resource manager) object or nil.
  */
-+ ( instancetype ) loadConfigureData:(NSString *)filename with:(NSString *)rootKey
++ ( instancetype ) loadConfigureData:(NSString *)filename with:(NSString *)rootKey encoding:(NSStringEncoding)encode
                                 from:(NSString *)zippedFilename forDirectories:(TDGetPathDirectory)directory inDirectory:(NSString *)subpath
                         inZippedPath:(NSString *)prefix with:(NSString *)password onSingleton:(BOOL)singleton;
 
@@ -76,7 +76,7 @@
  *
  *  @return object|nil              data(with resource manager) object or nil.
  */
-+ ( instancetype ) loadConfigureData:(NSString *)filename with:(NSString *)rootKey
++ ( instancetype ) loadConfigureData:(NSString *)filename with:(NSString *)rootKey encoding:(NSStringEncoding)encode
                                 from:(NSString *)zippedFullPath
                         inZippedPath:(NSString *)prefix with:(NSString *)password onSingleton:(BOOL)singleton;
 
@@ -94,7 +94,7 @@
  *
  *  @return YES|NO                  method success or failure.
  */
-- ( BOOL ) updateConfigureData:(NSString *)filename with:(NSString *)rootKey and:(NSString *)updateKey
+- ( BOOL ) updateConfigureData:(NSString *)filename with:(NSString *)rootKey and:(NSString *)updateKey encoding:(NSStringEncoding)encode
                           from:(TDGetPathDirectory)defaultDirectory inDirectory:(NSString *)subpath;
 
 //  ------------------------------------------------------------------------------------------------
@@ -113,7 +113,7 @@
  *
  *  @return YES|NO                  method success or failure.
  */
-- ( BOOL ) updateConfigureData:(NSString *)filename with:(NSString *)rootKey and:(NSString *)updateKey
+- ( BOOL ) updateConfigureData:(NSString *)filename with:(NSString *)rootKey and:(NSString *)updateKey encoding:(NSStringEncoding)encode
                           from:(NSString *)zippedFilename forDirectories:(TDGetPathDirectory) directory inDirectory:(NSString *)subpath
                   inZippedPath:(NSString *)prefix with:(NSString *)password;
 
@@ -131,7 +131,7 @@
  *
  *  @return YES|NO                  method success or failure.
  */
-- ( BOOL ) updateConfigureData:(NSString *)filename with:(NSString *)rootKey and:(NSString *)updateKey
+- ( BOOL ) updateConfigureData:(NSString *)filename with:(NSString *)rootKey and:(NSString *)updateKey encoding:(NSStringEncoding)encode
                           from:(NSString *)zippedFullPath
                   inZippedPath:(NSString *)prefix with:(NSString *)password;
 

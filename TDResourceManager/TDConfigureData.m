@@ -38,6 +38,11 @@
     NSString                      * prefixDirectory;
     
     /**
+     *  character set encode of configure file.
+     */
+    NSStringEncoding                configureFileEncode;
+    
+    /**
      *  the container of configure data.
      */
     //NSMutableDictionary           * configureData;      //  json struct.
@@ -147,6 +152,25 @@
 - ( void ) _SetPrefixDirectory:(NSString *)prefix;
 
 //  ------------------------------------------------------------------------------------------------
+/**
+ *  @brief get character set encode of configure file.
+ *  get character set encode of configure file.
+ *
+ *  @return                         character set encode.
+ */
+- ( NSStringEncoding ) _GetConfigureFileEncode;
+
+//  ------------------------------------------------------------------------------------------------
+/**
+ *  @brief set the character set encode of configure file.
+ *  set the character set encode of configure file.
+ *
+ *  @param encode                   character set encode.
+ */
+- ( void ) _SetConfigureFileEncode:(NSStringEncoding)encode;
+
+//  ------------------------------------------------------------------------------------------------
+
 
 @end
 
@@ -168,8 +192,9 @@
 {
     prefixDirectory                 = nil;
 
-    configureData                   = nil;
+    configureFileEncode             = NSASCIIStringEncoding;
     
+    configureData                   = nil;
 }
 
 //  ------------------------------------------------------------------------------------------------
@@ -235,7 +260,7 @@
     }
     
     key                             = [NSString stringWithFormat: @"%s/%s.json", [prefixDirectory UTF8String], [filename UTF8String]];
-    json                            = [self JSON: filename ofType: @"json" inDirectory: prefixDirectory encoding: NSUTF8StringEncoding];
+    json                            = [self JSON: filename ofType: @"json" inDirectory: prefixDirectory encoding: configureFileEncode];
     if ( nil == json )
     {
         if ( nil != jsonParsingError )
@@ -358,6 +383,17 @@
     prefixDirectory                 = prefix;
 }
 
+//  ------------------------------------------------------------------------------------------------
+- ( NSStringEncoding ) _GetConfigureFileEncode
+{
+    return configureFileEncode;
+}
+
+//  ------------------------------------------------------------------------------------------------
+- ( void ) _SetConfigureFileEncode:(NSStringEncoding)encode
+{
+    configureFileEncode             = encode;
+}
 
 //  ------------------------------------------------------------------------------------------------
 //  ------------------------------------------------------------------------------------------------
@@ -429,7 +465,7 @@
 }
 
 //  ------------------------------------------------------------------------------------------------
-+ ( instancetype ) loadConfigureData:(NSString *)filename with:(NSString *)rootKey
++ ( instancetype ) loadConfigureData:(NSString *)filename with:(NSString *)rootKey encoding:(NSStringEncoding)encode
                                 from:(TDGetPathDirectory)defaultDirectory inDirectory:(NSString *)subpath onSingleton:(BOOL)singleton
 {
     NSParameterAssert( nil != filename );
@@ -440,6 +476,7 @@
     configureData                   = [[self class] defaultEnvironment: defaultDirectory onSingleton: singleton];
     NSParameterAssert( nil != configureData );
     
+    [configureData                  _SetConfigureFileEncode: encode];
     [configureData                  _SetPrefixDirectory: ( ( nil == subpath ) ? @"" : subpath ) ];
     if ( [configureData _GetConfigureJsonData: filename configure: rootKey with: nil] == NO )
     {
@@ -451,7 +488,7 @@
 }
 
 //  ------------------------------------------------------------------------------------------------
-+ ( instancetype ) loadConfigureData:(NSString *)filename with:(NSString *)rootKey
++ ( instancetype ) loadConfigureData:(NSString *)filename with:(NSString *)rootKey encoding:(NSStringEncoding)encode
                                 from:(NSString *)zippedFilename forDirectories:(TDGetPathDirectory) directory inDirectory:(NSString *)subpath
                         inZippedPath:(NSString *)prefix with:(NSString *)password onSingleton:(BOOL)singleton
 {
@@ -474,6 +511,7 @@
         return nil;
     }
     
+    [configureData                  _SetConfigureFileEncode: encode];
     [configureData                  _SetPrefixDirectory: ( ( nil == prefix ) ? @"" : prefix ) ];
     if ( [configureData _GetConfigureJsonData: filename configure: rootKey with: nil] == NO )
     {
@@ -485,7 +523,7 @@
 }
 
 //  ------------------------------------------------------------------------------------------------
-+ ( instancetype ) loadConfigureData:(NSString *)filename with:(NSString *)rootKey
++ ( instancetype ) loadConfigureData:(NSString *)filename with:(NSString *)rootKey encoding:(NSStringEncoding)encode
                                 from:(NSString *)zippedFullPath
                         inZippedPath:(NSString *)prefix with:(NSString *)password onSingleton:(BOOL)singleton;
 {
@@ -500,6 +538,7 @@
         return nil;
     }
     
+    [configureData                  _SetConfigureFileEncode: encode];
     [configureData                  _SetPrefixDirectory: ( ( nil == prefix ) ? @"" : prefix ) ];
     if ( [configureData _GetConfigureJsonData: filename configure: rootKey with: nil] == NO )
     {
@@ -512,7 +551,7 @@
 
 //  --------------------------------
 //  ------------------------------------------------------------------------------------------------
-- ( BOOL ) updateConfigureData:(NSString *)filename with:(NSString *)rootKey and:(NSString *)updateKey
+- ( BOOL ) updateConfigureData:(NSString *)filename with:(NSString *)rootKey and:(NSString *)updateKey encoding:(NSStringEncoding)encode
                           from:(TDGetPathDirectory)defaultDirectory inDirectory:(NSString *)subpath
 {
     NSParameterAssert( nil != filename );
@@ -524,6 +563,7 @@
         return NO;
     }
     
+    [self                           _SetConfigureFileEncode: encode];
     [self                           _SetPrefixDirectory: ( ( nil == subpath ) ? @"" : subpath ) ];
     if ( [self _GetConfigureJsonData: filename configure: rootKey with: updateKey] == NO )
     {
@@ -535,7 +575,7 @@
 }
 
 //  ------------------------------------------------------------------------------------------------
-- ( BOOL ) updateConfigureData:(NSString *)filename with:(NSString *)rootKey and:(NSString *)updateKey
+- ( BOOL ) updateConfigureData:(NSString *)filename with:(NSString *)rootKey and:(NSString *)updateKey encoding:(NSStringEncoding)encode
                           from:(NSString *)zippedFilename forDirectories:(TDGetPathDirectory) directory inDirectory:(NSString *)subpath
                   inZippedPath:(NSString *)prefix with:(NSString *)password
 {
@@ -557,6 +597,7 @@
         return NO;
     }
     
+    [self                           _SetConfigureFileEncode: encode];
     [self                           _SetPrefixDirectory: ( ( nil == prefix ) ? @"" : prefix ) ];
     if ( [self _GetConfigureJsonData: filename configure: rootKey with: updateKey] == NO )
     {
@@ -568,7 +609,7 @@
 }
 
 //  ------------------------------------------------------------------------------------------------
-- ( BOOL ) updateConfigureData:(NSString *)filename with:(NSString *)rootKey and:(NSString *)updateKey
+- ( BOOL ) updateConfigureData:(NSString *)filename with:(NSString *)rootKey and:(NSString *)updateKey encoding:(NSStringEncoding)encode
                           from:(NSString *)zippedFullPath
                   inZippedPath:(NSString *)prefix with:(NSString *)password
 {
@@ -581,6 +622,7 @@
         return NO;
     }
     
+    [self                           _SetConfigureFileEncode: encode];
     [self                           _SetPrefixDirectory: ( ( nil == prefix ) ? @"" : prefix ) ];
     if ( [self _GetConfigureJsonData: filename configure: rootKey with: updateKey] == NO )
     {
