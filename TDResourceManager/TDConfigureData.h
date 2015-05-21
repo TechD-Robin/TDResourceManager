@@ -33,6 +33,7 @@
  *
  *  @param filename                 a filename of configure data.
  *  @param rootKey                  key of root of configure file.
+ *  @param encode                   charset encode.
  *  @param defaultDirectory         enumeration for directory.
  *  @param subpath                  sub path in directory.
  *  @param singleton                create a singleton object or normal object.
@@ -49,6 +50,7 @@
  *
  *  @param filename                 a filename of configure data.
  *  @param rootKey                  key of root of configure file.
+ *  @param encode                   charset encode.
  *  @param zippedFilename           zipped file name (without Extension part).
  *  @param directory                enumeration for directory.
  *  @param subpath                  resource's sub directory name of configure
@@ -69,6 +71,7 @@
  *
  *  @param filename                 a filename of configure data.
  *  @param rootKey                  key of root of configure file.
+ *  @param encode                   charset encode.
  *  @param zippedFullPath           zipped file name (full path).
  *  @param prefix                   prefix path name in zipped file.
  *  @param password                 password of zipped file.
@@ -89,6 +92,7 @@
  *  @param filename                 a filename of configure data.
  *  @param rootKey                  key of root of configure file.
  *  @param updateKey                key for update data.
+ *  @param encode                   charset encode.
  *  @param defaultDirectory         enumeration for directory.
  *  @param subpath                  sub path in directory.
  *
@@ -105,6 +109,7 @@
  *  @param filename                 a filename of update's configure data.
  *  @param rootKey                  key of root of configure file.
  *  @param updateKey                key for update data.
+ *  @param encode                   charset encode.
  *  @param zippedFilename           zipped file name (without Extension part).
  *  @param directory                enumeration for directory.
  *  @param subpath                  resource's sub directory name of configure
@@ -125,6 +130,7 @@
  *  @param filename                 a filename of update's configure data.
  *  @param rootKey                  key of root of configure file.
  *  @param updateKey                key for update data.
+ *  @param encode                   charset encode.
  *  @param zippedFullPath           zipped file name (full path).
  *  @param prefix                   prefix path name in zipped file.
  *  @param password                 password of zipped file.
