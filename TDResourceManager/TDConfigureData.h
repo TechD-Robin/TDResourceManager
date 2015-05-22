@@ -11,6 +11,24 @@
 #import <Foundation/Foundation.h>
 #import "TDResourceManager.h"
 
+
+//  ------------------------------------------------------------------------------------------------
+#pragma mark declare enumeration.
+//  ------------------------------------------------------------------------------------------------
+/**
+ *  enumeration for configure data source file type.
+ */
+typedef NS_ENUM( NSInteger, TDConfigureDataSourceFileType ){
+    /**
+     *  file type is JSON.
+     */
+    TDConfigureDataSourceFileTypeJSON           = 1,
+    /**
+     *  file type is Property List.
+     */
+    TDConfigureDataSourceFileTypePList,
+};
+
 //  ------------------------------------------------------------------------------------------------
 //  ------------------------------------------------------------------------------------------------
 /**
@@ -35,6 +53,7 @@
  *  create a Configure Data object and loaded configure data from default environment into a container.
  *
  *  @param filename                 a filename of configure data.
+ *  @param fileType                 type of file..
  *  @param rootKey                  key of root of configure file.
  *  @param encode                   charset encode.
  *  @param defaultDirectory         enumeration for directory.
@@ -43,7 +62,8 @@
  *
  *  @return object|nil              data(with resource manager) object or nil.
  */
-+ ( instancetype ) loadConfigureData:(NSString *)filename with:(NSString *)rootKey encoding:(NSStringEncoding)encode
++ ( instancetype ) loadConfigureData:(NSString *)filename type:(TDConfigureDataSourceFileType)fileType 
+                                with:(NSString *)rootKey encoding:(NSStringEncoding)encode
                                 from:(TDGetPathDirectory)defaultDirectory inDirectory:(NSString *)subpath onSingleton:(BOOL)singleton;
 
 //  ------------------------------------------------------------------------------------------------
@@ -52,6 +72,7 @@
  *  create a Configure Data object and load configure data from assets bundle into a container.
  *
  *  @param filename                 a filename of configure data.
+ *  @param fileType                 type of file..
  *  @param rootKey                  key of root of configure file.
  *  @param encode                   charset encode.
  *  @param assetsBundleName         a bundle name.
@@ -61,7 +82,8 @@
  *
  *  @return object|nil              data(with resource manager) object or nil.
  */
-+ ( instancetype ) loadConfigureData:(NSString *)filename with:(NSString *)rootKey encoding:(NSStringEncoding)encode
++ ( instancetype ) loadConfigureData:(NSString *)filename type:(TDConfigureDataSourceFileType)fileType
+                                with:(NSString *)rootKey encoding:(NSStringEncoding)encode
                                 from:(NSString *)assetsBundleName with:(Class)aClass
                          inDirectory:(NSString *)subpath onSingleton:(BOOL)singleton;
 
@@ -71,6 +93,7 @@
  *  create a Configure Data object and loaded configure data from zipped file into a container.
  *
  *  @param filename                 a filename of configure data.
+ *  @param fileType                 type of file..
  *  @param rootKey                  key of root of configure file.
  *  @param encode                   charset encode.
  *  @param zippedFilename           zipped file name (without Extension part).
@@ -82,7 +105,8 @@
  *
  *  @return object|nil              data(with resource manager) object or nil.
  */
-+ ( instancetype ) loadConfigureData:(NSString *)filename with:(NSString *)rootKey encoding:(NSStringEncoding)encode
++ ( instancetype ) loadConfigureData:(NSString *)filename type:(TDConfigureDataSourceFileType)fileType
+                                with:(NSString *)rootKey encoding:(NSStringEncoding)encode
                                 from:(NSString *)zippedFilename forDirectories:(TDGetPathDirectory)directory inDirectory:(NSString *)subpath
                         inZippedPath:(NSString *)prefix with:(NSString *)password onSingleton:(BOOL)singleton;
 
@@ -92,6 +116,7 @@
  *  create a Configure Data object and loaded configure data from zipped file into a container.
  *
  *  @param filename                 a filename of configure data.
+ *  @param fileType                 type of file..
  *  @param rootKey                  key of root of configure file.
  *  @param encode                   charset encode.
  *  @param zippedFullPath           zipped file name (full path).
@@ -101,7 +126,8 @@
  *
  *  @return object|nil              data(with resource manager) object or nil.
  */
-+ ( instancetype ) loadConfigureData:(NSString *)filename with:(NSString *)rootKey encoding:(NSStringEncoding)encode
++ ( instancetype ) loadConfigureData:(NSString *)filename type:(TDConfigureDataSourceFileType)fileType
+                                with:(NSString *)rootKey encoding:(NSStringEncoding)encode
                                 from:(NSString *)zippedFullPath
                         inZippedPath:(NSString *)prefix with:(NSString *)password onSingleton:(BOOL)singleton;
 
@@ -115,6 +141,7 @@
  *  change environment and update configure data.
  *
  *  @param filename                 a filename of configure data.
+ *  @param fileType                 type of file..
  *  @param rootKey                  key of root of configure file.
  *  @param updateKey                key for update data.
  *  @param encode                   charset encode.
@@ -123,7 +150,8 @@
  *
  *  @return YES|NO                  method success or failure.
  */
-- ( BOOL ) updateConfigureData:(NSString *)filename with:(NSString *)rootKey and:(NSString *)updateKey encoding:(NSStringEncoding)encode
+- ( BOOL ) updateConfigureData:(NSString *)filename type:(TDConfigureDataSourceFileType)fileType
+                          with:(NSString *)rootKey and:(NSString *)updateKey encoding:(NSStringEncoding)encode
                           from:(TDGetPathDirectory)defaultDirectory inDirectory:(NSString *)subpath;
 
 //  ------------------------------------------------------------------------------------------------
@@ -132,6 +160,7 @@
  *  change enviroment of assets bundle and update configure data.
  *
  *  @param filename                 a filename of configure data.
+ *  @param fileType                 type of file..
  *  @param rootKey                  key of root of configure file.
  *  @param updateKey                key for update data.
  *  @param encode                   charset encode.
@@ -141,7 +170,8 @@
  *
  *  @return YES|NO                  method success or failure.
  */
-- ( BOOL ) updateConfigureData:(NSString *)filename with:(NSString *)rootKey and:(NSString *)updateKey encoding:(NSStringEncoding)encode
+- ( BOOL ) updateConfigureData:(NSString *)filename type:(TDConfigureDataSourceFileType)fileType
+                          with:(NSString *)rootKey and:(NSString *)updateKey encoding:(NSStringEncoding)encode
                           from:(NSString *)assetsBundleName with:(Class)aClass inDirectory:(NSString *)subpath;
 
 //  ------------------------------------------------------------------------------------------------
@@ -150,6 +180,7 @@
  *  update data for the Configure Data object and configure data.
  *
  *  @param filename                 a filename of update's configure data.
+ *  @param fileType                 type of file..
  *  @param rootKey                  key of root of configure file.
  *  @param updateKey                key for update data.
  *  @param encode                   charset encode.
@@ -161,7 +192,8 @@
  *
  *  @return YES|NO                  method success or failure.
  */
-- ( BOOL ) updateConfigureData:(NSString *)filename with:(NSString *)rootKey and:(NSString *)updateKey encoding:(NSStringEncoding)encode
+- ( BOOL ) updateConfigureData:(NSString *)filename type:(TDConfigureDataSourceFileType)fileType
+                          with:(NSString *)rootKey and:(NSString *)updateKey encoding:(NSStringEncoding)encode
                           from:(NSString *)zippedFilename forDirectories:(TDGetPathDirectory) directory inDirectory:(NSString *)subpath
                   inZippedPath:(NSString *)prefix with:(NSString *)password;
 
@@ -171,6 +203,7 @@
  *  update data for the Configure Data object and configure data.
  *
  *  @param filename                 a filename of update's configure data.
+ *  @param fileType                 type of file..
  *  @param rootKey                  key of root of configure file.
  *  @param updateKey                key for update data.
  *  @param encode                   charset encode.
@@ -180,7 +213,8 @@
  *
  *  @return YES|NO                  method success or failure.
  */
-- ( BOOL ) updateConfigureData:(NSString *)filename with:(NSString *)rootKey and:(NSString *)updateKey encoding:(NSStringEncoding)encode
+- ( BOOL ) updateConfigureData:(NSString *)filename type:(TDConfigureDataSourceFileType)fileType 
+                          with:(NSString *)rootKey and:(NSString *)updateKey encoding:(NSStringEncoding)encode
                           from:(NSString *)zippedFullPath
                   inZippedPath:(NSString *)prefix with:(NSString *)password;
 

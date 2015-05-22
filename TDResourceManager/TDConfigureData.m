@@ -107,16 +107,18 @@
 #pragma mark declare for json data.
 //  ------------------------------------------------------------------------------------------------
 /**
- *  @brief get a configure json data from unzipped object.
- *  get a configure json data from unzipped object.
+ *  @brief get a configure data from in unzipped object's data source file.
+ *  get a configure data from in unzipped object's data source file.
  *
  *  @param filename                 configure file name (without Extension part).
+ *  @param fileType                 data source type of file.
  *  @param rootKey                  key of root of configure file.
  *  @param updateKey                key for update data.
  *
  *  @return YES|NO                  method success or failure.
  */
-- ( BOOL ) _GetConfigureJsonData:(NSString *)filename configure:(NSString *)rootKey with:(NSString *)updateKey;
+- ( BOOL ) _GetConfigureData:(NSString *)filename type:(TDConfigureDataSourceFileType)fileType
+                   configure:(NSString *)rootKey with:(NSString *)updateKey;
 
 //  ------------------------------------------------------------------------------------------------
 /**
@@ -241,7 +243,8 @@
 //  ------------------------------------------------------------------------------------------------
 #pragma mark method for json data.
 //  ------------------------------------------------------------------------------------------------
-- ( BOOL ) _GetConfigureJsonData:(NSString *)filename configure:(NSString *)rootKey with:(NSString *)updateKey
+- ( BOOL ) _GetConfigureData:(NSString *)filename type:(TDConfigureDataSourceFileType)fileType
+                   configure:(NSString *)rootKey with:(NSString *)updateKey
 {
     if ( nil == filename )
     {
@@ -249,28 +252,39 @@
     }
     
     NSString                      * key;
-    NSDictionary                  * json;
-    NSError                       * jsonParsingError;
+    NSString                      * extension;
+    NSDictionary                  * dataContainer;
     
-    json                            = nil;
-    jsonParsingError                = nil;
+    extension                       = nil;
+    dataContainer                   = nil;
     if ( [[self class] _IsUpdateFileName: filename] == YES )
     {
         filename                    = [filename stringByDeletingPathExtension];
     }
     
-    key                             = [NSString stringWithFormat: @"%s/%s.json", [prefixDirectory UTF8String], [filename UTF8String]];
-    json                            = [self JSON: filename ofType: @"json" inDirectory: prefixDirectory encoding: configureFileEncode];
-    if ( nil == json )
+    switch ( fileType )
     {
-        if ( nil != jsonParsingError )
+        case TDConfigureDataSourceFileTypePList:
         {
-            NSLog( @"%@", jsonParsingError );
+            extension               = @"plist";
+            dataContainer           = [self propertyList: filename ofType: extension inDirectory: prefixDirectory encoding: configureFileEncode];
+            break;
         }
+        case TDConfigureDataSourceFileTypeJSON:
+        default:
+        {
+            extension               = @"json";
+            dataContainer           = [self JSON: filename ofType: extension inDirectory: prefixDirectory encoding: configureFileEncode];
+            break;
+        }
+    }
+    
+    if ( nil == dataContainer )
+    {
         return NO;
     }
     
-    if ( [self _ParseJsonStruct: (NSMutableDictionary *)json configure: rootKey with: updateKey] == NO )
+    if ( [self _ParseJsonStruct: (NSMutableDictionary *)dataContainer configure: rootKey with: updateKey] == NO )
     {
         NSLog( @"parse json warning." );
         return NO;
@@ -279,11 +293,12 @@
     //  after get the configure, remove the data from container. (for release memory.)
     if ( [self currentEnvironment] == TDResourceManageSourceTypeInZipped )
     {
+        key                         = [NSString stringWithFormat: @"%@/%@.%@", prefixDirectory, filename, extension];
         [[self                      unzipDataContainer] removeObjectForKey: key];
     }
     
-    SAFE_ARC_RELEASE( json );
-    json                            = nil;
+    SAFE_ARC_RELEASE( dataContainer );
+    dataContainer                   = nil;
     
     return YES;
 }
@@ -468,7 +483,8 @@
 }
 
 //  ------------------------------------------------------------------------------------------------
-+ ( instancetype ) loadConfigureData:(NSString *)filename with:(NSString *)rootKey encoding:(NSStringEncoding)encode
++ ( instancetype ) loadConfigureData:(NSString *)filename type:(TDConfigureDataSourceFileType)fileType 
+                                with:(NSString *)rootKey encoding:(NSStringEncoding)encode
                                 from:(TDGetPathDirectory)defaultDirectory inDirectory:(NSString *)subpath onSingleton:(BOOL)singleton
 {
     NSParameterAssert( nil != filename );
@@ -481,7 +497,7 @@
     
     [configureData                  _SetConfigureFileEncode: encode];
     [configureData                  _SetPrefixDirectory: ( ( nil == subpath ) ? @"" : subpath ) ];
-    if ( [configureData _GetConfigureJsonData: filename configure: rootKey with: nil] == NO )
+    if ( [configureData _GetConfigureData: filename type: fileType configure: rootKey with: nil] == NO )
     {
         NSLog( @"get configure data has warning. ");
         return configureData;
@@ -491,7 +507,8 @@
 }
 
 //  ------------------------------------------------------------------------------------------------
-+ ( instancetype ) loadConfigureData:(NSString *)filename with:(NSString *)rootKey encoding:(NSStringEncoding)encode
++ ( instancetype ) loadConfigureData:(NSString *)filename type:(TDConfigureDataSourceFileType)fileType
+                                with:(NSString *)rootKey encoding:(NSStringEncoding)encode
                                 from:(NSString *)assetsBundleName with:(Class)aClass
                          inDirectory:(NSString *)subpath onSingleton:(BOOL)singleton
 {
@@ -506,7 +523,8 @@
     
     [configureData                  _SetConfigureFileEncode: encode];
     [configureData                  _SetPrefixDirectory: ( ( nil == subpath ) ? @"" : subpath ) ];
-    if ( [configureData _GetConfigureJsonData: filename configure: rootKey with: nil] == NO )
+    if ( [configureData _GetConfigureData: filename type: fileType configure: rootKey with: nil] == NO )
+    
     {
         NSLog( @"get configure data has warning. ");
         return configureData;
@@ -516,7 +534,8 @@
 }
 
 //  ------------------------------------------------------------------------------------------------
-+ ( instancetype ) loadConfigureData:(NSString *)filename with:(NSString *)rootKey encoding:(NSStringEncoding)encode
++ ( instancetype ) loadConfigureData:(NSString *)filename type:(TDConfigureDataSourceFileType)fileType
+                                with:(NSString *)rootKey encoding:(NSStringEncoding)encode
                                 from:(NSString *)zippedFilename forDirectories:(TDGetPathDirectory) directory inDirectory:(NSString *)subpath
                         inZippedPath:(NSString *)prefix with:(NSString *)password onSingleton:(BOOL)singleton
 {
@@ -541,7 +560,7 @@
     
     [configureData                  _SetConfigureFileEncode: encode];
     [configureData                  _SetPrefixDirectory: ( ( nil == prefix ) ? @"" : prefix ) ];
-    if ( [configureData _GetConfigureJsonData: filename configure: rootKey with: nil] == NO )
+    if ( [configureData _GetConfigureData: filename type: fileType configure: rootKey with: nil] == NO )
     {
         NSLog( @"get configure data has warning. ");
         return configureData;
@@ -551,7 +570,8 @@
 }
 
 //  ------------------------------------------------------------------------------------------------
-+ ( instancetype ) loadConfigureData:(NSString *)filename with:(NSString *)rootKey encoding:(NSStringEncoding)encode
++ ( instancetype ) loadConfigureData:(NSString *)filename type:(TDConfigureDataSourceFileType)fileType
+                                with:(NSString *)rootKey encoding:(NSStringEncoding)encode
                                 from:(NSString *)zippedFullPath
                         inZippedPath:(NSString *)prefix with:(NSString *)password onSingleton:(BOOL)singleton;
 {
@@ -568,7 +588,7 @@
     
     [configureData                  _SetConfigureFileEncode: encode];
     [configureData                  _SetPrefixDirectory: ( ( nil == prefix ) ? @"" : prefix ) ];
-    if ( [configureData _GetConfigureJsonData: filename configure: rootKey with: nil] == NO )
+    if ( [configureData _GetConfigureData: filename type: fileType configure: rootKey with: nil] == NO )
     {
         NSLog( @"get configure data has warning. ");
         return configureData;
@@ -581,7 +601,8 @@
 //  ------------------------------------------------------------------------------------------------
 #pragma mark method for update the object.
 //  ------------------------------------------------------------------------------------------------
-- ( BOOL ) updateConfigureData:(NSString *)filename with:(NSString *)rootKey and:(NSString *)updateKey encoding:(NSStringEncoding)encode
+- ( BOOL ) updateConfigureData:(NSString *)filename type:(TDConfigureDataSourceFileType)fileType
+                          with:(NSString *)rootKey and:(NSString *)updateKey encoding:(NSStringEncoding)encode
                           from:(TDGetPathDirectory)defaultDirectory inDirectory:(NSString *)subpath
 {
     NSParameterAssert( nil != filename );
@@ -595,7 +616,7 @@
     
     [self                           _SetConfigureFileEncode: encode];
     [self                           _SetPrefixDirectory: ( ( nil == subpath ) ? @"" : subpath ) ];
-    if ( [self _GetConfigureJsonData: filename configure: rootKey with: updateKey] == NO )
+    if ( [self _GetConfigureData: filename type: fileType configure: rootKey with: updateKey] == NO )
     {
         NSLog( @"get configure data has warning. ");
         return NO;
@@ -605,7 +626,8 @@
 }
 
 //  ------------------------------------------------------------------------------------------------
-- ( BOOL ) updateConfigureData:(NSString *)filename with:(NSString *)rootKey and:(NSString *)updateKey encoding:(NSStringEncoding)encode
+- ( BOOL ) updateConfigureData:(NSString *)filename type:(TDConfigureDataSourceFileType)fileType
+                          with:(NSString *)rootKey and:(NSString *)updateKey encoding:(NSStringEncoding)encode
                           from:(NSString *)assetsBundleName with:(Class)aClass inDirectory:(NSString *)subpath
 {
     NSParameterAssert( nil != filename );
@@ -621,7 +643,7 @@
     
     [self                           _SetConfigureFileEncode: encode];
     [self                           _SetPrefixDirectory: ( ( nil == subpath ) ? @"" : subpath ) ];
-    if ( [self _GetConfigureJsonData: filename configure: rootKey with: updateKey] == NO )
+    if ( [self _GetConfigureData: filename type: fileType configure: rootKey with: updateKey] == NO )
     {
         NSLog( @"get configure data has warning. ");
         return NO;
@@ -631,7 +653,8 @@
 }
 
 //  ------------------------------------------------------------------------------------------------
-- ( BOOL ) updateConfigureData:(NSString *)filename with:(NSString *)rootKey and:(NSString *)updateKey encoding:(NSStringEncoding)encode
+- ( BOOL ) updateConfigureData:(NSString *)filename type:(TDConfigureDataSourceFileType)fileType
+                          with:(NSString *)rootKey and:(NSString *)updateKey encoding:(NSStringEncoding)encode
                           from:(NSString *)zippedFilename forDirectories:(TDGetPathDirectory) directory inDirectory:(NSString *)subpath
                   inZippedPath:(NSString *)prefix with:(NSString *)password
 {
@@ -655,7 +678,7 @@
     
     [self                           _SetConfigureFileEncode: encode];
     [self                           _SetPrefixDirectory: ( ( nil == prefix ) ? @"" : prefix ) ];
-    if ( [self _GetConfigureJsonData: filename configure: rootKey with: updateKey] == NO )
+    if ( [self _GetConfigureData: filename type: fileType configure: rootKey with: updateKey] == NO )
     {
         NSLog( @"get configure data has warning. ");
         return NO;
@@ -665,7 +688,8 @@
 }
 
 //  ------------------------------------------------------------------------------------------------
-- ( BOOL ) updateConfigureData:(NSString *)filename with:(NSString *)rootKey and:(NSString *)updateKey encoding:(NSStringEncoding)encode
+- ( BOOL ) updateConfigureData:(NSString *)filename type:(TDConfigureDataSourceFileType)fileType 
+                          with:(NSString *)rootKey and:(NSString *)updateKey encoding:(NSStringEncoding)encode
                           from:(NSString *)zippedFullPath
                   inZippedPath:(NSString *)prefix with:(NSString *)password
 {
@@ -680,7 +704,7 @@
     
     [self                           _SetConfigureFileEncode: encode];
     [self                           _SetPrefixDirectory: ( ( nil == prefix ) ? @"" : prefix ) ];
-    if ( [self _GetConfigureJsonData: filename configure: rootKey with: updateKey] == NO )
+    if ( [self _GetConfigureData: filename type: fileType configure: rootKey with: updateKey] == NO )
     {
         NSLog( @"get configure data has warning. ");
         return NO;

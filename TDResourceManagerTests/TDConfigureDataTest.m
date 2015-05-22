@@ -83,7 +83,8 @@
 {
     [self                           copyResourceData];
     
-    configureData                   = [TDConfigureData loadConfigureData: @"StickerLibraryTabDefault" with: @"Tab" encoding: NSUTF8StringEncoding
+    configureData                   = [TDConfigureData loadConfigureData: @"StickerLibraryTabDefault" type: TDConfigureDataSourceFileTypeJSON 
+                                                                    with: @"Tab" encoding: NSUTF8StringEncoding
                                                                     from: TDTemporaryDirectory inDirectory: @"Tester/Resources" onSingleton: NO];
     XCTAssertNotNil( configureData, @"Resource manager should not be nil" );
     
@@ -92,7 +93,8 @@
     
     BOOL                            result;
     
-    result                          = [configureData updateConfigureData: @"StickerLibraryTabUpdate" with: @"Tab" and: @"Name" encoding: NSUTF8StringEncoding
+    result                          = [configureData updateConfigureData: @"StickerLibraryTabUpdate" type: TDConfigureDataSourceFileTypeJSON
+                                                                    with: @"Tab" and: @"Name" encoding: NSUTF8StringEncoding
                                                                     from: TDTemporaryDirectory inDirectory: @"Tester/Resources"];
     XCTAssertTrue( result, @"method's result should be true." );
     XCTAssertNotNil( [configureData configureData], @"configure Data container should not be nil" );
@@ -105,7 +107,8 @@
 {
     [self                           copyResourceData];
     
-    configureData                   = [TDConfigureData loadConfigureData: @"StickerLibraryTabDefault" with: @"Tab" encoding: NSUTF8StringEncoding
+    configureData                   = [TDConfigureData loadConfigureData: @"StickerLibraryTabDefault" type: TDConfigureDataSourceFileTypeJSON
+                                                                    with: @"Tab" encoding: NSUTF8StringEncoding
                                                                     from: @"Tester/JSQMATest.bundle" with: [self class] inDirectory: @"Resources" onSingleton: NO];
     XCTAssertNotNil( configureData, @"Resource manager should not be nil" );
     
@@ -114,7 +117,8 @@
     
     BOOL                            result;
     
-    result                          = [configureData updateConfigureData: @"StickerLibraryTabUpdate" with: @"Tab" and: @"Name" encoding: NSUTF8StringEncoding
+    result                          = [configureData updateConfigureData: @"StickerLibraryTabUpdate" type: TDConfigureDataSourceFileTypeJSON
+                                                                    with: @"Tab" and: @"Name" encoding: NSUTF8StringEncoding
                                                                     from: @"Tester/JSQMATest.bundle" with: [self class] inDirectory: @"Resources"];
     XCTAssertTrue( result, @"method's result should be true." );
     XCTAssertNotNil( [configureData configureData], @"configure Data container should not be nil" );
@@ -139,12 +143,14 @@
     
     
     fullPath                        = [bundleResourcePath stringByAppendingPathComponent: @"Tester/Resources.zip"];
-    configureData                   = [TDConfigureData loadConfigureData: @"StickerLibraryTabDefault" with: @"Tab" encoding: NSUTF8StringEncoding
+    configureData                   = [TDConfigureData loadConfigureData: @"StickerLibraryTabDefault" type: TDConfigureDataSourceFileTypeJSON
+                                                                    with: @"Tab" encoding: NSUTF8StringEncoding
                                                                     from: fullPath inZippedPath: @"Resources" with: nil onSingleton: NO];
     XCTAssertNotNil( configureData, @"Resource manager should not be nil" );
     XCTAssertNotEqualObjects( configureData, [TDConfigureData defaultManager], @"both object should not be equaled" );
     
-    configureData                   = [TDConfigureData loadConfigureData: @"StickerLibraryTabDefault" with: @"Tab" encoding: NSUTF8StringEncoding
+    configureData                   = [TDConfigureData loadConfigureData: @"StickerLibraryTabDefault" type: TDConfigureDataSourceFileTypeJSON
+                                                                    with: @"Tab" encoding: NSUTF8StringEncoding
                                                                     from: fullPath inZippedPath: @"Resources" with: nil onSingleton: YES];
     XCTAssertNotNil( configureData, @"Resource manager should not be nil" );
     XCTAssertEqualObjects( configureData, [TDConfigureData defaultManager], @"both object should be equaled" );
@@ -161,14 +167,16 @@
     //  zipped.
     BOOL                            result;
     
-    configureData                   = [TDConfigureData loadConfigureData: @"StickerLibraryTabDefault" with: @"Tab" encoding: NSUTF8StringEncoding
+    configureData                   = [TDConfigureData loadConfigureData: @"StickerLibraryTabDefault" type: TDConfigureDataSourceFileTypeJSON
+                                                                    with: @"Tab" encoding: NSUTF8StringEncoding
                                                                     from: @"Resources" forDirectories: TDTemporaryDirectory inDirectory: @"Tester"
                                                             inZippedPath: @"Resources" with: nil onSingleton: NO];
     XCTAssertNotNil( configureData, @"Resource manager should not be nil" );
     XCTAssertNotEqualObjects( configureData, [TDConfigureData defaultManager], @"both object should not be equaled" );
     
     
-    configureData                   = [TDConfigureData loadConfigureData: @"StickerLibraryTabDefault" with: @"Tab" encoding: NSUTF8StringEncoding
+    configureData                   = [TDConfigureData loadConfigureData: @"StickerLibraryTabDefault" type: TDConfigureDataSourceFileTypeJSON
+                                                                    with: @"Tab" encoding: NSUTF8StringEncoding
                                                                     from: @"Resources" forDirectories: TDTemporaryDirectory inDirectory: @"Tester"
                                                             inZippedPath: @"Resources" with: nil onSingleton: YES];
     XCTAssertNotNil( configureData, @"Resource manager should not be nil" );
@@ -176,7 +184,8 @@
     XCTAssertNotNil( [configureData configureData], @"configure Data container should not be nil" );    
     NSLog( @"container : %@", [configureData configureData] );
     
-    result                          = [configureData updateConfigureData: @"StickerLibraryTabUpdate" with: @"Tab" and: @"Name" encoding: NSUTF8StringEncoding
+    result                          = [configureData updateConfigureData: @"StickerLibraryTabUpdate" type: TDConfigureDataSourceFileTypeJSON
+                                                                    with: @"Tab" and: @"Name" encoding: NSUTF8StringEncoding
                                                                     from: @"Resources" forDirectories: TDTemporaryDirectory inDirectory: @"Tester"
                                                             inZippedPath: @"Resources" with: nil];
     XCTAssertTrue( result, @"method's result should be true." );
@@ -194,7 +203,8 @@
     
     
     fullPath                        = [bundleResourcePath stringByAppendingPathComponent: @"Tester/Resources.zip"];
-    result                          = [configureData updateConfigureData: @"StickerLibraryTabUpdate" with: @"Tab" and: @"Name" encoding: NSUTF8StringEncoding 
+    result                          = [configureData updateConfigureData: @"StickerLibraryTabUpdate" type: TDConfigureDataSourceFileTypeJSON 
+                                                                    with: @"Tab" and: @"Name" encoding: NSUTF8StringEncoding
                                                                     from: fullPath inZippedPath: @"Resources" with: nil];
     XCTAssertTrue( result, @"method's result should be true." );
     
