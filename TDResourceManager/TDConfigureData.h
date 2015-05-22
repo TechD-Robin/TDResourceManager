@@ -54,16 +54,16 @@ typedef NS_ENUM( NSInteger, TDConfigureDataSourceFileType ){
  *
  *  @param filename                 a filename of configure data.
  *  @param fileType                 type of file..
- *  @param rootKey                  key of root of configure file.
  *  @param encode                   charset encode.
+ *  @param rootKey                  key of root of configure file.
  *  @param defaultDirectory         enumeration for directory.
  *  @param subpath                  sub path in directory.
  *  @param singleton                create a singleton object or normal object.
  *
  *  @return object|nil              data(with resource manager) object or nil.
  */
-+ ( instancetype ) loadConfigureData:(NSString *)filename type:(TDConfigureDataSourceFileType)fileType 
-                                with:(NSString *)rootKey encoding:(NSStringEncoding)encode
++ ( instancetype ) loadConfigureData:(NSString *)filename type:(TDConfigureDataSourceFileType)fileType encoding:(NSStringEncoding)encode
+                       withConfigure:(NSString *)rootKey
                                 from:(TDGetPathDirectory)defaultDirectory inDirectory:(NSString *)subpath onSingleton:(BOOL)singleton;
 
 //  ------------------------------------------------------------------------------------------------
@@ -73,8 +73,8 @@ typedef NS_ENUM( NSInteger, TDConfigureDataSourceFileType ){
  *
  *  @param filename                 a filename of configure data.
  *  @param fileType                 type of file..
- *  @param rootKey                  key of root of configure file.
  *  @param encode                   charset encode.
+ *  @param rootKey                  key of root of configure file.
  *  @param assetsBundleName         a bundle name.
  *  @param aClass                   a class.(is view controller usually)
  *  @param subpath                  sub path in directory.
@@ -82,8 +82,8 @@ typedef NS_ENUM( NSInteger, TDConfigureDataSourceFileType ){
  *
  *  @return object|nil              data(with resource manager) object or nil.
  */
-+ ( instancetype ) loadConfigureData:(NSString *)filename type:(TDConfigureDataSourceFileType)fileType
-                                with:(NSString *)rootKey encoding:(NSStringEncoding)encode
++ ( instancetype ) loadConfigureData:(NSString *)filename type:(TDConfigureDataSourceFileType)fileType encoding:(NSStringEncoding)encode
+                       withConfigure:(NSString *)rootKey
                                 from:(NSString *)assetsBundleName with:(Class)aClass
                          inDirectory:(NSString *)subpath onSingleton:(BOOL)singleton;
 
@@ -94,8 +94,8 @@ typedef NS_ENUM( NSInteger, TDConfigureDataSourceFileType ){
  *
  *  @param filename                 a filename of configure data.
  *  @param fileType                 type of file..
- *  @param rootKey                  key of root of configure file.
  *  @param encode                   charset encode.
+ *  @param rootKey                  key of root of configure file.
  *  @param zippedFilename           zipped file name (without Extension part).
  *  @param directory                enumeration for directory.
  *  @param subpath                  resource's sub directory name of configure
@@ -105,8 +105,8 @@ typedef NS_ENUM( NSInteger, TDConfigureDataSourceFileType ){
  *
  *  @return object|nil              data(with resource manager) object or nil.
  */
-+ ( instancetype ) loadConfigureData:(NSString *)filename type:(TDConfigureDataSourceFileType)fileType
-                                with:(NSString *)rootKey encoding:(NSStringEncoding)encode
++ ( instancetype ) loadConfigureData:(NSString *)filename type:(TDConfigureDataSourceFileType)fileType encoding:(NSStringEncoding)encode
+                       withConfigure:(NSString *)rootKey
                                 from:(NSString *)zippedFilename forDirectories:(TDGetPathDirectory)directory inDirectory:(NSString *)subpath
                         inZippedPath:(NSString *)prefix with:(NSString *)password onSingleton:(BOOL)singleton;
 
@@ -117,8 +117,8 @@ typedef NS_ENUM( NSInteger, TDConfigureDataSourceFileType ){
  *
  *  @param filename                 a filename of configure data.
  *  @param fileType                 type of file..
- *  @param rootKey                  key of root of configure file.
  *  @param encode                   charset encode.
+ *  @param rootKey                  key of root of configure file.
  *  @param zippedFullPath           zipped file name (full path).
  *  @param prefix                   prefix path name in zipped file.
  *  @param password                 password of zipped file.
@@ -126,8 +126,8 @@ typedef NS_ENUM( NSInteger, TDConfigureDataSourceFileType ){
  *
  *  @return object|nil              data(with resource manager) object or nil.
  */
-+ ( instancetype ) loadConfigureData:(NSString *)filename type:(TDConfigureDataSourceFileType)fileType
-                                with:(NSString *)rootKey encoding:(NSStringEncoding)encode
++ ( instancetype ) loadConfigureData:(NSString *)filename type:(TDConfigureDataSourceFileType)fileType encoding:(NSStringEncoding)encode
+                       withConfigure:(NSString *)rootKey
                                 from:(NSString *)zippedFullPath
                         inZippedPath:(NSString *)prefix with:(NSString *)password onSingleton:(BOOL)singleton;
 
@@ -142,16 +142,16 @@ typedef NS_ENUM( NSInteger, TDConfigureDataSourceFileType ){
  *
  *  @param filename                 a filename of configure data.
  *  @param fileType                 type of file..
+ *  @param encode                   charset encode.
  *  @param rootKey                  key of root of configure file.
  *  @param updateKey                key for update data.
- *  @param encode                   charset encode.
  *  @param defaultDirectory         enumeration for directory.
  *  @param subpath                  sub path in directory.
  *
  *  @return YES|NO                  method success or failure.
  */
-- ( BOOL ) updateConfigureData:(NSString *)filename type:(TDConfigureDataSourceFileType)fileType
-                          with:(NSString *)rootKey and:(NSString *)updateKey encoding:(NSStringEncoding)encode
+- ( BOOL ) updateConfigureData:(NSString *)filename type:(TDConfigureDataSourceFileType)fileType encoding:(NSStringEncoding)encode
+                 withConfigure:(NSString *)rootKey and:(NSString *)updateKey
                           from:(TDGetPathDirectory)defaultDirectory inDirectory:(NSString *)subpath;
 
 //  ------------------------------------------------------------------------------------------------
@@ -161,17 +161,17 @@ typedef NS_ENUM( NSInteger, TDConfigureDataSourceFileType ){
  *
  *  @param filename                 a filename of configure data.
  *  @param fileType                 type of file..
+ *  @param encode                   charset encode.
  *  @param rootKey                  key of root of configure file.
  *  @param updateKey                key for update data.
- *  @param encode                   charset encode.
  *  @param assetsBundleName         a bundle name.
  *  @param aClass                   a class.(is view controller usually)
  *  @param subpath                  sub path in directory.
  *
  *  @return YES|NO                  method success or failure.
  */
-- ( BOOL ) updateConfigureData:(NSString *)filename type:(TDConfigureDataSourceFileType)fileType
-                          with:(NSString *)rootKey and:(NSString *)updateKey encoding:(NSStringEncoding)encode
+- ( BOOL ) updateConfigureData:(NSString *)filename type:(TDConfigureDataSourceFileType)fileType encoding:(NSStringEncoding)encode
+                 withConfigure:(NSString *)rootKey and:(NSString *)updateKey
                           from:(NSString *)assetsBundleName with:(Class)aClass inDirectory:(NSString *)subpath;
 
 //  ------------------------------------------------------------------------------------------------
@@ -181,9 +181,9 @@ typedef NS_ENUM( NSInteger, TDConfigureDataSourceFileType ){
  *
  *  @param filename                 a filename of update's configure data.
  *  @param fileType                 type of file..
+ *  @param encode                   charset encode.
  *  @param rootKey                  key of root of configure file.
  *  @param updateKey                key for update data.
- *  @param encode                   charset encode.
  *  @param zippedFilename           zipped file name (without Extension part).
  *  @param directory                enumeration for directory.
  *  @param subpath                  resource's sub directory name of configure
@@ -192,8 +192,8 @@ typedef NS_ENUM( NSInteger, TDConfigureDataSourceFileType ){
  *
  *  @return YES|NO                  method success or failure.
  */
-- ( BOOL ) updateConfigureData:(NSString *)filename type:(TDConfigureDataSourceFileType)fileType
-                          with:(NSString *)rootKey and:(NSString *)updateKey encoding:(NSStringEncoding)encode
+- ( BOOL ) updateConfigureData:(NSString *)filename type:(TDConfigureDataSourceFileType)fileType encoding:(NSStringEncoding)encode
+                 withConfigure:(NSString *)rootKey and:(NSString *)updateKey
                           from:(NSString *)zippedFilename forDirectories:(TDGetPathDirectory) directory inDirectory:(NSString *)subpath
                   inZippedPath:(NSString *)prefix with:(NSString *)password;
 
@@ -204,17 +204,17 @@ typedef NS_ENUM( NSInteger, TDConfigureDataSourceFileType ){
  *
  *  @param filename                 a filename of update's configure data.
  *  @param fileType                 type of file..
+ *  @param encode                   charset encode.
  *  @param rootKey                  key of root of configure file.
  *  @param updateKey                key for update data.
- *  @param encode                   charset encode.
  *  @param zippedFullPath           zipped file name (full path).
  *  @param prefix                   prefix path name in zipped file.
  *  @param password                 password of zipped file.
  *
  *  @return YES|NO                  method success or failure.
  */
-- ( BOOL ) updateConfigureData:(NSString *)filename type:(TDConfigureDataSourceFileType)fileType 
-                          with:(NSString *)rootKey and:(NSString *)updateKey encoding:(NSStringEncoding)encode
+- ( BOOL ) updateConfigureData:(NSString *)filename type:(TDConfigureDataSourceFileType)fileType encoding:(NSStringEncoding)encode
+                 withConfigure:(NSString *)rootKey and:(NSString *)updateKey
                           from:(NSString *)zippedFullPath
                   inZippedPath:(NSString *)prefix with:(NSString *)password;
 

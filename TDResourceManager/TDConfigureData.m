@@ -483,8 +483,8 @@
 }
 
 //  ------------------------------------------------------------------------------------------------
-+ ( instancetype ) loadConfigureData:(NSString *)filename type:(TDConfigureDataSourceFileType)fileType 
-                                with:(NSString *)rootKey encoding:(NSStringEncoding)encode
++ ( instancetype ) loadConfigureData:(NSString *)filename type:(TDConfigureDataSourceFileType)fileType encoding:(NSStringEncoding)encode
+                       withConfigure:(NSString *)rootKey
                                 from:(TDGetPathDirectory)defaultDirectory inDirectory:(NSString *)subpath onSingleton:(BOOL)singleton
 {
     NSParameterAssert( nil != filename );
@@ -507,8 +507,8 @@
 }
 
 //  ------------------------------------------------------------------------------------------------
-+ ( instancetype ) loadConfigureData:(NSString *)filename type:(TDConfigureDataSourceFileType)fileType
-                                with:(NSString *)rootKey encoding:(NSStringEncoding)encode
++ ( instancetype ) loadConfigureData:(NSString *)filename type:(TDConfigureDataSourceFileType)fileType encoding:(NSStringEncoding)encode
+                       withConfigure:(NSString *)rootKey
                                 from:(NSString *)assetsBundleName with:(Class)aClass
                          inDirectory:(NSString *)subpath onSingleton:(BOOL)singleton
 {
@@ -534,9 +534,9 @@
 }
 
 //  ------------------------------------------------------------------------------------------------
-+ ( instancetype ) loadConfigureData:(NSString *)filename type:(TDConfigureDataSourceFileType)fileType
-                                with:(NSString *)rootKey encoding:(NSStringEncoding)encode
-                                from:(NSString *)zippedFilename forDirectories:(TDGetPathDirectory) directory inDirectory:(NSString *)subpath
++ ( instancetype ) loadConfigureData:(NSString *)filename type:(TDConfigureDataSourceFileType)fileType encoding:(NSStringEncoding)encode
+                       withConfigure:(NSString *)rootKey
+                                from:(NSString *)zippedFilename forDirectories:(TDGetPathDirectory)directory inDirectory:(NSString *)subpath
                         inZippedPath:(NSString *)prefix with:(NSString *)password onSingleton:(BOOL)singleton
 {
     NSParameterAssert( nil != filename );
@@ -570,10 +570,10 @@
 }
 
 //  ------------------------------------------------------------------------------------------------
-+ ( instancetype ) loadConfigureData:(NSString *)filename type:(TDConfigureDataSourceFileType)fileType
-                                with:(NSString *)rootKey encoding:(NSStringEncoding)encode
++ ( instancetype ) loadConfigureData:(NSString *)filename type:(TDConfigureDataSourceFileType)fileType encoding:(NSStringEncoding)encode
+                       withConfigure:(NSString *)rootKey
                                 from:(NSString *)zippedFullPath
-                        inZippedPath:(NSString *)prefix with:(NSString *)password onSingleton:(BOOL)singleton;
+                        inZippedPath:(NSString *)prefix with:(NSString *)password onSingleton:(BOOL)singleton
 {
     NSParameterAssert( nil != filename );
     NSParameterAssert( nil != zippedFullPath );
@@ -601,8 +601,8 @@
 //  ------------------------------------------------------------------------------------------------
 #pragma mark method for update the object.
 //  ------------------------------------------------------------------------------------------------
-- ( BOOL ) updateConfigureData:(NSString *)filename type:(TDConfigureDataSourceFileType)fileType
-                          with:(NSString *)rootKey and:(NSString *)updateKey encoding:(NSStringEncoding)encode
+- ( BOOL ) updateConfigureData:(NSString *)filename type:(TDConfigureDataSourceFileType)fileType encoding:(NSStringEncoding)encode
+                 withConfigure:(NSString *)rootKey and:(NSString *)updateKey
                           from:(TDGetPathDirectory)defaultDirectory inDirectory:(NSString *)subpath
 {
     NSParameterAssert( nil != filename );
@@ -626,8 +626,8 @@
 }
 
 //  ------------------------------------------------------------------------------------------------
-- ( BOOL ) updateConfigureData:(NSString *)filename type:(TDConfigureDataSourceFileType)fileType
-                          with:(NSString *)rootKey and:(NSString *)updateKey encoding:(NSStringEncoding)encode
+- ( BOOL ) updateConfigureData:(NSString *)filename type:(TDConfigureDataSourceFileType)fileType encoding:(NSStringEncoding)encode
+                 withConfigure:(NSString *)rootKey and:(NSString *)updateKey
                           from:(NSString *)assetsBundleName with:(Class)aClass inDirectory:(NSString *)subpath
 {
     NSParameterAssert( nil != filename );
@@ -653,8 +653,8 @@
 }
 
 //  ------------------------------------------------------------------------------------------------
-- ( BOOL ) updateConfigureData:(NSString *)filename type:(TDConfigureDataSourceFileType)fileType
-                          with:(NSString *)rootKey and:(NSString *)updateKey encoding:(NSStringEncoding)encode
+- ( BOOL ) updateConfigureData:(NSString *)filename type:(TDConfigureDataSourceFileType)fileType encoding:(NSStringEncoding)encode
+                 withConfigure:(NSString *)rootKey and:(NSString *)updateKey
                           from:(NSString *)zippedFilename forDirectories:(TDGetPathDirectory) directory inDirectory:(NSString *)subpath
                   inZippedPath:(NSString *)prefix with:(NSString *)password
 {
@@ -688,8 +688,8 @@
 }
 
 //  ------------------------------------------------------------------------------------------------
-- ( BOOL ) updateConfigureData:(NSString *)filename type:(TDConfigureDataSourceFileType)fileType 
-                          with:(NSString *)rootKey and:(NSString *)updateKey encoding:(NSStringEncoding)encode
+- ( BOOL ) updateConfigureData:(NSString *)filename type:(TDConfigureDataSourceFileType)fileType encoding:(NSStringEncoding)encode
+                 withConfigure:(NSString *)rootKey and:(NSString *)updateKey
                           from:(NSString *)zippedFullPath
                   inZippedPath:(NSString *)prefix with:(NSString *)password
 {
