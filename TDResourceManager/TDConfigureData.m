@@ -549,7 +549,7 @@
     if ( nil == filePath )
     {
         NSLog( @"file %s no exist.", [filePath UTF8String] );
-        return NO;
+        return nil;
     }
     
     configureData                   = [[self class] zippedFileEnvironment: filePath with: password onSingleton: singleton];
