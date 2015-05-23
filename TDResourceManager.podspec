@@ -2,7 +2,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "TDResourceManager"
-  s.version      = "0.0.1"
+  s.version      = "0.0.2"
   s.summary      = "A Resource Manager of Tech.D."
 
   s.homepage     = "https://git.techd.idv.tw:5001"
