@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!--
+    和 .json 是一樣的內容, 拿來測試 lib ~ 
+-->
+<plist version="1.0">
+<dict>
+	<key>Tab</key>
+	<array>
+		<dict>
+			<key>Description</key>
+			<string>Favorites (newer)</string>
+			<key>Images</key>
+			<array>
+				<string>StickerLibraryTabUpdate/ic_favorite_grey600_18dp.png</string>
+				<string>StickerLibraryTabUpdate/ic_favorite_black_18dp.png</string>
+			</array>
+			<key>Name</key>
+			<string>Favorites</string>
+		</dict>
+		<dict>
+			<key>Configure</key>
+			<string>page.face</string>
+			<key>DataLink</key>
+			<string>https://docs.google.com/uc?authuser=0&amp;id=0B1yHM9LysIXXSFIwN2dwd0J4Tk0&amp;export=download</string>
+			<key>Description</key>
+			<string>Face sticker (test for update then download)</string>
+			<key>Enabled</key>
+			<string>1</string>
+			<key>Images</key>
+			<array>
+				<string>StickerLibraryTabUpdate/ic_face_grey600_36dp</string>
+				<string>StickerLibraryTabUpdate/ic_face_black_36dp</string>
+				<string>StickerLibraryTabUpdate/ic_face_white_36dp</string>
+			</array>
+			<key>Name</key>
+			<string>Face</string>
+			<key>Timestamp</key>
+			<string>15041301</string>
+		</dict>
+		<dict>
+			<key>Configure</key>
+			<string>download.tab</string>
+			<key>Description</key>
+			<string>Download test</string>
+			<key>Enabled</key>
+			<string>1</string>
+			<key>Images</key>
+			<array>
+				<string>StickerLibraryTabUpdate/ic_file_download_grey600_36dp</string>
+				<string>StickerLibraryTabUpdate/ic_file_download_white_36dp</string>
+				<string>StickerLibraryTabUpdate/ic_file_download_black_36dp</string>
+			</array>
+			<key>Name</key>
+			<string>Downloads</string>
+		</dict>
+	</array>
+</dict>
+</plist>

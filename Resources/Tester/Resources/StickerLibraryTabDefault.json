@@ -1,0 +1,28 @@
+{ 
+    "Tab"   : 
+    [ 
+        { 
+            "Name"          :   "Favorites", 
+            "Description"   :   "Favorites (older)", 
+            "Images"        :   ["StickerLibraryTabDefault/ic_grade_grey600_18dp.png", "StickerLibraryTabDefault/ic_grade_black_18dp.png"] 
+        }, 
+        
+        { 
+            "Name"          :   "Emotion", 
+            "Description"   :   "Emotion sticker", 
+            "Enabled"       :   "1", 
+            "Images"        :   ["StickerLibraryTabDefault/ic_insert_emoticon_grey600_36dp", "StickerLibraryTabDefault/ic_insert_emoticon_black_36dp"], 
+            "Configure"     :   "page.emotion" 
+        }, 
+        
+        {
+            "Name"          :   "Face", 
+            "Description"   :   "Face sticker", 
+            "Enabled"       :   "1", 
+            "Images"        :   ["StickerLibraryTabDefault/ic_face_grey600_18dp.png", "StickerLibraryTabDefault/ic_face_black_18dp.png"], 
+            "Configure"     :   "face.tab" 
+        } 
+    ] 
+} 
+
+

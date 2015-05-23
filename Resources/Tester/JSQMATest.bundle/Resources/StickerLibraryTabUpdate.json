@@ -1,0 +1,31 @@
+{ 
+    "Tab"   : 
+    [ 
+        { 
+            "Name"          :   "Favorites", 
+            "Description"   :   "Favorites (newer)", 
+            "Images"        :   ["StickerLibraryTabUpdate/ic_favorite_grey600_18dp.png", "StickerLibraryTabUpdate/ic_favorite_black_18dp.png"] 
+        }, 
+        
+        { 
+            "Name"          :   "Face", 
+            "Description"   :   "Face sticker (test for update then download)", 
+            "Enabled"       :   "1", 
+            "Images"        :   ["StickerLibraryTabUpdate/ic_face_grey600_36dp", "StickerLibraryTabUpdate/ic_face_black_36dp", "StickerLibraryTabUpdate/ic_face_white_36dp"], 
+            "Configure"     :   "page.face",
+            "Timestamp"     :   "15041301", 
+            "DataLink"      :   "https://docs.google.com/uc?authuser=0&id=0B1yHM9LysIXXSFIwN2dwd0J4Tk0&export=download"
+        }, 
+        
+        { 
+            "Name"          :   "Downloads", 
+            "Description"   :   "Download test", 
+            "Enabled"       :   "1", 
+            "Images"        :   ["StickerLibraryTabUpdate/ic_file_download_grey600_36dp", "StickerLibraryTabUpdate/ic_file_download_white_36dp", "StickerLibraryTabUpdate/ic_file_download_black_36dp"], 
+            "Configure"     :   "download.tab"  
+        }  
+
+    ] 
+} 
+
+
