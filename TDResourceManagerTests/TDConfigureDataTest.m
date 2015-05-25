@@ -195,7 +195,7 @@
     result                          = [configureData updateConfigureData: @"StickerLibraryTabUpdate"
                                                                     type: TDConfigureDataSourceFileTypeJSON encoding: NSUTF8StringEncoding
                                                            withConfigure: @"Tab" and: @"Name"
-                                                                    from: @"Resources" forDirectories: TDTemporaryDirectory inDirectory: @"Tester"
+                                                                    from: @"Resources.zip" forDirectories: TDTemporaryDirectory inDirectory: @"Tester"
                                                             inZippedPath: @"Resources" with: nil];
     XCTAssertTrue( result, @"method's result should be true." );
     XCTAssertNotNil( [configureData configureData], @"configure Data container should not be nil" );
@@ -335,7 +335,7 @@
     result                          = [configureData updateConfigureData: @"StickerLibraryTabUpdate"
                                                                     type: TDConfigureDataSourceFileTypePList encoding: NSUTF8StringEncoding
                                                            withConfigure: @"Tab" and: @"Name"
-                                                                    from: @"Resources" forDirectories: TDTemporaryDirectory inDirectory: @"Tester"
+                                                                    from: @"Resources.zip" forDirectories: TDTemporaryDirectory inDirectory: @"Tester"
                                                             inZippedPath: @"Resources" with: nil];
     XCTAssertTrue( result, @"method's result should be true." );
     XCTAssertNotNil( [configureData configureData], @"configure Data container should not be nil" );
