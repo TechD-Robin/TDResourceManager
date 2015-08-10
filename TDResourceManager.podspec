@@ -2,7 +2,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "TDResourceManager"
-  s.version      = "0.0.2"
+  s.version      = "0.0.3"
   s.summary      = "A Resource Manager of Tech.D."
 
   s.homepage     = "https://git.techd.idv.tw:5001"
@@ -18,8 +18,8 @@ Pod::Spec.new do |s|
 
   s.source_files = 'ARCMacros.h', 'TDResourceManager/*.{h,m,mm}'
 
-  s.dependency    "Foundation+TechD",     "~> 0.0.2"
-  s.dependency    "TDFoundation",         "~> 0.0.3" 
+  s.dependency    "Foundation+TechD",     "~> 0.0.3"
+  s.dependency    "TDFoundation",         "~> 0.0.4"
   s.dependency    "fork_ZipArchive",      "~> 1.3.2"
 
 

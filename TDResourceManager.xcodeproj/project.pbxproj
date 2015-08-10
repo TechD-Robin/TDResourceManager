@@ -133,6 +133,7 @@
 		2A3CC9D61B0C921200EC0820 /* TDConfigureData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDConfigureData.h; sourceTree = "<group>"; };
 		2A3CC9D71B0C921200EC0820 /* TDConfigureData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDConfigureData.m; sourceTree = "<group>"; };
 		2A3CC9DB1B0CA38B00EC0820 /* TDConfigureDataTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDConfigureDataTest.m; sourceTree = "<group>"; };
+		2A40E8851B793565007914F0 /* TDResourceManager.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = TDResourceManager.podspec; sourceTree = "<group>"; };
 		2A4358661AFE35F1001AEF63 /* NSPropertyListSerialization+TechD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSPropertyListSerialization+TechD.h"; sourceTree = "<group>"; };
 		2A4358671AFE35F1001AEF63 /* NSPropertyListSerialization+TechD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSPropertyListSerialization+TechD.m"; sourceTree = "<group>"; };
 		2AC9DD551AEBB1950012B4FA /* libTDResourceManager.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libTDResourceManager.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -295,6 +296,7 @@
 				2A187CCA1AECF1E600B457FD /* Libraries */,
 				2AE19FC21AF0F2770060D44F /* Resources */,
 				2AC9DD561AEBB1950012B4FA /* Products */,
+				2A40E8851B793565007914F0 /* TDResourceManager.podspec */,
 			);
 			sourceTree = "<group>";
 		};
