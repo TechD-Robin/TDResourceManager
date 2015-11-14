@@ -15,16 +15,6 @@
 		2A187CED1AECF24000B457FD /* NSJSONSerialization+TechD.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A187CD31AECF23F00B457FD /* NSJSONSerialization+TechD.m */; };
 		2A187CEE1AECF24000B457FD /* NSString+TechD.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A187CD51AECF23F00B457FD /* NSString+TechD.m */; };
 		2A187CEF1AECF24000B457FD /* NSString+TechD.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A187CD51AECF23F00B457FD /* NSString+TechD.m */; };
-		2A187CF41AECF24000B457FD /* ioapi.c in Sources */ = {isa = PBXBuildFile; fileRef = 2A187CDD1AECF23F00B457FD /* ioapi.c */; };
-		2A187CF51AECF24000B457FD /* ioapi.c in Sources */ = {isa = PBXBuildFile; fileRef = 2A187CDD1AECF23F00B457FD /* ioapi.c */; };
-		2A187CF61AECF24000B457FD /* mztools.c in Sources */ = {isa = PBXBuildFile; fileRef = 2A187CDF1AECF23F00B457FD /* mztools.c */; };
-		2A187CF71AECF24000B457FD /* mztools.c in Sources */ = {isa = PBXBuildFile; fileRef = 2A187CDF1AECF23F00B457FD /* mztools.c */; };
-		2A187CF81AECF24000B457FD /* unzip.c in Sources */ = {isa = PBXBuildFile; fileRef = 2A187CE11AECF23F00B457FD /* unzip.c */; };
-		2A187CF91AECF24000B457FD /* unzip.c in Sources */ = {isa = PBXBuildFile; fileRef = 2A187CE11AECF23F00B457FD /* unzip.c */; };
-		2A187CFA1AECF24000B457FD /* zip.c in Sources */ = {isa = PBXBuildFile; fileRef = 2A187CE31AECF23F00B457FD /* zip.c */; };
-		2A187CFB1AECF24000B457FD /* zip.c in Sources */ = {isa = PBXBuildFile; fileRef = 2A187CE31AECF23F00B457FD /* zip.c */; };
-		2A187CFE1AECF24000B457FD /* ZipArchive.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A187CE71AECF23F00B457FD /* ZipArchive.m */; };
-		2A187CFF1AECF24000B457FD /* ZipArchive.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A187CE71AECF23F00B457FD /* ZipArchive.m */; };
 		2A187D011AECF29900B457FD /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A187D001AECF29900B457FD /* libz.dylib */; };
 		2A187D261AED197900B457FD /* TDJSONReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A187D1E1AED197900B457FD /* TDJSONReader.m */; };
 		2A187D271AED197900B457FD /* TDJSONReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A187D1E1AED197900B457FD /* TDJSONReader.m */; };
@@ -41,6 +31,17 @@
 		2A43586A1AFE35F1001AEF63 /* NSPropertyListSerialization+TechD.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A4358671AFE35F1001AEF63 /* NSPropertyListSerialization+TechD.m */; };
 		2A43586B1AFE35F1001AEF63 /* NSPropertyListSerialization+TechD.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A4358671AFE35F1001AEF63 /* NSPropertyListSerialization+TechD.m */; };
 		2A95DFE61BF787110018426F /* TDResourceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AC9DD5A1AEBB1950012B4FA /* TDResourceManager.m */; };
+		2A95DFF81BF7C8BE0018426F /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 2A95DFE91BF7C8BE0018426F /* LICENSE */; };
+		2A95DFF91BF7C8BE0018426F /* ioapi.c in Sources */ = {isa = PBXBuildFile; fileRef = 2A95DFEC1BF7C8BE0018426F /* ioapi.c */; };
+		2A95DFFA1BF7C8BE0018426F /* ioapi.c in Sources */ = {isa = PBXBuildFile; fileRef = 2A95DFEC1BF7C8BE0018426F /* ioapi.c */; };
+		2A95DFFB1BF7C8BE0018426F /* mztools.c in Sources */ = {isa = PBXBuildFile; fileRef = 2A95DFEE1BF7C8BE0018426F /* mztools.c */; };
+		2A95DFFC1BF7C8BE0018426F /* mztools.c in Sources */ = {isa = PBXBuildFile; fileRef = 2A95DFEE1BF7C8BE0018426F /* mztools.c */; };
+		2A95DFFD1BF7C8BE0018426F /* unzip.c in Sources */ = {isa = PBXBuildFile; fileRef = 2A95DFF01BF7C8BE0018426F /* unzip.c */; };
+		2A95DFFE1BF7C8BE0018426F /* unzip.c in Sources */ = {isa = PBXBuildFile; fileRef = 2A95DFF01BF7C8BE0018426F /* unzip.c */; };
+		2A95DFFF1BF7C8BE0018426F /* zip.c in Sources */ = {isa = PBXBuildFile; fileRef = 2A95DFF21BF7C8BE0018426F /* zip.c */; };
+		2A95E0001BF7C8BE0018426F /* zip.c in Sources */ = {isa = PBXBuildFile; fileRef = 2A95DFF21BF7C8BE0018426F /* zip.c */; };
+		2A95E0031BF7C8BE0018426F /* ZipArchive.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A95DFF71BF7C8BE0018426F /* ZipArchive.m */; };
+		2A95E0041BF7C8BE0018426F /* ZipArchive.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A95DFF71BF7C8BE0018426F /* ZipArchive.m */; };
 		2AC9DD591AEBB1950012B4FA /* TDResourceManager.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2AC9DD581AEBB1950012B4FA /* TDResourceManager.h */; };
 		2AC9DD5B1AEBB1950012B4FA /* TDResourceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AC9DD5A1AEBB1950012B4FA /* TDResourceManager.m */; };
 		2AC9DD611AEBB1950012B4FA /* libTDResourceManager.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AC9DD551AEBB1950012B4FA /* libTDResourceManager.a */; };
@@ -57,11 +58,6 @@
 		2AE19FCB1AF0FA6F0060D44F /* NSBundle+TechD.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A187CCF1AECF23F00B457FD /* NSBundle+TechD.m */; };
 		2AE19FCC1AF0FA6F0060D44F /* NSString+TechD.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A187CD51AECF23F00B457FD /* NSString+TechD.m */; };
 		2AE19FCD1AF0FA6F0060D44F /* NSJSONSerialization+TechD.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A187CD31AECF23F00B457FD /* NSJSONSerialization+TechD.m */; };
-		2AE19FCE1AF131F70060D44F /* ioapi.c in Sources */ = {isa = PBXBuildFile; fileRef = 2A187CDD1AECF23F00B457FD /* ioapi.c */; };
-		2AE19FCF1AF131F70060D44F /* mztools.c in Sources */ = {isa = PBXBuildFile; fileRef = 2A187CDF1AECF23F00B457FD /* mztools.c */; };
-		2AE19FD01AF131F70060D44F /* unzip.c in Sources */ = {isa = PBXBuildFile; fileRef = 2A187CE11AECF23F00B457FD /* unzip.c */; };
-		2AE19FD11AF131F70060D44F /* zip.c in Sources */ = {isa = PBXBuildFile; fileRef = 2A187CE31AECF23F00B457FD /* zip.c */; };
-		2AE19FD21AF132180060D44F /* ZipArchive.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A187CE71AECF23F00B457FD /* ZipArchive.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -106,20 +102,6 @@
 		2A187CD51AECF23F00B457FD /* NSString+TechD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+TechD.m"; sourceTree = "<group>"; };
 		2A187CD61AECF23F00B457FD /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		2A187CD71AECF23F00B457FD /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		2A187CD91AECF23F00B457FD /* ARCMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARCMacros.h; sourceTree = "<group>"; };
-		2A187CDA1AECF23F00B457FD /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
-		2A187CDC1AECF23F00B457FD /* crypt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = crypt.h; sourceTree = "<group>"; };
-		2A187CDD1AECF23F00B457FD /* ioapi.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ioapi.c; sourceTree = "<group>"; };
-		2A187CDE1AECF23F00B457FD /* ioapi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ioapi.h; sourceTree = "<group>"; };
-		2A187CDF1AECF23F00B457FD /* mztools.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = mztools.c; sourceTree = "<group>"; };
-		2A187CE01AECF23F00B457FD /* mztools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mztools.h; sourceTree = "<group>"; };
-		2A187CE11AECF23F00B457FD /* unzip.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = unzip.c; sourceTree = "<group>"; };
-		2A187CE21AECF23F00B457FD /* unzip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = unzip.h; sourceTree = "<group>"; };
-		2A187CE31AECF23F00B457FD /* zip.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = zip.c; sourceTree = "<group>"; };
-		2A187CE41AECF23F00B457FD /* zip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = zip.h; sourceTree = "<group>"; };
-		2A187CE51AECF23F00B457FD /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		2A187CE61AECF23F00B457FD /* ZipArchive.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZipArchive.h; sourceTree = "<group>"; };
-		2A187CE71AECF23F00B457FD /* ZipArchive.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZipArchive.m; sourceTree = "<group>"; };
 		2A187D001AECF29900B457FD /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		2A187D181AED197900B457FD /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		2A187D191AED197900B457FD /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
@@ -137,6 +119,20 @@
 		2A40E8851B793565007914F0 /* TDResourceManager.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = TDResourceManager.podspec; sourceTree = "<group>"; };
 		2A4358661AFE35F1001AEF63 /* NSPropertyListSerialization+TechD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSPropertyListSerialization+TechD.h"; sourceTree = "<group>"; };
 		2A4358671AFE35F1001AEF63 /* NSPropertyListSerialization+TechD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSPropertyListSerialization+TechD.m"; sourceTree = "<group>"; };
+		2A95DFE81BF7C8BE0018426F /* ARCMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARCMacros.h; sourceTree = "<group>"; };
+		2A95DFE91BF7C8BE0018426F /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		2A95DFEB1BF7C8BE0018426F /* crypt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = crypt.h; sourceTree = "<group>"; };
+		2A95DFEC1BF7C8BE0018426F /* ioapi.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ioapi.c; sourceTree = "<group>"; };
+		2A95DFED1BF7C8BE0018426F /* ioapi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ioapi.h; sourceTree = "<group>"; };
+		2A95DFEE1BF7C8BE0018426F /* mztools.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = mztools.c; sourceTree = "<group>"; };
+		2A95DFEF1BF7C8BE0018426F /* mztools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mztools.h; sourceTree = "<group>"; };
+		2A95DFF01BF7C8BE0018426F /* unzip.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = unzip.c; sourceTree = "<group>"; };
+		2A95DFF11BF7C8BE0018426F /* unzip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = unzip.h; sourceTree = "<group>"; };
+		2A95DFF21BF7C8BE0018426F /* zip.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = zip.c; sourceTree = "<group>"; };
+		2A95DFF31BF7C8BE0018426F /* zip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = zip.h; sourceTree = "<group>"; };
+		2A95DFF41BF7C8BE0018426F /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		2A95DFF61BF7C8BE0018426F /* ZipArchive.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZipArchive.h; sourceTree = "<group>"; };
+		2A95DFF71BF7C8BE0018426F /* ZipArchive.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZipArchive.m; sourceTree = "<group>"; };
 		2AC9DD551AEBB1950012B4FA /* libTDResourceManager.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libTDResourceManager.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		2AC9DD581AEBB1950012B4FA /* TDResourceManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TDResourceManager.h; sourceTree = "<group>"; };
 		2AC9DD5A1AEBB1950012B4FA /* TDResourceManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TDResourceManager.m; sourceTree = "<group>"; };
@@ -196,7 +192,7 @@
 			children = (
 				2A187CCB1AECF23F00B457FD /* Foundation+TechD */,
 				2A187D171AED197900B457FD /* TDFoundation */,
-				2A187CD81AECF23F00B457FD /* ZipArchive */,
+				2A95DFE71BF7C8BE0018426F /* TDforkZipArchive */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -230,37 +226,6 @@
 			path = "Foundation+TechD";
 			sourceTree = "<group>";
 		};
-		2A187CD81AECF23F00B457FD /* ZipArchive */ = {
-			isa = PBXGroup;
-			children = (
-				2A187D001AECF29900B457FD /* libz.dylib */,
-				2A187CDB1AECF23F00B457FD /* minizip */,
-				2A187CD91AECF23F00B457FD /* ARCMacros.h */,
-				2A187CDA1AECF23F00B457FD /* LICENSE */,
-				2A187CE51AECF23F00B457FD /* README.md */,
-				2A187CE61AECF23F00B457FD /* ZipArchive.h */,
-				2A187CE71AECF23F00B457FD /* ZipArchive.m */,
-			);
-			name = ZipArchive;
-			path = Libraries/ZipArchive;
-			sourceTree = "<group>";
-		};
-		2A187CDB1AECF23F00B457FD /* minizip */ = {
-			isa = PBXGroup;
-			children = (
-				2A187CDC1AECF23F00B457FD /* crypt.h */,
-				2A187CDD1AECF23F00B457FD /* ioapi.c */,
-				2A187CDE1AECF23F00B457FD /* ioapi.h */,
-				2A187CDF1AECF23F00B457FD /* mztools.c */,
-				2A187CE01AECF23F00B457FD /* mztools.h */,
-				2A187CE11AECF23F00B457FD /* unzip.c */,
-				2A187CE21AECF23F00B457FD /* unzip.h */,
-				2A187CE31AECF23F00B457FD /* zip.c */,
-				2A187CE41AECF23F00B457FD /* zip.h */,
-			);
-			path = minizip;
-			sourceTree = "<group>";
-		};
 		2A187D171AED197900B457FD /* TDFoundation */ = {
 			isa = PBXGroup;
 			children = (
@@ -285,6 +250,37 @@
 				2A187D201AED197900B457FD /* TDTexturePackerXMLReader.m */,
 			);
 			path = TDFoundation;
+			sourceTree = "<group>";
+		};
+		2A95DFE71BF7C8BE0018426F /* TDforkZipArchive */ = {
+			isa = PBXGroup;
+			children = (
+				2A187D001AECF29900B457FD /* libz.dylib */,
+				2A95DFEA1BF7C8BE0018426F /* minizip */,
+				2A95DFE81BF7C8BE0018426F /* ARCMacros.h */,
+				2A95DFF61BF7C8BE0018426F /* ZipArchive.h */,
+				2A95DFF71BF7C8BE0018426F /* ZipArchive.m */,
+				2A95DFE91BF7C8BE0018426F /* LICENSE */,
+				2A95DFF41BF7C8BE0018426F /* README.md */,
+			);
+			name = TDforkZipArchive;
+			path = Libraries/TDforkZipArchive;
+			sourceTree = "<group>";
+		};
+		2A95DFEA1BF7C8BE0018426F /* minizip */ = {
+			isa = PBXGroup;
+			children = (
+				2A95DFEB1BF7C8BE0018426F /* crypt.h */,
+				2A95DFEC1BF7C8BE0018426F /* ioapi.c */,
+				2A95DFED1BF7C8BE0018426F /* ioapi.h */,
+				2A95DFEE1BF7C8BE0018426F /* mztools.c */,
+				2A95DFEF1BF7C8BE0018426F /* mztools.h */,
+				2A95DFF01BF7C8BE0018426F /* unzip.c */,
+				2A95DFF11BF7C8BE0018426F /* unzip.h */,
+				2A95DFF21BF7C8BE0018426F /* zip.c */,
+				2A95DFF31BF7C8BE0018426F /* zip.h */,
+			);
+			path = minizip;
 			sourceTree = "<group>";
 		};
 		2AC9DD4C1AEBB1950012B4FA = {
@@ -519,6 +515,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2A95DFF81BF7C8BE0018426F /* LICENSE in Resources */,
 				2AE19FC51AF0F3390060D44F /* Tester in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -538,21 +535,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2A187CF81AECF24000B457FD /* unzip.c in Sources */,
+				2A95DFFD1BF7C8BE0018426F /* unzip.c in Sources */,
 				2A187D281AED197900B457FD /* TDTexturePackerXMLReader.m in Sources */,
 				2AC9DD5B1AEBB1950012B4FA /* TDResourceManager.m in Sources */,
 				2A187D261AED197900B457FD /* TDJSONReader.m in Sources */,
-				2A187CFA1AECF24000B457FD /* zip.c in Sources */,
-				2A187CFE1AECF24000B457FD /* ZipArchive.m in Sources */,
+				2A95DFFF1BF7C8BE0018426F /* zip.c in Sources */,
 				2A3CC9D81B0C921200EC0820 /* TDConfigureData.m in Sources */,
-				2A187CF61AECF24000B457FD /* mztools.c in Sources */,
+				2A95E0031BF7C8BE0018426F /* ZipArchive.m in Sources */,
+				2A95DFFB1BF7C8BE0018426F /* mztools.c in Sources */,
 				2A187CE81AECF24000B457FD /* NSBundle+TechD.m in Sources */,
 				2A187D2A1AED197900B457FD /* TDUtilities.m in Sources */,
+				2A95DFF91BF7C8BE0018426F /* ioapi.c in Sources */,
 				2A187CEE1AECF24000B457FD /* NSString+TechD.m in Sources */,
 				2A187CEC1AECF24000B457FD /* NSJSONSerialization+TechD.m in Sources */,
 				2A4358681AFE35F1001AEF63 /* NSPropertyListSerialization+TechD.m in Sources */,
 				2A187CEA1AECF24000B457FD /* NSDate+TechD.m in Sources */,
-				2A187CF41AECF24000B457FD /* ioapi.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -561,11 +558,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				2A3CC9D91B0C921200EC0820 /* TDConfigureData.m in Sources */,
-				2AE19FD21AF132180060D44F /* ZipArchive.m in Sources */,
-				2AE19FCE1AF131F70060D44F /* ioapi.c in Sources */,
-				2AE19FCF1AF131F70060D44F /* mztools.c in Sources */,
-				2AE19FD01AF131F70060D44F /* unzip.c in Sources */,
-				2AE19FD11AF131F70060D44F /* zip.c in Sources */,
 				2AE19FCA1AF0FA6F0060D44F /* NSDate+TechD.m in Sources */,
 				2A3CC9DC1B0CA38B00EC0820 /* TDConfigureDataTest.m in Sources */,
 				2AE19FCB1AF0FA6F0060D44F /* NSBundle+TechD.m in Sources */,
@@ -581,22 +573,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				2A95DFE61BF787110018426F /* TDResourceManager.m in Sources */,
+				2A95DFFA1BF7C8BE0018426F /* ioapi.c in Sources */,
 				2A3CC9DA1B0C921200EC0820 /* TDConfigureData.m in Sources */,
 				2A187D291AED197900B457FD /* TDTexturePackerXMLReader.m in Sources */,
+				2A95E0041BF7C8BE0018426F /* ZipArchive.m in Sources */,
 				2A187D271AED197900B457FD /* TDJSONReader.m in Sources */,
 				2A187CED1AECF24000B457FD /* NSJSONSerialization+TechD.m in Sources */,
-				2A187CF91AECF24000B457FD /* unzip.c in Sources */,
 				2AC9DD7E1AEBB2710012B4FA /* ViewController.m in Sources */,
 				2A187CE91AECF24000B457FD /* NSBundle+TechD.m in Sources */,
 				2AC9DD7B1AEBB2710012B4FA /* AppDelegate.m in Sources */,
-				2A187CF71AECF24000B457FD /* mztools.c in Sources */,
+				2A95E0001BF7C8BE0018426F /* zip.c in Sources */,
 				2AC9DD781AEBB2710012B4FA /* main.m in Sources */,
 				2A43586A1AFE35F1001AEF63 /* NSPropertyListSerialization+TechD.m in Sources */,
 				2A187CEB1AECF24000B457FD /* NSDate+TechD.m in Sources */,
-				2A187CF51AECF24000B457FD /* ioapi.c in Sources */,
+				2A95DFFC1BF7C8BE0018426F /* mztools.c in Sources */,
+				2A95DFFE1BF7C8BE0018426F /* unzip.c in Sources */,
 				2A187D2B1AED197900B457FD /* TDUtilities.m in Sources */,
-				2A187CFF1AECF24000B457FD /* ZipArchive.m in Sources */,
-				2A187CFB1AECF24000B457FD /* zip.c in Sources */,
 				2A187CEF1AECF24000B457FD /* NSString+TechD.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
