@@ -21,7 +21,7 @@ Click `Download ZIP` or here : [download][downloadLink]
 
 ### [CocoaPods][cocoaPodsLink]
 
-add `Podfile` in project's root direcotry, content like below : 
+add `Podfile` in project's root directory, content like below : 
 
 ```ruby
 platform :ios, '8.0'
